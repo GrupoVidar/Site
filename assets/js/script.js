@@ -1,5 +1,5 @@
 // =======================
-// Menu Responsivo - COM CORREÇÃO MOBILE
+// Menu Responsivo - CORREÇÃO DA ANIMAÇÃO
 // =======================
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
@@ -8,15 +8,19 @@ if (menuToggle && menu) {
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("show");
 
-    // Animação do menu hambúrguer
+    // Animação do menu hambúrguer - CORREÇÃO
     const spans = menuToggle.querySelectorAll("span");
     if (menu.classList.contains("show")) {
-      spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-      spans[1].style.opacity = "0";
-      spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+      // Transforma em "X"
+      spans[0].style.transform = "rotate(45deg) translate(6px, 6px)";
+      spans[1].style.opacity = "0"; // ⭐ CORREÇÃO: Linha do meio some
+      spans[1].style.transform = "scale(0)"; // ⭐ CORREÇÃO EXTRA
+      spans[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
     } else {
+      // Volta para hambúrguer
       spans[0].style.transform = "none";
-      spans[1].style.opacity = "1";
+      spans[1].style.opacity = "1"; // ⭐ CORREÇÃO: Linha do meio reaparece
+      spans[1].style.transform = "none"; // ⭐ CORREÇÃO EXTRA
       spans[2].style.transform = "none";
     }
   });
@@ -27,18 +31,20 @@ if (menuToggle && menu) {
       menu.classList.remove("show");
       const spans = menuToggle.querySelectorAll("span");
       spans[0].style.transform = "none";
-      spans[1].style.opacity = "1";
+      spans[1].style.opacity = "1"; // ⭐ CORREÇÃO
+      spans[1].style.transform = "none"; // ⭐ CORREÇÃO
       spans[2].style.transform = "none";
     });
   });
 
-  // CORREÇÃO: Fechar menu ao clicar fora (mobile)
+  // Fechar menu ao clicar fora (mobile)
   document.addEventListener("click", function (e) {
     if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
       menu.classList.remove("show");
       const spans = menuToggle.querySelectorAll("span");
       spans[0].style.transform = "none";
-      spans[1].style.opacity = "1";
+      spans[1].style.opacity = "1"; // ⭐ CORREÇÃO
+      spans[1].style.transform = "none"; // ⭐ CORREÇÃO
       spans[2].style.transform = "none";
     }
   });

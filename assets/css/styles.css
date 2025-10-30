@@ -258,6 +258,63 @@ nav ul li a.ativo::after {
 }
 
 /* =========================================================
+   IPAD PRO (1024x1366) - CORREÇÃO DA FRASE
+========================================================= */
+
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+  .frase-destaque.imagem {
+    height: 60vh !important;
+    justify-content: flex-start !important; /* Alinha à esquerda */
+    align-items: center !important; /* Centraliza verticalmente */
+    text-align: left !important;
+  }
+
+  .conteudo-frase {
+    margin-left: 8% !important;
+    background: none !important; /* Remove fundo escuro */
+    padding: 0 !important;
+    border-radius: 0 !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    max-width: 600px !important;
+  }
+
+  .conteudo-frase p {
+    font-size: 1.8rem !important; /* Texto maior para iPad */
+    line-height: 1.3 !important;
+  }
+
+  .conteudo-frase .autor {
+    font-size: 1.4rem !important;
+  }
+}
+
+/* =========================================================
+   IPAD PRO LANDSCAPE (1366x1024)
+========================================================= */
+
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  .frase-destaque.imagem {
+    height: 70vh !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
+
+  .conteudo-frase {
+    margin-left: 10% !important;
+    max-width: 700px !important;
+  }
+
+  .conteudo-frase p {
+    font-size: 2rem !important;
+  }
+
+  .conteudo-frase .autor {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* =========================================================
    MOBILE PEQUENO (até 480px)
 ========================================================= */
 
@@ -2119,5 +2176,124 @@ footer {
     width: 38px !important;
     height: 38px !important;
     font-size: 0.9rem !important;
+  }
+}
+
+/* =========================================================
+   LISTA DE LEITURAS - RESPONSIVIDADE MOBILE 2x2
+========================================================= */
+
+@media (max-width: 768px) {
+  .dicas-leituras.cards {
+    padding: 2rem 1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  .grid-leituras {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* ⭐ 2 COLUNAS */
+    gap: 1rem !important;
+    max-width: 100% !important;
+  }
+
+  .card-leitura {
+    padding: 0.8rem !important;
+    min-height: 180px !important; /* Altura mínima para uniformidade */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  .card-leitura img {
+    max-height: 100px !important; /* Controla altura da imagem */
+    object-fit: contain !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .card-leitura h3 {
+    font-size: 0.9rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .card-leitura p {
+    font-size: 0.8rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* =========================================================
+   MOBILE PEQUENO (até 480px) - AJUSTES FINOS
+========================================================= */
+
+@media (max-width: 480px) {
+  .dicas-leituras.cards {
+    padding: 1.5rem 0.8rem !important;
+  }
+
+  .grid-leituras {
+    gap: 0.8rem !important;
+  }
+
+  .card-leitura {
+    padding: 0.6rem !important;
+    min-height: 160px !important;
+  }
+
+  .card-leitura img {
+    max-height: 80px !important;
+  }
+
+  .card-leitura h3 {
+    font-size: 0.85rem !important;
+  }
+
+  .card-leitura p {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* =========================================================
+   MOBILE MUITO PEQUENO (até 360px) - MANTÉM 2x2
+========================================================= */
+
+@media (max-width: 360px) {
+  .grid-leituras {
+    gap: 0.6rem !important;
+  }
+
+  .card-leitura {
+    min-height: 150px !important;
+    padding: 0.5rem !important;
+  }
+
+  .card-leitura img {
+    max-height: 70px !important;
+  }
+
+  .card-leitura h3 {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* =========================================================
+   TABLET (768px - 1024px) - 3 COLUNAS
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-leituras {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP - MANTÉM O ORIGINAL
+========================================================= */
+
+@media (min-width: 1025px) {
+  .grid-leituras {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
   }
 }
