@@ -1,5 +1,5 @@
 // =======================
-// Menu Responsivo - CORREÇÃO DA ANIMAÇÃO
+// Menu Responsivo
 // =======================
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
@@ -13,14 +13,14 @@ if (menuToggle && menu) {
     if (menu.classList.contains("show")) {
       // Transforma em "X"
       spans[0].style.transform = "rotate(45deg) translate(6px, 6px)";
-      spans[1].style.opacity = "0"; // ⭐ CORREÇÃO: Linha do meio some
-      spans[1].style.transform = "scale(0)"; // ⭐ CORREÇÃO EXTRA
+      spans[1].style.opacity = "0"; // Linha do meio some
+      spans[1].style.transform = "scale(0)"; // Correção extra
       spans[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
     } else {
       // Volta para hambúrguer
       spans[0].style.transform = "none";
-      spans[1].style.opacity = "1"; // ⭐ CORREÇÃO: Linha do meio reaparece
-      spans[1].style.transform = "none"; // ⭐ CORREÇÃO EXTRA
+      spans[1].style.opacity = "1"; // Linha do meio reaparece
+      spans[1].style.transform = "none"; // Correção extra
       spans[2].style.transform = "none";
     }
   });
@@ -31,8 +31,8 @@ if (menuToggle && menu) {
       menu.classList.remove("show");
       const spans = menuToggle.querySelectorAll("span");
       spans[0].style.transform = "none";
-      spans[1].style.opacity = "1"; // ⭐ CORREÇÃO
-      spans[1].style.transform = "none"; // ⭐ CORREÇÃO
+      spans[1].style.opacity = "1";
+      spans[1].style.transform = "none";
       spans[2].style.transform = "none";
     });
   });
@@ -43,8 +43,8 @@ if (menuToggle && menu) {
       menu.classList.remove("show");
       const spans = menuToggle.querySelectorAll("span");
       spans[0].style.transform = "none";
-      spans[1].style.opacity = "1"; // ⭐ CORREÇÃO
-      spans[1].style.transform = "none"; // ⭐ CORREÇÃO
+      spans[1].style.opacity = "1";
+      spans[1].style.transform = "none";
       spans[2].style.transform = "none";
     }
   });
@@ -194,7 +194,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // Garantir visibilidade no mobile
   garantirVisibilidadeMobile();
 
-  // Atualizar ano do rodapé (já está sendo chamado acima)
+  // Atualizar ano do rodapé
+  const yearElement = document.querySelector("footer p:last-child");
+  if (yearElement) {
+    const currentYear = new Date().getFullYear();
+    yearElement.textContent = yearElement.textContent.replace(
+      /\d{4}/,
+      currentYear
+    );
+  }
 });
 
 // Reforçar visibilidade ao redimensionar

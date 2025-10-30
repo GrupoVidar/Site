@@ -741,88 +741,354 @@ nav ul li a.ativo::after {
 /* =========================================================
    Página Publicações
 ========================================================= */
+
 /* =========================================================
-   OPÇÃO 5 - MINIMALISTA COM DESTAQUES
+   OPÇÃO 2 - ESTILO REVISTA CIENTÍFICA
 ========================================================= */
-.publicacoes-minimalista {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
+.publicacoes-academicas {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-.publicacao-destaque {
-  background: linear-gradient(
-    135deg,
-    var(--verde-cinza) 0%,
-    var(--marrom-claro) 100%
-  );
-  color: white;
-  padding: 3rem;
-  border-radius: 20px;
-  margin-bottom: 3rem;
-  text-align: center;
+.publicacao-item {
+    background: var(--branco);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border-left: 5px solid var(--terra-queimada);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-radius: 8px;
 }
 
-.publicacao-destaque h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.publicacao-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 30px rgba(146, 75, 56, 0.15);
 }
 
-.publicacao-destaque p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin-bottom: 2rem;
+.publicacao-cabecalho {
+    border-bottom: 2px solid var(--bege-claro);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.lista-publicacoes {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.publicacao-titulo {
+    color: var(--verde-cinza);
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+    font-weight: 600;
 }
 
-.publicacao-lista-item {
-  background: var(--branco);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border-left: 4px solid var(--terra-queimada);
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: between;
-  align-items: center;
+.publicacao-autores {
+    color: var(--terra-queimada);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 
-.publicacao-lista-item:hover {
-  transform: translateX(10px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+.publicacao-referencia {
+    color: var(--preto-elegante);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
 }
 
-.publicacao-info {
-  flex: 1;
+.publicacao-resumo {
+    color: var(--preto-elegante);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1rem;
 }
 
-.publicacao-info h3 {
-  color: var(--verde-cinza);
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+.publicacao-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.publicacao-info p {
-  color: var(--preto-elegante);
-  font-size: 0.9rem;
-  margin-bottom: 0;
+.link-publicacao {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background: var(--bege-claro);
+    color: var(--verde-cinza);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid transparent;
 }
 
-.publicacao-ano {
-  background: var(--bege-claro);
-  color: var(--verde-cinza);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
-  margin-left: 1rem;
+.link-publicacao:hover {
+    background: var(--terra-queimada);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(146, 75, 56, 0.3);
 }
 
 /* =========================================================
-   SEÇÃO DO DESTAQUE PRINCIPAL
+   RESPONSIVIDADE MOBILE
+========================================================= */
+@media (max-width: 768px) {
+    .publicacoes-academicas {
+        padding: 1rem;
+    }
+    
+    .publicacao-item {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .publicacao-titulo {
+        font-size: 1.2rem;
+    }
+    
+    .publicacao-autores {
+        font-size: 0.9rem;
+    }
+    
+    .publicacao-referencia {
+        font-size: 0.8rem;
+    }
+    
+    .publicacao-resumo {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .publicacao-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .link-publicacao {
+        justify-content: center;
+        padding: 0.8rem 1rem;
+    }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .publicacoes-academicas {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+    
+    .publicacao-item {
+        padding: 2rem;
+    }
+}
+
+/* =========================================================
+   IPAD PRO
+========================================================= */
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .publicacoes-academicas {
+        max-width: 950px;
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* =========================================================
+   MODAL DE CITAÇÃO - ESTILO GOOGLE SCHOLAR
+========================================================= */
+.modal-citacao {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-conteudo {
+    background-color: var(--branco);
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: aparecerModal 0.3s ease;
+}
+
+@keyframes aparecerModal {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid var(--bege-claro);
+    background: var(--bege-claro);
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-cabecalho h3 {
+    color: var(--verde-cinza);
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.fechar-modal {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--verde-cinza);
+    transition: color 0.3s ease;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fechar-modal:hover {
+    color: var(--terra-queimada);
+}
+
+.modal-corpo {
+    padding: 2rem;
+}
+
+.formatos-citacao {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.formatos-citacao div {
+    padding: 0.6rem 1.2rem;
+    background: var(--bege-claro);
+    border: 2px solid transparent;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--verde-cinza);
+}
+
+.formatos-citacao div:hover {
+    background: var(--marrom-claro);
+}
+
+.formato-ativo {
+    background: var(--terra-queimada) !important;
+    color: white !important;
+    border-color: var(--terra-queimada) !important;
+}
+
+.area-citacao {
+    margin-bottom: 1.5rem;
+}
+
+.texto-citacao {
+    width: 100%;
+    height: 150px;
+    padding: 1rem;
+    border: 2px solid var(--bege-claro);
+    border-radius: 8px;
+    resize: vertical;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    background: #fafafa;
+    margin-bottom: 1rem;
+}
+
+.texto-citacao:focus {
+    outline: none;
+    border-color: var(--terra-queimada);
+}
+
+.btn-copiar {
+    background: var(--terra-queimada);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-copiar:hover {
+    background: #7a3c2d;
+    transform: translateY(-2px);
+}
+
+.btn-copiar.copiado {
+    background: var(--verde-cinza);
+}
+
+.citacao-info {
+    background: var(--bege-claro);
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.citacao-info p {
+    margin: 0.3rem 0;
+    color: var(--preto-elegante);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .modal-conteudo {
+        margin: 10% auto;
+        width: 95%;
+    }
+    
+    .modal-cabecalho {
+        padding: 1rem 1.5rem;
+    }
+    
+    .modal-corpo {
+        padding: 1.5rem;
+    }
+    
+    .formatos-citacao {
+        gap: 0.3rem;
+    }
+    
+    .formatos-citacao div {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .texto-citacao {
+        height: 120px;
+        font-size: 0.8rem;
+    }
+}
+
+/* =========================================================
+   Página home SEÇÃO DO DESTAQUE PRINCIPAL
 ========================================================= */
 .destaque-principal-section {
   width: 100%;
