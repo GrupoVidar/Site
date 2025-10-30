@@ -207,3 +207,174 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Reforçar visibilidade ao redimensionar
 window.addEventListener("resize", garantirVisibilidadeMobile);
+// =========================================================
+// SISTEMA DE BUSCA EM TEMPO REAL - VERSÃO CORRIGIDA
+// =========================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Elementos da busca
+  const campoBusca = document.getElementById("campoBusca");
+  const btnLimpar = document.getElementById("limparBusca");
+  const contador = document.getElementById("contador");
+  const publicacoes = document.querySelectorAll(".publicacao-item");
+
+  // Armazenar os títulos originais para restaurar depois
+  const titulosOriginais = new Map();
+  publicacoes.forEach((pub, index) => {
+    const titulo = pub.querySelector(".publicacao-titulo");
+    titulosOriginais.set(pub, titulo.innerHTML);
+  });
+
+  // Criar elemento para "sem resultados"
+  const semResultados = document.createElement("div");
+  semResultados.className = "sem-resultados";
+  semResultados.innerHTML = `
+    <i class="fas fa-search"></i>
+    <h3>Nenhuma publicação encontrada</h3>
+    <p>Tente usar outros termos ou verificar a ortografia.</p>
+  `;
+
+  // Inserir após a barra de busca
+  const barraBuscaContainer = document.querySelector(".barra-busca-container");
+  barraBuscaContainer.parentNode.insertBefore(
+    semResultados,
+    barraBuscaContainer.nextSibling
+  );
+
+  // Função para buscar publicações - CORRIGIDA
+  function buscarPublicacoes(termo) {
+    termo = termo.toLowerCase().trim();
+    let resultados = 0;
+
+    publicacoes.forEach((publicacao) => {
+      const tituloElemento = publicacao.querySelector(".publicacao-titulo");
+      const tituloTexto = tituloElemento.textContent.toLowerCase();
+      const corresponde = tituloTexto.includes(termo);
+
+      if (corresponde) {
+        publicacao.classList.add("resultado-correspondente");
+        publicacao.classList.remove("oculto");
+        resultados++;
+
+        // Destacar o texto correspondente apenas se houver termo
+        if (termo) {
+          destacarTexto(tituloElemento, termo);
+        } else {
+          // Se não há termo, restaurar o título original
+          restaurarTituloOriginal(publicacao);
+        }
+      } else {
+        publicacao.classList.remove("resultado-correspondente");
+        publicacao.classList.add("oculto");
+
+        // Sempre restaurar o título original quando não corresponde
+        restaurarTituloOriginal(publicacao);
+      }
+    });
+
+    // IMPORTANTE: Se não há termo de busca, restaurar TODOS os títulos
+    if (!termo) {
+      publicacoes.forEach((publicacao) => {
+        restaurarTituloOriginal(publicacao);
+        publicacao.classList.remove("oculto");
+        publicacao.classList.remove("resultado-correspondente");
+      });
+      resultados = publicacoes.length;
+    }
+
+    // Atualizar contador
+    atualizarContador(resultados, termo);
+
+    // Mostrar/ocultar mensagem de sem resultados
+    if (termo && resultados === 0) {
+      semResultados.classList.add("mostrar");
+    } else {
+      semResultados.classList.remove("mostrar");
+    }
+
+    // Mostrar/ocultar botão limpar
+    if (termo) {
+      btnLimpar.classList.add("visivel");
+    } else {
+      btnLimpar.classList.remove("visivel");
+    }
+  }
+
+  // Função para restaurar título original
+  function restaurarTituloOriginal(publicacao) {
+    const tituloOriginal = titulosOriginais.get(publicacao);
+    const tituloElemento = publicacao.querySelector(".publicacao-titulo");
+    if (tituloOriginal && tituloElemento.innerHTML !== tituloOriginal) {
+      tituloElemento.innerHTML = tituloOriginal;
+    }
+  }
+
+  // Função para destacar texto correspondente - MELHORADA
+  function destacarTexto(elemento, termo) {
+    const textoOriginal = elemento.textContent;
+    const regex = new RegExp(
+      `(${termo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
+      "gi"
+    );
+    const novoTexto = textoOriginal.replace(
+      regex,
+      '<span class="destaque-busca">$1</span>'
+    );
+
+    // Só atualizar se realmente houver mudança
+    if (elemento.innerHTML !== novoTexto) {
+      elemento.innerHTML = novoTexto;
+    }
+  }
+
+  // Função para atualizar contador
+  function atualizarContador(resultados, termo) {
+    if (!termo) {
+      contador.textContent = `Mostrando todas as ${publicacoes.length} publicações`;
+    } else if (resultados === 0) {
+      contador.textContent = `Nenhum resultado para "${termo}"`;
+    } else if (resultados === 1) {
+      contador.textContent = `1 publicação encontrada para "${termo}"`;
+    } else {
+      contador.textContent = `${resultados} publicações encontradas para "${termo}"`;
+    }
+  }
+
+  // Função para limpar busca - CORRIGIDA
+  function limparBusca() {
+    campoBusca.value = "";
+
+    // Restaurar todos os títulos para o estado original
+    publicacoes.forEach((publicacao) => {
+      restaurarTituloOriginal(publicacao);
+      publicacao.classList.remove("oculto");
+      publicacao.classList.remove("resultado-correspondente");
+    });
+
+    // Atualizar contador
+    atualizarContador(publicacoes.length, "");
+
+    // Esconder botão limpar e mensagem
+    btnLimpar.classList.remove("visivel");
+    semResultados.classList.remove("mostrar");
+
+    campoBusca.focus();
+  }
+
+  // Event Listeners
+  campoBusca.addEventListener("input", function (e) {
+    buscarPublicacoes(e.target.value);
+  });
+
+  btnLimpar.addEventListener("click", limparBusca);
+
+  // Tecla ESC para limpar busca
+  campoBusca.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      limparBusca();
+    }
+  });
+
+  // Busca inicial para configurar estado
+  buscarPublicacoes("");
+});

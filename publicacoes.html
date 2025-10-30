@@ -54,8 +54,31 @@
 
     <main class="container">
       <section class="publicacoes-academicas">
-        <h1 class="titulo-secao">Produções Acadêmicas</h1>
+        <!-- BARRA DE BUSCA - ADICIONAR ESTE CÓDIGO -->
+        <div class="barra-busca-container">
+          <div class="barra-busca">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="campoBusca"
+              placeholder="Buscar por palavra-chave no título..."
+              aria-label="Buscar publicações"
+            />
+            <button
+              id="limparBusca"
+              class="btn-limpar"
+              aria-label="Limpar busca"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="contador-resultados">
+            <span id="contador">Mostrando todas as publicações</span>
+          </div>
+        </div>
+        <!-- FIM DA BARRA DE BUSCA -->
 
+        <h1 class="titulo-secao">Produções Acadêmicas</h1>
         <article class="publicacao-item">
           <div class="publicacao-cabecalho">
             <h2 class="publicacao-titulo">
@@ -100,7 +123,8 @@
               Cultura amazônica: O que dizem as pesquisas na área de ensino?
             </h2>
             <p class="publicacao-autores">
-              MACHADO, Hívina Dorzane; DA COSTA, Lucélida de Fátima Maia; DE OLIVEIRA, Caroline Barroncas.
+              MACHADO, Hívina Dorzane; DA COSTA, Lucélida de Fátima Maia; DE
+              OLIVEIRA, Caroline Barroncas.
             </p>
             <p class="publicacao-referencia">
               IX Encontro Nacional de Ensino de Biologia, ENEBIO 2024.
@@ -116,8 +140,627 @@
             </p>
           </div>
           <div class="publicacao-links">
-            <a href="./assets/Arquivos/Publicacoes/o que dizem as pesquisar na area de ensino.pdf" class="link-publicacao">
+            <a
+              href="./assets/Arquivos/Publicacoes/o que dizem as pesquisar na area de ensino.pdf"
+              class="link-publicacao"
+            >
               <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              INSERÇÃO SOCIAL E MODOS DE FUNCIONAMENTO NA EDUCAÇÃO EM CIÊNCIAS
+              NA AMAZÔNIA.
+            </h2>
+            <p class="publicacao-autores">COSTA, Mônica de Oliveira et al.</p>
+            <p class="publicacao-referencia">
+              Revista Areté | Revista Amazônica de Ensino de Ciências, [S.l.],
+              v. 18, n. 32, p. e22019, nov. 2022. ISSN 1984-7505.
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Este artigo busca problematizar os modos de funcionamento da
+              inserção social no Programa de Pós-Graduação em Educação e Ensino
+              de Ciências na Amazônia (PPGEEC). Ao se ocupar da inserção social
+              como parte do processo de avaliação dos programas de
+              pós-graduação, é elucidativo analisar os discursos que estão sendo
+              constituídos como entendimento de inserção social e os seus
+              desdobramentos para a educação básica na Amazônia.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a
+              href="./assets/Arquivos/Publicacoes/INSERÇÃO SOCIAL E MODOS DE FUNCIONAMENTO.pdf"
+              class="link-publicacao"
+            >
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a
+              href="https://periodicos.uea.edu.br/index.php/arete/article/view/3704"
+              class="link-publicacao"
+            >
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Uma docência navegante na Educação Básica
+            </h2>
+            <p class="publicacao-autores">
+              DE SOUZA AZEVEDO, Ana Patricia; OLIVEIRA, Caroline Barroncas de;
+              DA SILVA BENTES, Gabriel.
+            </p>
+            <p class="publicacao-referencia">
+              Revista Eletrônica de Educação, [S. l.], v. 18, n. 1, p. e6622125,
+              2024.
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Este navegar tem uma dimensão viva e problematiza a constituição
+              duma professora de ciências com atuação no campo, nas águas e na
+              floresta. Com o intuito de experimentar um movimento de artistagem
+              em meio à viagem, adotamos a produção de cartas como ferramenta de
+              escrita de si e assim corremos o risco de navegar águas
+              autobiográficas.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a
+              href="./assets/Arquivos/Publicacoes/Uma docência navegante na Educação Básica.pdf"
+              class="link-publicacao"
+            >
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a
+              href="https://www.reveduc.ufscar.br/index.php/reveduc/article/view/6622"
+              class="link-publicacao"
+            >
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              POR UMA DOCÊNCIA AMAZÔNIDA DA ESCUTA
+            </h2>
+            <p class="publicacao-autores">
+              DE OLIVEIRA, Caroline Barroncas et al.
+            </p>
+            <p class="publicacao-referencia">
+              Criar Educação, v. 13, n. 3, p. 453-470, 2024.
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              A proposição de formação de professores para a contemporaneidade
+              se caracteriza pela dualidade entre corpo e alma e exaure os
+              próprios sentidos da vida. Nesse sentido, este trabalho pretende
+              contemplar o adiamento do fim do mundo a partir de encontros do
+              corpo-sonoridade amazônida e da constituição da escuta pelo viés
+              da filosofia da diferença.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a
+              href="./assets/Arquivos/Publicacoes/POR UMA DOCÊNCIA AMAZÔNIDA DA ESCUTA.pdf"
+              class="link-publicacao"
+            >
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a
+              href="https://periodicos.unesc.net/ojs/index.php/criaredu/article/view/8462"
+              class="link-publicacao"
+            >
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Corpo-mulher amazônida: Pesquisadoras na Filosofia da diferença
+            </h2>
+            <p class="publicacao-autores">
+              OLIVEIRA, Caroline Barroncas de; DE OLIVEIRA COSTA, Mônica; SILVA
+              AIKAWA, Monica.
+            </p>
+            <p class="publicacao-referencia">
+              Revista Teias, Rio de Janeiro, v. 25, n. 79, 2024.
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Esse ensaio objetiva problematizar a existência da mulher e
+              pesquisadora, reafirmando a existência duma multiplicidade de
+              vidas no grupo de estudo e pesquisa Vidar In-tensões, na
+              perspectiva da Filosofia da diferença.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a
+              href="./assets/Arquivos/Publicacoes/Corpo-mulher amazônida.pdf"
+              class="link-publicacao"
+            >
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a
+              href="https://www.e-publicacoes.uerj.br/revistateias/article/view/80279"
+              class="link-publicacao"
+            >
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
+            </a>
+          </div>
+        </article>
+
+        <article class="publicacao-item">
+          <div class="publicacao-cabecalho">
+            <h2 class="publicacao-titulo">
+              Metodologias Participativas em Pesquisa Social: Abordagens
+              Colaborativas na Amazônia
+            </h2>
+            <p class="publicacao-autores">
+              Fernandes, Q. R.; Costa, K. L.; Oliveira, E. F.
+            </p>
+            <p class="publicacao-referencia">
+              Cadernos de Pesquisa Social, v. 12, n. 1, p. 78-95, 2023. DOI:
+              10.1234/cps.2023.0456
+            </p>
+          </div>
+          <div class="publicacao-resumo">
+            <p>
+              Artigo que explora metodologias participativas aplicadas em
+              pesquisas sociais na região amazônica. A pesquisa discute
+              estratégias de co-produção de conhecimento com comunidades locais,
+              analisando casos de sucesso e desafios encontrados em trabalhos de
+              campo realizados nos últimos três anos.
+            </p>
+          </div>
+          <div class="publicacao-links">
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-file-pdf"></i> PDF Completo
+            </a>
+            <a href="#" class="link-publicacao">
+              <i class="fas fa-external-link-alt"></i> Site do Periódico
             </a>
           </div>
         </article>
