@@ -102,7 +102,7 @@ header {
     font-weight: 200 !important;
     font-size: 0.5rem !important;
   }
-  
+
   .logo-icon {
     width: 40px !important;
     height: 40px !important;
@@ -114,7 +114,7 @@ header {
   .logo {
     font-size: 0.2rem !important;
   }
-  
+
   .logo-icon {
     width: 25px !important;
     height: 25px !important;
@@ -138,7 +138,7 @@ header {
   .logo-text-desktop {
     display: none !important;
   }
-  
+
   .logo-text-mobile {
     display: block !important;
     font-family: "Dancing Script", cursive !important;
@@ -292,6 +292,10 @@ nav ul li a.ativo::after {
   }
 
   .conteudo-frase {
+    margin-top: 80px; /* empurra mais para baixo */
+    margin-left: 0; /* garante alinhamento na esquerda */
+    text-align: left;
+    text-align: left;
     margin-left: 2% !important;
     margin-bottom: 5% !important;
     width: 85%;
@@ -395,6 +399,10 @@ nav ul li a.ativo::after {
   }
 
   .conteudo-frase {
+    margin-top: 80px; /* empurra mais para baixo */
+    margin-left: 0; /* garante alinhamento na esquerda */
+    text-align: left;
+    text-align: left;
     margin-left: 3% !important;
     margin-bottom: 3% !important;
     width: 80%;
