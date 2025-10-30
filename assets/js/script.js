@@ -1,5 +1,5 @@
 // =======================
-// Menu Responsivo
+// Menu Responsivo - COM CORREÇÃO MOBILE
 // =======================
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
@@ -30,6 +30,17 @@ if (menuToggle && menu) {
       spans[1].style.opacity = "1";
       spans[2].style.transform = "none";
     });
+  });
+
+  // CORREÇÃO: Fechar menu ao clicar fora (mobile)
+  document.addEventListener("click", function (e) {
+    if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+      menu.classList.remove("show");
+      const spans = menuToggle.querySelectorAll("span");
+      spans[0].style.transform = "none";
+      spans[1].style.opacity = "1";
+      spans[2].style.transform = "none";
+    }
   });
 }
 
@@ -108,42 +119,77 @@ function iniciarSlideshow() {
 // =========================================================
 function observarElementos() {
   const elementos = document.querySelectorAll(
-    '.timeline-item, .linha-card, .pilar-card, .parceiro-logo'
+    ".timeline-item, .linha-card, .pilar-card, .parceiro-logo"
   );
 
   if (elementos.length === 0) return;
 
-  const observador = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        
-        // Delay individual para os itens da timeline
-        if (entry.target.classList.contains('timeline-item')) {
-          const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
-          entry.target.style.transitionDelay = `${index * 0.2}s`;
-        }
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
+  const observador = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
 
-  elementos.forEach(elemento => {
+          // Delay individual para os itens da timeline
+          if (entry.target.classList.contains("timeline-item")) {
+            const index = Array.from(
+              entry.target.parentElement.children
+            ).indexOf(entry.target);
+            entry.target.style.transitionDelay = `${index * 0.2}s`;
+          }
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    }
+  );
+
+  elementos.forEach((elemento) => {
     observador.observe(elemento);
   });
 }
 
 // =======================
+// GARANTIR VISIBILIDADE NO MOBILE
+// =======================
+function garantirVisibilidadeMobile() {
+  if (window.innerWidth <= 768) {
+    // Forçar display block em elementos críticos
+    const elementosCriticos = [
+      "main",
+      "section",
+      ".container",
+      ".grid-noticias",
+    ];
+
+    elementosCriticos.forEach((seletor) => {
+      const elementos = document.querySelectorAll(seletor);
+      elementos.forEach((el) => {
+        el.style.display = "block";
+        el.style.visibility = "visible";
+        el.style.opacity = "1";
+      });
+    });
+  }
+}
+
+// =======================
 // INICIALIZAÇÃO GERAL
 // =======================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Slideshow do destaque principal
   iniciarSlideshow();
-  
+
   // Animações da página sobre
   observarElementos();
-  
+
+  // Garantir visibilidade no mobile
+  garantirVisibilidadeMobile();
+
   // Atualizar ano do rodapé (já está sendo chamado acima)
 });
+
+// Reforçar visibilidade ao redimensionar
+window.addEventListener("resize", garantirVisibilidadeMobile);
