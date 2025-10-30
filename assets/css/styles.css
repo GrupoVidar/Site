@@ -1604,6 +1604,10 @@ footer {
    PÁGINA SOBRE
 ========================================================= */
 
+/* =========================================================
+   PÁGINA SOBRE - COM RESPONSIVIDADE
+========================================================= */
+
 .sobre-hero {
   background: linear-gradient(135deg, var(--verde-cinza) 0%, #4a4b3c 100%);
   color: white;
@@ -1657,6 +1661,22 @@ footer {
   width: 4px;
   background: var(--verde-cinza);
   transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
 .timeline-year {
@@ -1823,10 +1843,12 @@ footer {
   justify-content: center;
   min-height: 100px;
   transition: transform 0.3s ease;
+  text-decoration: none;
 }
 
 .parceiro-logo:hover {
   transform: scale(1.05);
+  color: var(--terra-queimada);
 }
 
 .parcerias-texto {
@@ -1835,6 +1857,305 @@ footer {
   color: var(--preto-elegante);
   font-size: 1.1rem;
   line-height: 1.6;
+}
+
+/* =========================================================
+   RESPONSIVIDADE MOBILE - PÁGINA SOBRE
+========================================================= */
+
+@media (max-width: 768px) {
+  /* Hero Section */
+  .sobre-hero {
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .sobre-hero-content h1 {
+    font-size: 2.2rem !important;
+    margin-bottom: 0.8rem;
+  }
+
+  .sobre-subtitulo {
+    font-size: 1.1rem !important;
+    margin-bottom: 1.5rem;
+  }
+
+  .sobre-hero-content p {
+    font-size: 1rem !important;
+    line-height: 1.5;
+  }
+
+  /* Timeline */
+  .timeline-section {
+    padding: 2rem 1rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+  }
+
+  .timeline::before {
+    left: 30px !important;
+  }
+
+  .timeline-item {
+    flex-direction: row !important;
+    justify-content: flex-start;
+    padding-left: 60px;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-year {
+    position: absolute;
+    left: 0;
+    min-width: 50px;
+    padding: 0.7rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  .timeline-content {
+    width: 100% !important;
+    margin: 0 !important;
+    margin-left: 1rem !important;
+    padding: 1.5rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem;
+  }
+
+  /* Linhas de Pesquisa */
+  .linhas-pesquisa {
+    padding: 2rem 1rem;
+  }
+
+  .grid-linhas {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .linha-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .linha-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .linha-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .linha-card p {
+    font-size: 0.9rem;
+  }
+
+  /* Missão, Visão, Valores */
+  .missao-visao {
+    padding: 2rem 1rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+  }
+
+  .pilares-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .pilar-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .pilar-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .pilar-card p,
+  .pilar-card li {
+    font-size: 0.9rem;
+  }
+
+  /* Parcerias */
+  .parcerias-section {
+    padding: 2rem 1rem;
+  }
+
+  .parcerias-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem;
+    margin: 2rem auto;
+  }
+
+  .parceiro-logo {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    min-height: 80px;
+  }
+
+  .parcerias-texto {
+    font-size: 1rem;
+    margin: 1.5rem auto 0;
+  }
+
+  /* Seção Fundadoras */
+  .fundadoras-section {
+    padding: 2rem 1rem !important;
+  }
+
+  .grid-fundadoras {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    margin-top: 2rem !important;
+  }
+
+  .card-fundadora {
+    padding: 1.5rem !important;
+  }
+
+  .fundadora-imagem img {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .fundadora-conteudo h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .fundadora-conteudo p {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* =========================================================
+   TABLET (768px - 1024px)
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sobre-hero {
+    padding: 4rem 1.5rem;
+  }
+
+  .sobre-hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .timeline::before {
+    left: 100px;
+  }
+
+  .timeline-item {
+    padding-left: 120px;
+  }
+
+  .timeline-content {
+    width: 70%;
+  }
+
+  .grid-linhas,
+  .pilares-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .parcerias-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================================================
+   MOBILE PEQUENO (até 480px)
+========================================================= */
+
+@media (max-width: 480px) {
+  .sobre-hero-content h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .sobre-subtitulo {
+    font-size: 1rem !important;
+  }
+
+  .timeline-year {
+    min-width: 40px;
+    padding: 0.5rem 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  .timeline-item {
+    padding-left: 50px;
+  }
+
+  .timeline-content {
+    padding: 1.2rem;
+  }
+
+  .parcerias-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .parceiro-logo {
+    padding: 1rem;
+    font-size: 1.1rem;
+    min-height: 70px;
+  }
+}
+
+/* =========================================================
+   ANIMAÇÕES SUAVES
+========================================================= */
+
+.sobre-hero,
+.timeline-section,
+.linhas-pesquisa,
+.missao-visao,
+.parcerias-section,
+.fundadoras-section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.timeline-section {
+  animation-delay: 0.2s;
+}
+.linhas-pesquisa {
+  animation-delay: 0.4s;
+}
+.missao-visao {
+  animation-delay: 0.6s;
+}
+.parcerias-section {
+  animation-delay: 0.8s;
+}
+.fundadoras-section {
+  animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-item {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item:nth-child(even) {
+  transform: translateX(50px);
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* =========================================================
