@@ -1292,139 +1292,381 @@ footer {
 }
 
 /* =========================================================
-   RESPONSIVIDADE GERAL
+   RESPONSIVIDADE MOBILE - CORREÇÕES
 ========================================================= */
 
-@media (max-width: 1024px) {
-  .grid-pesquisadores {
-    grid-template-columns: repeat(3, 1fr);
+/* =========================================================
+   DESTAQUE PRINCIPAL - MOBILE
+========================================================= */
+@media (max-width: 768px) {
+  .destaque-principal-section {
+    padding: 0 20px;
+    margin: 0 auto 20px;
   }
 
-  .timeline::before {
-    left: 30px;
+  .destaque-principal {
+    height: 400px; /* Altura reduzida para mobile */
+    border-radius: 10px 10px 0 0;
   }
 
-  .timeline-item {
-    flex-direction: row !important;
-    justify-content: flex-start;
-    padding-left: 60px;
-  }
-
-  .timeline-year {
-    position: absolute;
+  .conteudo-principal {
+    padding: 25px 20px;
+    bottom: 0;
     left: 0;
-    min-width: 60px;
-    padding: 0.8rem 0.5rem;
-    font-size: 1.1rem;
+    right: 0;
   }
 
-  .timeline-content {
+  .conteudo-principal h1 {
+    font-size: 1.4rem;
+    margin: 10px 0;
+    line-height: 1.3;
+  }
+
+  .descricao {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    max-width: 100%;
+    opacity: 0.95;
+  }
+
+  .meta-info {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+  }
+
+  .botoes-acao {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
     width: 100%;
-    margin: 0;
-    margin-left: 1rem;
+    text-align: center;
+  }
+
+  .badge.evento {
+    font-size: 0.7rem;
+    padding: 6px 12px;
   }
 }
 
+/* =========================================================
+   GRID DE DESTAQUES - MOBILE
+========================================================= */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-
-  nav ul {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--branco);
-    padding: 1rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    height: auto;
-    min-height: calc(45vh - 25px);
-    z-index: 99;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 0.5rem 0;
-  }
-
-  .logo {
-    font-size: 1.8rem;
-  }
-
-  .grid-pesquisadores {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .grid-destaques.opcao1-melhorada {
     grid-template-columns: 1fr;
     height: auto;
+    gap: 20px;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+
+  .destaques-laterais {
     padding: 20px;
+    order: 2; /* Coloca as atualizações depois do destaque principal */
+  }
+
+  .destaque-principal {
+    order: 1; /* Garante que o destaque principal venha primeiro */
+  }
+}
+
+/* =========================================================
+   HEADER - MOBILE
+========================================================= */
+@media (max-width: 768px) {
+  header {
+    height: 70px;
+    padding: 0 15px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .logo-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  nav ul {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--branco);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+  }
+
+  nav ul li {
+    margin: 0;
+    width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  nav ul li:last-child a {
+    border-bottom: none;
+  }
+}
+
+/* =========================================================
+   SEÇÃO FRASE DESTAQUE - MOBILE
+========================================================= */
+@media (max-width: 768px) {
+  .frase-destaque.imagem {
+    height: 50vh;
+    padding: 1rem 20px;
+  }
+
+  .conteudo-frase {
+    margin-left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1.5rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    max-width: 100%;
+  }
+
+  .conteudo-frase p {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+  }
+
+  .conteudo-frase .autor {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+   CARDS DE ATUALIZAÇÃO - MOBILE
+========================================================= */
+@media (max-width: 768px) {
+  .atualizacoes-section {
+    padding: 20px;
+  }
+
+  .grid-atualizacoes {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card-atualizacao {
+    padding: 15px;
+  }
+
+  .cabecalho-lateral h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* =========================================================
+   NEWSLETTER - MOBILE
+========================================================= */
+@media (max-width: 768px) {
+  .newsletter {
+    padding: 2rem 20px;
+  }
+
+  .newsletter h2 {
+    font-size: 1.8rem;
+  }
+
+  .newsletter p {
+    font-size: 1rem;
   }
 
   .form-newsletter {
     flex-direction: column;
   }
 
-  .sobre-hero {
-    padding: 3rem 1rem;
-  }
-
-  .sobre-hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .timeline-section,
-  .linhas-pesquisa,
-  .missao-visao,
-  .parcerias-section {
-    padding: 2rem 1rem;
-  }
-
-  .grid-linhas,
-  .pilares-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .parcerias-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .form-newsletter input {
+    margin-bottom: 10px;
   }
 }
 
-@media (max-width: 480px) {
+/* =========================================================
+   GRID PESQUISADORES - MOBILE
+========================================================= */
+@media (max-width: 768px) {
   .grid-pesquisadores {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0.5rem;
   }
 
-  .sobre-hero-content h1 {
-    font-size: 2rem;
+  .pesquisador {
+    min-height: 200px;
+    padding: 0.8rem;
   }
 
-  .timeline::before {
-    left: 20px;
+  .pesquisador img {
+    width: 60px;
+    height: 60px;
   }
 
-  .timeline-item {
-    padding-left: 50px;
+  .pesquisador h3 {
+    font-size: 0.85rem;
   }
 
-  .timeline-year {
-    min-width: 40px;
-    padding: 0.6rem 0.3rem;
-    font-size: 1rem;
+  .pesquisador .area {
+    font-size: 0.75rem;
   }
 
-  .timeline-content {
-    padding: 1.5rem;
+  .pesquisador .bio {
+    font-size: 0.7rem;
+  }
+}
+
+/* =========================================================
+   MOBILE MUITO PEQUENO (até 480px)
+========================================================= */
+@media (max-width: 480px) {
+  /* Destaque principal */
+  .destaque-principal {
+    height: 350px;
   }
 
-  .parcerias-grid {
+  .conteudo-principal {
+    padding: 20px 15px;
+  }
+
+  .conteudo-principal h1 {
+    font-size: 1.2rem;
+  }
+
+  .descricao {
+    font-size: 0.85rem;
+  }
+
+  /* Grid pesquisadores */
+  .grid-pesquisadores {
     grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  /* Header */
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  /* Frase destaque */
+  .frase-destaque.imagem {
+    height: 40vh;
+  }
+
+  .conteudo-frase {
+    padding: 1rem;
+  }
+
+  .conteudo-frase p {
+    font-size: 0.9rem;
+  }
+
+  /* Cards */
+  .card-atualizacao {
+    padding: 12px;
+  }
+
+  .icone-tipo {
+    font-size: 1.2rem;
+  }
+}
+
+/* =========================================================
+   CORREÇÕES ESPECÍFICAS PARA TEXTO CORTADO
+========================================================= */
+@media (max-width: 768px) {
+  /* Garantir que o texto não ultrapasse os limites */
+  .conteudo-principal,
+  .conteudo-frase,
+  .card-atualizacao,
+  .card-noticia .conteudo {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Limitar largura máxima de textos longos */
+  .descricao,
+  .conteudo-frase p,
+  .card-atualizacao p {
+    max-width: 100%;
+  }
+
+  /* Ajuste fino para elementos inline */
+  .meta-info span,
+  .badge.evento {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* =========================================================
+   MELHORIAS DE TOUCH PARA MOBILE
+========================================================= */
+@media (max-width: 768px) {
+  /* Aumentar área de toque */
+  .btn,
+  .card-atualizacao,
+  .card-noticia,
+  .social-icon {
+    min-height: 44px; /* Tamanho mínimo recomendado para toque */
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Melhorar scroll */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevenir zoom em inputs */
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* Previne zoom no iOS */
+  }
+}
+
+/* =========================================================
+   ORIENTAÇÃO LANDSCAPE
+========================================================= */
+@media (max-width: 768px) and (orientation: landscape) {
+  .destaque-principal {
+    height: 300px;
+  }
+
+  .frase-destaque.imagem {
+    height: 60vh;
+  }
+
+  .conteudo-principal h1 {
+    font-size: 1.3rem;
+  }
+
+  .descricao {
+    font-size: 0.8rem;
   }
 }
 
