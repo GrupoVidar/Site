@@ -86,6 +86,74 @@ header {
   vertical-align: middle;
 }
 
+.logo-text-desktop {
+  display: block;
+  font: inherit !important; /* Herda todos os estilos do .logo */
+}
+
+.logo-text-mobile {
+  display: none;
+}
+
+/* MOBILE - MESMA FONTE E ESTILO */
+@media (max-width: 768px) {
+  .logo {
+    font-family: "Dancing Script", cursive !important;
+    font-weight: 200 !important;
+    font-size: 0.5rem !important;
+  }
+  
+  .logo-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* MOBILE PEQUENO */
+@media (max-width: 390px) {
+  .logo {
+    font-size: 0.2rem !important;
+  }
+  
+  .logo-icon {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+
+/* =========================================================
+   CONTROLE DE TEXTO DO LOGO - DESKTOP vs MOBILE
+========================================================= */
+
+.logo-text-desktop {
+  display: block;
+}
+
+.logo-text-mobile {
+  display: none;
+}
+
+/* MOBILE - MOSTRA APENAS "VIDAR" */
+@media (max-width: 768px) {
+  .logo-text-desktop {
+    display: none !important;
+  }
+  
+  .logo-text-mobile {
+    display: block !important;
+    font-family: "Dancing Script", cursive !important;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+  }
+}
+
+/* MOBILE PEQUENO */
+@media (max-width: 480px) {
+  .logo-text-mobile {
+    font-size: 1.8rem !important;
+  }
+}
+
 /* NAVEGAÇÃO */
 nav ul {
   display: flex;
