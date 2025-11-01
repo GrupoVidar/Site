@@ -378,3 +378,125 @@ document.addEventListener("DOMContentLoaded", function () {
   // Busca inicial para configurar estado
   buscarPublicacoes("");
 });
+// Sistema de Modais para Projetos
+document.addEventListener("DOMContentLoaded", function () {
+  const cardsProjetos = document.querySelectorAll(".card-projeto-modal");
+  const modal = document.getElementById("modalProjeto");
+  const modalClose = modal.querySelector(".modal-close");
+  const modalOverlay = modal.querySelector(".modal-overlay");
+
+  // Dados dos projetos (simulando um banco de dados)
+  const projetosData = {
+    1: {
+      titulo: "Cartografias das Tensões Urbanas em Manaus",
+      subtitulo:
+        "Mapeamento participativo dos conflitos socioambientais urbanos",
+      descricao:
+        "Pesquisa interdisciplinar que visa mapear os conflitos socioambientais urbanos na região metropolitana de Manaus através de metodologias participativas com comunidades locais. O projeto combina abordagens da geografia crítica, antropologia urbana e planejamento territorial.",
+      objetivos: [
+        "Identificar zonas de tensão socioambiental urbana",
+        "Desenvolver metodologias participativas de mapeamento",
+        "Produzir cartografias colaborativas com comunidades",
+        "Elaborar recomendações para políticas públicas",
+      ],
+      duracao: "Jan 2023 - Dez 2024 (24 meses)",
+      coordenacao: "Prof. Fabiane Andrade",
+      financiamento: "CNPq - Edital Universal",
+      orcamento: "R$ 180.000,00",
+      equipe: [
+        { nome: "Fabiane Andrade", funcao: "Coordenadora" },
+        { nome: "Hívina Dorzane", funcao: "Pesquisadora" },
+        { nome: "Mônica Costa", funcao: "Pesquisadora" },
+      ],
+    },
+    2: {
+      titulo: "Memórias das Águas: Narrativas Ribeirinhas",
+      subtitulo:
+        "Documentação das memórias e saberes de comunidades ribeirinhas",
+      descricao:
+        "Projeto etnográfico que documenta as memórias e saberes tradicionais de comunidades ribeirinhas impactadas por mudanças ambientais no Amazonas. A pesquisa utiliza metodologias narrativas e visuais para preservar e valorizar os conhecimentos locais.",
+      objetivos: [
+        "Documentar memórias e saberes tradicionais",
+        "Analisar impactos das mudanças ambientais",
+        "Preservar patrimônio cultural imaterial",
+        "Fortalecer identidades comunitárias",
+      ],
+      duracao: "Mar 2023 - Fev 2025 (23 meses)",
+      coordenacao: "Prof. Hívina Dorzane",
+      financiamento: "FAPEAM - Programa Amazonas",
+      orcamento: "R$ 220.000,00",
+      equipe: [
+        { nome: "Hívina Dorzane", funcao: "Coordenadora" },
+        { nome: "Fabiane Andrade", funcao: "Pesquisadora" },
+        { nome: "Lucélida Maia", funcao: "Pesquisadora" },
+      ],
+    },
+  };
+
+  // Abrir modal ao clicar no card
+  cardsProjetos.forEach((card) => {
+    card.addEventListener("click", function () {
+      const projetoId = this.dataset.projeto;
+      abrirModal(projetoId);
+    });
+  });
+
+  // Fechar modal
+  modalClose.addEventListener("click", fecharModal);
+  modalOverlay.addEventListener("click", fecharModal);
+
+  // Fechar com ESC
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.classList.contains("ativo")) {
+      fecharModal();
+    }
+  });
+
+  function abrirModal(projetoId) {
+    const projeto = projetosData[projetoId];
+
+    if (projeto) {
+      // Preencher dados do modal
+      document.getElementById("modalTitulo").textContent = projeto.titulo;
+      document.getElementById("modalSubtitulo").textContent = projeto.subtitulo;
+      document.getElementById("modalDescricao").textContent = projeto.descricao;
+      document.getElementById("modalDuracao").textContent = projeto.duracao;
+      document.getElementById("modalCoordenacao").textContent =
+        projeto.coordenacao;
+      document.getElementById("modalFinanciamento").textContent =
+        projeto.financiamento;
+      document.getElementById("modalOrcamento").textContent = projeto.orcamento;
+
+      // Preencher objetivos
+      const objetivosList = document.getElementById("modalObjetivos");
+      objetivosList.innerHTML = "";
+      projeto.objetivos.forEach((objetivo) => {
+        const li = document.createElement("li");
+        li.textContent = objetivo;
+        objetivosList.appendChild(li);
+      });
+
+      // Preencher equipe
+      const equipeList = document.getElementById("modalEquipe");
+      equipeList.innerHTML = "";
+      projeto.equipe.forEach((membro) => {
+        const div = document.createElement("div");
+        div.className = "membro-equipe";
+        div.innerHTML = `
+                    <span class="membro-nome">${membro.nome}</span>
+                    <span class="membro-funcao">${membro.funcao}</span>
+                `;
+        equipeList.appendChild(div);
+      });
+
+      // Mostrar modal
+      modal.classList.add("ativo");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function fecharModal() {
+    modal.classList.remove("ativo");
+    document.body.style.overflow = "auto";
+  }
+});

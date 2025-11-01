@@ -3157,3 +3157,634 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
   }
 }
+
+/* =========================================================
+   GRADE COM MODAIS - OPÇÃO 3
+========================================================= */
+.projetos-modais {
+  padding: 2rem 0;
+}
+
+/* Header */
+.modais-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.header-content h2 {
+  align-items: center;
+  color: var(--verde-cinza);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Playfair Display", serif;
+}
+
+.header-content p {
+  align-items: center;
+  color: var(--preto-elegante);
+  font-size: 1.1rem;
+  max-width: 500px;
+  opacity: 0.9;
+}
+
+.header-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  background: var(--branco);
+  border-radius: 12px;
+  border: 1px solid var(--bege-claro);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--terra-queimada);
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--marrom-claro);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Grid de Projetos */
+.grid-projetos-modais {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.card-projeto-modal {
+  background: var(--branco);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--bege-claro);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-projeto-modal:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(146, 75, 56, 0.15);
+  border-color: var(--terra-queimada);
+}
+
+/* Visual do Card */
+.card-visual {
+  position: relative;
+}
+
+.projeto-thumbnail {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.projeto-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-projeto-modal:hover .projeto-thumbnail img {
+  transform: scale(1.05);
+}
+
+.thumbnail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(146, 75, 56, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-projeto-modal:hover .thumbnail-overlay {
+  opacity: 1;
+}
+
+.view-details {
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.projeto-badges {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.status.andamento {
+  background: rgba(232, 244, 248, 0.9);
+  color: var(--verde-cinza);
+}
+
+.badge.priority {
+  background: rgba(248, 240, 232, 0.9);
+  color: var(--terra-queimada);
+}
+
+/* Informações do Card */
+.card-info {
+  padding: 1.5rem;
+}
+
+.card-info h3 {
+  color: var(--verde-cinza);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  font-family: "Playfair Display", serif;
+}
+
+.projeto-excerpt {
+  color: var(--preto-elegante);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.projeto-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--bege-claro);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--marrom-claro);
+}
+
+.meta-item i {
+  font-size: 0.8rem;
+}
+
+/* Progresso */
+.projeto-progress {
+  margin-bottom: 1.5rem;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--verde-cinza);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bege-claro);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--terra-queimada);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* Tags */
+.projeto-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: var(--bege-claro);
+  color: var(--verde-cinza);
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Modal */
+.modal-projeto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: none;
+}
+
+.modal-projeto.ativo {
+  display: block;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  background: var(--branco);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.modal-close:hover {
+  background: var(--terra-queimada);
+  color: white;
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.modal-header {
+  padding: 3rem 3rem 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--bege-claro) 0%,
+    rgba(243, 231, 205, 0.3) 100%
+  );
+  border-bottom: 1px solid var(--bege-claro);
+}
+
+.modal-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+  color: var(--verde-cinza);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-family: "Playfair Display", serif;
+}
+
+.modal-header p {
+  color: var(--preto-elegante);
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.modal-body {
+  padding: 2rem 3rem;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+/* Coluna Principal */
+.secao {
+  margin-bottom: 2.5rem;
+}
+
+.secao h3 {
+  color: var(--verde-cinza);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-family: "Playfair Display", serif;
+}
+
+.secao p {
+  color: var(--preto-elegante);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.secao ul {
+  list-style: none;
+  padding: 0;
+}
+
+.secao li {
+  padding: 0.5rem 0;
+  color: var(--preto-elegante);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.secao li:before {
+  content: "•";
+  color: var(--terra-queimada);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.metodologia-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.metodo-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bege-claro);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.metodo-item:hover {
+  background: var(--terra-queimada);
+  color: white;
+}
+
+.metodo-item i {
+  font-size: 1.2rem;
+}
+
+/* Coluna Lateral */
+.info-card {
+  background: var(--branco);
+  border: 1px solid var(--bege-claro);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-card h4 {
+  color: var(--verde-cinza);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-family: "Playfair Display", serif;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.info-item strong {
+  color: var(--verde-cinza);
+  font-size: 0.9rem;
+  min-width: 100px;
+}
+
+.info-item span {
+  color: var(--preto-elegante);
+  font-size: 0.9rem;
+  text-align: right;
+  flex: 1;
+}
+
+.equipe-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.membro-equipe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--bege-claro);
+}
+
+.membro-equipe:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.membro-nome {
+  color: var(--verde-cinza);
+  font-weight: 500;
+}
+
+.membro-funcao {
+  color: var(--marrom-claro);
+  font-size: 0.8rem;
+}
+
+.resultados-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.resultado-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--bege-claro);
+}
+
+.resultado-item:last-child {
+  border-bottom: none;
+}
+
+.resultado-item i {
+  color: var(--terra-queimada);
+  width: 16px;
+}
+
+.resultado-item a {
+  color: var(--preto-elegante);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.resultado-item a:hover {
+  color: var(--terra-queimada);
+}
+
+/* Footer do Modal */
+.modal-footer {
+  padding: 2rem 3rem;
+  background: var(--bege-claro);
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(181, 160, 132, 0.3);
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primario {
+  background: var(--terra-queimada);
+  color: white;
+  border-color: var(--terra-queimada);
+}
+
+.btn-primario:hover {
+  background: transparent;
+  color: var(--terra-queimada);
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--verde-cinza);
+  border-color: var(--bege-claro);
+}
+
+.btn-secundario:hover {
+  border-color: var(--terra-queimada);
+  color: var(--terra-queimada);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .modais-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-stats {
+    justify-content: center;
+  }
+
+  .grid-projetos-modais {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-container {
+    width: 95%;
+    height: 95vh;
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .modal-header,
+  .modal-body {
+    padding: 2rem 1.5rem;
+  }
+
+  .modal-footer {
+    padding: 1.5rem;
+    flex-direction: column;
+  }
+
+  .metodologia-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 0.8rem 1rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .info-item span {
+    text-align: left;
+  }
+}

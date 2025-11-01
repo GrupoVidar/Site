@@ -4,11 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vidar em In-Tensões - Grupo de Pesquisa UEA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="icon" href="./assets/images/LogoVidar1.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="./assets/images/LogoVidar1.ico"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="./assets/css/styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Cabeçalho com navegação -->
@@ -42,58 +55,299 @@
       </div>
     </header>
 
-    <!-- Conteúdo principal -->
-    <main class="container">
-      <!-- Projetos -->
-      <section id="projetos" class="ultimas-noticias">
-        <h2 class="titulo-secao">Projetos em Andamento</h2>
-        <div class="grid-noticias">
-          <article class="card-noticia">
-            <img
-              src="https://picsum.photos/300/200?random=31"
-              alt="Projeto 1"
-            />
-            <div class="conteudo">
-              <h3>Cartografias das Tensões Urbanas em Manaus</h3>
-              <p>
-                Mapeamento dos conflitos socioambientais urbanos na região
-                metropolitana de Manaus.
-              </p>
-              <a href="#" class="leia-mais">Ver detalhes</a>
-            </div>
-          </article>
-
-          <article class="card-noticia">
-            <img
-              src="https://picsum.photos/300/200?random=32"
-              alt="Projeto 2"
-            />
-            <div class="conteudo">
-              <h3>Memórias das Águas: Narrativas Ribeirinhas</h3>
-              <p>
-                Documentação das memórias e saberes de comunidades ribeirinhas
-                impactadas por mudanças ambientais.
-              </p>
-              <a href="#" class="leia-mais">Ver detalhes</a>
-            </div>
-          </article>
-
-          <article class="card-noticia">
-            <img
-              src="https://picsum.photos/300/200?random=33"
-              alt="Projeto 3"
-            />
-            <div class="conteudo">
-              <h3>Justiça Ambiental e Conflitos Territoriais</h3>
-              <p>
-                Análise dos mecanismos de justiça ambiental em casos de
-                conflitos territoriais na Amazônia.
-              </p>
-              <a href="#" class="leia-mais">Ver detalhes</a>
-            </div>
-          </article>
+    <section class="projetos-modais">
+      <div class="modais-header">
+        <div class="header-content">
+          <h2>Projetos de Pesquisa</h2>
+          <p>
+            Explore nossos projetos em andamento e suas contribuições para a
+            pesquisa amazônica
+          </p>
         </div>
-      </section>
+        <div class="header-stats">
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Projetos Ativos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Pesquisadores</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Anos de Pesquisa</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-projetos-modais">
+        <!-- Projeto 1 -->
+        <article class="card-projeto-modal" data-projeto="1">
+          <div class="card-visual">
+            <div class="projeto-thumbnail">
+              <img
+                src="https://picsum.photos/400/250?random=31"
+                alt="Cartografias Urbanas"
+              />
+              <div class="thumbnail-overlay">
+                <span class="view-details">Ver Detalhes</span>
+              </div>
+            </div>
+            <div class="projeto-badges">
+              <span class="badge status andamento">Em Andamento</span>
+              <span class="badge priority">Prioritário</span>
+            </div>
+          </div>
+
+          <div class="card-info">
+            <h3>Cartografias das Tensões Urbanas em Manaus</h3>
+            <p class="projeto-excerpt">
+              Mapeamento participativo dos conflitos socioambientais urbanos na
+              região metropolitana...
+            </p>
+
+            <div class="projeto-meta">
+              <div class="meta-item">
+                <i class="far fa-calendar"></i>
+                <span>24 meses</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>8 pesquisadores</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Manaus</span>
+              </div>
+            </div>
+
+            <div class="projeto-progress">
+              <div class="progress-info">
+                <span>Progresso</span>
+                <span>80%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%"></div>
+              </div>
+            </div>
+
+            <div class="projeto-tags">
+              <span class="tag">Urbanismo</span>
+              <span class="tag">Cartografia</span>
+              <span class="tag">Participativo</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projeto 2 -->
+        <article class="card-projeto-modal" data-projeto="2">
+          <div class="card-visual">
+            <div class="projeto-thumbnail">
+              <img
+                src="https://picsum.photos/400/250?random=32"
+                alt="Memórias Ribeirinhas"
+              />
+              <div class="thumbnail-overlay">
+                <span class="view-details">Ver Detalhes</span>
+              </div>
+            </div>
+            <div class="projeto-badges">
+              <span class="badge status andamento">Em Andamento</span>
+            </div>
+          </div>
+
+          <div class="card-info">
+            <h3>Memórias das Águas: Narrativas Ribeirinhas</h3>
+            <p class="projeto-excerpt">
+              Documentação das memórias e saberes de comunidades ribeirinhas
+              impactadas...
+            </p>
+
+            <div class="projeto-meta">
+              <div class="meta-item">
+                <i class="far fa-calendar"></i>
+                <span>23 meses</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>6 pesquisadores</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Amazonas</span>
+              </div>
+            </div>
+
+            <div class="projeto-progress">
+              <div class="progress-info">
+                <span>Progresso</span>
+                <span>45%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 45%"></div>
+              </div>
+            </div>
+
+            <div class="projeto-tags">
+              <span class="tag">Etnografia</span>
+              <span class="tag">Memória</span>
+              <span class="tag">Comunidades</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal-projeto" id="modalProjeto">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+          <button class="modal-close">
+            <i class="fas fa-times"></i>
+          </button>
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-badges">
+                <span class="badge status andamento">Em Andamento</span>
+                <span class="badge priority">Prioritário</span>
+              </div>
+              <h2 id="modalTitulo">
+                Cartografias das Tensões Urbanas em Manaus
+              </h2>
+              <p id="modalSubtitulo">
+                Mapeamento participativo dos conflitos socioambientais urbanos
+              </p>
+            </div>
+
+            <div class="modal-body">
+              <div class="modal-grid">
+                <div class="modal-col principal">
+                  <div class="secao">
+                    <h3>Descrição do Projeto</h3>
+                    <p id="modalDescricao">
+                      Pesquisa interdisciplinar que visa mapear os conflitos
+                      socioambientais urbanos na região metropolitana de Manaus
+                      através de metodologias participativas...
+                    </p>
+                  </div>
+
+                  <div class="secao">
+                    <h3>Objetivos</h3>
+                    <ul id="modalObjetivos">
+                      <li>Identificar zonas de tensão socioambiental urbana</li>
+                      <li>
+                        Desenvolver metodologias participativas de mapeamento
+                      </li>
+                      <li>
+                        Produzir cartografias colaborativas com comunidades
+                      </li>
+                      <li>Elaborar recomendações para políticas públicas</li>
+                    </ul>
+                  </div>
+
+                  <div class="secao">
+                    <h3>Metodologia</h3>
+                    <div class="metodologia-grid">
+                      <div class="metodo-item">
+                        <i class="fas fa-comments"></i>
+                        <span>Entrevistas em profundidade</span>
+                      </div>
+                      <div class="metodo-item">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Cartografia participativa</span>
+                      </div>
+                      <div class="metodo-item">
+                        <i class="fas fa-users"></i>
+                        <span>Workshops comunitários</span>
+                      </div>
+                      <div class="metodo-item">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Análise espacial</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal-col lateral">
+                  <div class="info-card">
+                    <h4>Informações do Projeto</h4>
+                    <div class="info-list">
+                      <div class="info-item">
+                        <strong>Duração:</strong>
+                        <span id="modalDuracao"
+                          >Jan 2023 - Dez 2024 (24 meses)</span
+                        >
+                      </div>
+                      <div class="info-item">
+                        <strong>Coordenação:</strong>
+                        <span id="modalCoordenacao">Prof. Fabiane Andrade</span>
+                      </div>
+                      <div class="info-item">
+                        <strong>Financiamento:</strong>
+                        <span id="modalFinanciamento"
+                          >CNPq - Edital Universal</span
+                        >
+                      </div>
+                      <div class="info-item">
+                        <strong>Orçamento:</strong>
+                        <span id="modalOrcamento">R$ 180.000,00</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="info-card">
+                    <h4>Equipe</h4>
+                    <div class="equipe-lista" id="modalEquipe">
+                      <div class="membro-equipe">
+                        <span class="membro-nome">Fabiane Andrade</span>
+                        <span class="membro-funcao">Coordenadora</span>
+                      </div>
+                      <div class="membro-equipe">
+                        <span class="membro-nome">Hívina Dorzane</span>
+                        <span class="membro-funcao">Pesquisadora</span>
+                      </div>
+                      <div class="membro-equipe">
+                        <span class="membro-nome">Mônica Costa</span>
+                        <span class="membro-funcao">Pesquisadora</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="info-card">
+                    <h4>Resultados</h4>
+                    <div class="resultados-lista">
+                      <div class="resultado-item">
+                        <i class="far fa-file-pdf"></i>
+                        <a href="#">Relatório Parcial - Jun 2023</a>
+                      </div>
+                      <div class="resultado-item">
+                        <i class="fas fa-database"></i>
+                        <a href="#">Dados Coletados</a>
+                      </div>
+                      <div class="resultado-item">
+                        <i class="far fa-newspaper"></i>
+                        <a href="#">Artigos Publicados (3)</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-secundario">
+                <i class="far fa-file-pdf"></i>
+                Baixar Relatório
+              </button>
+              <button class="btn btn-primario">
+                <i class="fas fa-external-link-alt"></i>
+                Acessar Projeto Completo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Rodapé -->
     <footer>
