@@ -428,7 +428,9 @@ document.addEventListener("DOMContentLoaded", function () {
       equipe: [
         { nome: "Hívina Dorzane", funcao: "Coordenadora" },
         { nome: "Fabiane Andrade", funcao: "Pesquisadora" },
-        { nome: "Lucélida Maia", funcao: "Pesquisadora" },
+        { nome: "Mônica Costa", funcao: "Pesquisadora" },
+        { nome: "Caroline Barroncas", funcao: "Pesquisadora" },
+        { nome: "Felipe Robert", funcao: "Pesquisador" },
       ],
     },
   };

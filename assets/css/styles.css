@@ -2849,16 +2849,18 @@ footer {
 }
 
 .modal-container {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
   max-width: 1000px;
-  max-height: 90vh;
+  height: 90vh; /* altura fixa */
   background: var(--branco);
   border-radius: 20px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* ok agora */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
@@ -2886,8 +2888,10 @@ footer {
 }
 
 .modal-content {
-  height: 100%;
+  flex: 1;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 1rem;
 }
 
 .modal-header {
@@ -2898,6 +2902,7 @@ footer {
     rgba(243, 231, 205, 0.3) 100%
   );
   border-bottom: 1px solid var(--bege-claro);
+  flex-shrink: 0;
 }
 
 .modal-badges {
@@ -3096,6 +3101,7 @@ footer {
 }
 
 .modal-footer {
+  flex-shrink: 0;
   padding: 2rem 3rem;
   background: var(--bege-claro);
   display: flex;
