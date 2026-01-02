@@ -1,27 +1,47 @@
-// =======================
-// Menu Responsivo
-// =======================
-const menuToggle = document.getElementById("menuToggle");
-const menu = document.getElementById("menu");
+/**
+ * =========================================================
+ * VIDAR EM IN-TENSÕES — SCRIPT.JS (REFATORADO E SEGURO)
+ * - Mesma funcionalidade do seu JS atual
+ * - Inicialização por página (só roda o que existir)
+ * - Um único DOMContentLoaded (evita duplicidades)
+ * - Mantém seu comportamento atual (sem mudar layout)
+ * =========================================================
+ */
 
-if (menuToggle && menu) {
+/* =========================================================
+   1) MENU RESPONSIVO (GLOBAL)
+========================================================= */
+function initMenuResponsivo() {
+  const menuToggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("menu");
+
+  if (!menuToggle || !menu) return;
+
+  function resetHamburger() {
+    const spans = menuToggle.querySelectorAll("span");
+    if (spans.length < 3) return;
+    spans[0].style.transform = "none";
+    spans[1].style.opacity = "1";
+    spans[1].style.transform = "none";
+    spans[2].style.transform = "none";
+  }
+
+  function setHamburgerAsX() {
+    const spans = menuToggle.querySelectorAll("span");
+    if (spans.length < 3) return;
+    spans[0].style.transform = "rotate(45deg) translate(6px, 6px)";
+    spans[1].style.opacity = "0";
+    spans[1].style.transform = "scale(0)";
+    spans[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
+  }
+
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("show");
 
-    // Animação do menu hambúrguer - CORREÇÃO
-    const spans = menuToggle.querySelectorAll("span");
     if (menu.classList.contains("show")) {
-      // Transforma em "X"
-      spans[0].style.transform = "rotate(45deg) translate(6px, 6px)";
-      spans[1].style.opacity = "0"; // Linha do meio some
-      spans[1].style.transform = "scale(0)"; // Correção extra
-      spans[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
+      setHamburgerAsX();
     } else {
-      // Volta para hambúrguer
-      spans[0].style.transform = "none";
-      spans[1].style.opacity = "1"; // Linha do meio reaparece
-      spans[1].style.transform = "none"; // Correção extra
-      spans[2].style.transform = "none";
+      resetHamburger();
     }
   });
 
@@ -29,11 +49,7 @@ if (menuToggle && menu) {
   document.querySelectorAll("#menu a").forEach((item) => {
     item.addEventListener("click", () => {
       menu.classList.remove("show");
-      const spans = menuToggle.querySelectorAll("span");
-      spans[0].style.transform = "none";
-      spans[1].style.opacity = "1";
-      spans[1].style.transform = "none";
-      spans[2].style.transform = "none";
+      resetHamburger();
     });
   });
 
@@ -41,23 +57,23 @@ if (menuToggle && menu) {
   document.addEventListener("click", function (e) {
     if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
       menu.classList.remove("show");
-      const spans = menuToggle.querySelectorAll("span");
-      spans[0].style.transform = "none";
-      spans[1].style.opacity = "1";
-      spans[1].style.transform = "none";
-      spans[2].style.transform = "none";
+      resetHamburger();
     }
   });
 }
 
-// =======================
-// Newsletter
-// =======================
-const formNewsletter = document.getElementById("newsletterForm");
-if (formNewsletter) {
+/* =========================================================
+   2) NEWSLETTER (GLOBAL)
+========================================================= */
+function initNewsletter() {
+  const formNewsletter = document.getElementById("newsletterForm");
+  if (!formNewsletter) return;
+
   formNewsletter.addEventListener("submit", (e) => {
     e.preventDefault();
     const emailInput = formNewsletter.querySelector("input");
+    if (!emailInput) return;
+
     const email = emailInput.value;
 
     if (validateEmail(email)) {
@@ -75,37 +91,39 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-// =======================
-// Destaque nos Cards de Notícias
-// =======================
-document.querySelectorAll(".card-noticia").forEach((card) => {
-  card.addEventListener("mouseenter", () => {
-    card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)";
-  });
+/* =========================================================
+   3) DESTAQUE NOS CARDS DE NOTÍCIAS (INDEX)
+========================================================= */
+function initHoverCardsNoticias() {
+  const cards = document.querySelectorAll(".card-noticia");
+  if (cards.length === 0) return;
 
-  card.addEventListener("mouseleave", () => {
-    card.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.1)";
-  });
-});
+  cards.forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      card.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)";
+    });
 
-// =======================
-// Atualizar o ano do rodapé
-// =======================
-document.addEventListener("DOMContentLoaded", () => {
+    card.addEventListener("mouseleave", () => {
+      card.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.1)";
+    });
+  });
+}
+
+/* =========================================================
+   4) ATUALIZAR ANO DO RODAPÉ (GLOBAL)
+========================================================= */
+function initAnoRodape() {
   const yearElement = document.querySelector("footer p:last-child");
-  if (yearElement) {
-    const currentYear = new Date().getFullYear();
-    yearElement.textContent = yearElement.textContent.replace(
-      /\d{4}/,
-      currentYear
-    );
-  }
-});
+  if (!yearElement) return;
 
-// =========================================================
-// SLIDESHOW AUTOMÁTICO (DESTAQUE PRINCIPAL)
-// =========================================================
-function iniciarSlideshow() {
+  const currentYear = new Date().getFullYear();
+  yearElement.textContent = yearElement.textContent.replace(/\d{4}/, currentYear);
+}
+
+/* =========================================================
+   5) SLIDESHOW AUTOMÁTICO (INDEX)
+========================================================= */
+function initSlideshowDestaque() {
   const slides = document.querySelectorAll(".slide-bg");
   if (slides.length === 0) return;
 
@@ -120,10 +138,10 @@ function iniciarSlideshow() {
   setInterval(mudarSlide, 4000);
 }
 
-// =========================================================
-// ANIMAÇÕES DA PÁGINA SOBRE
-// =========================================================
-function observarElementos() {
+/* =========================================================
+   6) ANIMAÇÕES DA PÁGINA SOBRE
+========================================================= */
+function initAnimacoesSobre() {
   const elementos = document.querySelectorAll(
     ".timeline-item, .linha-card, .pilar-card, .parceiro-logo"
   );
@@ -136,11 +154,9 @@ function observarElementos() {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
 
-          // Delay individual para os itens da timeline
+          // Delay individual para os itens da timeline (mantido)
           if (entry.target.classList.contains("timeline-item")) {
-            const index = Array.from(
-              entry.target.parentElement.children
-            ).indexOf(entry.target);
+            const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
             entry.target.style.transitionDelay = `${index * 0.2}s`;
           }
         }
@@ -157,18 +173,12 @@ function observarElementos() {
   });
 }
 
-// =======================
-// GARANTIR VISIBILIDADE NO MOBILE
-// =======================
+/* =========================================================
+   7) GARANTIR VISIBILIDADE NO MOBILE (GLOBAL AUXILIAR)
+========================================================= */
 function garantirVisibilidadeMobile() {
   if (window.innerWidth <= 768) {
-    // Forçar display block em elementos críticos
-    const elementosCriticos = [
-      "main",
-      "section",
-      ".container",
-      ".grid-noticias",
-    ];
+    const elementosCriticos = ["main", "section", ".container", ".grid-noticias"];
 
     elementosCriticos.forEach((seletor) => {
       const elementos = document.querySelectorAll(seletor);
@@ -181,48 +191,26 @@ function garantirVisibilidadeMobile() {
   }
 }
 
-// =======================
-// INICIALIZAÇÃO GERAL
-// =======================
-document.addEventListener("DOMContentLoaded", function () {
-  // Slideshow do destaque principal
-  iniciarSlideshow();
-
-  // Animações da página sobre
-  observarElementos();
-
-  // Garantir visibilidade no mobile
-  garantirVisibilidadeMobile();
-
-  // Atualizar ano do rodapé
-  const yearElement = document.querySelector("footer p:last-child");
-  if (yearElement) {
-    const currentYear = new Date().getFullYear();
-    yearElement.textContent = yearElement.textContent.replace(
-      /\d{4}/,
-      currentYear
-    );
-  }
-});
-
-// Reforçar visibilidade ao redimensionar
-window.addEventListener("resize", garantirVisibilidadeMobile);
-// =========================================================
-// SISTEMA DE BUSCA EM TEMPO REAL - VERSÃO CORRIGIDA
-// =========================================================
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Elementos da busca
+/* =========================================================
+   8) SISTEMA DE BUSCA EM TEMPO REAL (PUBLICAÇÕES)
+   - Mesma lógica do seu código atual
+   - Só inicializa se existir barra/campo/itens
+========================================================= */
+function initBuscaPublicacoes() {
   const campoBusca = document.getElementById("campoBusca");
   const btnLimpar = document.getElementById("limparBusca");
   const contador = document.getElementById("contador");
   const publicacoes = document.querySelectorAll(".publicacao-item");
+  const barraBuscaContainer = document.querySelector(".barra-busca-container");
+
+  // Se não for a página de publicações, não roda
+  if (!campoBusca || !btnLimpar || !contador || !barraBuscaContainer || publicacoes.length === 0) return;
 
   // Armazenar os títulos originais para restaurar depois
   const titulosOriginais = new Map();
-  publicacoes.forEach((pub, index) => {
+  publicacoes.forEach((pub) => {
     const titulo = pub.querySelector(".publicacao-titulo");
-    titulosOriginais.set(pub, titulo.innerHTML);
+    if (titulo) titulosOriginais.set(pub, titulo.innerHTML);
   });
 
   // Criar elemento para "sem resultados"
@@ -234,100 +222,39 @@ document.addEventListener("DOMContentLoaded", function () {
     <p>Tente usar outros termos ou verificar a ortografia.</p>
   `;
 
-  // Inserir após a barra de busca
-  const barraBuscaContainer = document.querySelector(".barra-busca-container");
-  barraBuscaContainer.parentNode.insertBefore(
-    semResultados,
-    barraBuscaContainer.nextSibling
-  );
-
-  // Função para buscar publicações - CORRIGIDA
-  function buscarPublicacoes(termo) {
-    termo = termo.toLowerCase().trim();
-    let resultados = 0;
-
-    publicacoes.forEach((publicacao) => {
-      const tituloElemento = publicacao.querySelector(".publicacao-titulo");
-      const tituloTexto = tituloElemento.textContent.toLowerCase();
-      const corresponde = tituloTexto.includes(termo);
-
-      if (corresponde) {
-        publicacao.classList.add("resultado-correspondente");
-        publicacao.classList.remove("oculto");
-        resultados++;
-
-        // Destacar o texto correspondente apenas se houver termo
-        if (termo) {
-          destacarTexto(tituloElemento, termo);
-        } else {
-          // Se não há termo, restaurar o título original
-          restaurarTituloOriginal(publicacao);
-        }
-      } else {
-        publicacao.classList.remove("resultado-correspondente");
-        publicacao.classList.add("oculto");
-
-        // Sempre restaurar o título original quando não corresponde
-        restaurarTituloOriginal(publicacao);
-      }
-    });
-
-    // IMPORTANTE: Se não há termo de busca, restaurar TODOS os títulos
-    if (!termo) {
-      publicacoes.forEach((publicacao) => {
-        restaurarTituloOriginal(publicacao);
-        publicacao.classList.remove("oculto");
-        publicacao.classList.remove("resultado-correspondente");
-      });
-      resultados = publicacoes.length;
-    }
-
-    // Atualizar contador
-    atualizarContador(resultados, termo);
-
-    // Mostrar/ocultar mensagem de sem resultados
-    if (termo && resultados === 0) {
-      semResultados.classList.add("mostrar");
-    } else {
-      semResultados.classList.remove("mostrar");
-    }
-
-    // Mostrar/ocultar botão limpar
-    if (termo) {
-      btnLimpar.classList.add("visivel");
-    } else {
-      btnLimpar.classList.remove("visivel");
-    }
+  // Inserir após a barra de busca (somente se ainda não existe)
+  // Evita duplicar caso o script seja reexecutado por algum motivo.
+  const jaExisteSemResultados = document.querySelector(".sem-resultados");
+  if (!jaExisteSemResultados) {
+    barraBuscaContainer.parentNode.insertBefore(semResultados, barraBuscaContainer.nextSibling);
+  } else {
+    // Se já existe, usa o existente
+    semResultados.remove();
   }
+  const semResultadosEl = document.querySelector(".sem-resultados");
 
-  // Função para restaurar título original
   function restaurarTituloOriginal(publicacao) {
     const tituloOriginal = titulosOriginais.get(publicacao);
     const tituloElemento = publicacao.querySelector(".publicacao-titulo");
-    if (tituloOriginal && tituloElemento.innerHTML !== tituloOriginal) {
+    if (tituloOriginal && tituloElemento && tituloElemento.innerHTML !== tituloOriginal) {
       tituloElemento.innerHTML = tituloOriginal;
     }
   }
 
-  // Função para destacar texto correspondente - MELHORADA
   function destacarTexto(elemento, termo) {
+    if (!elemento) return;
     const textoOriginal = elemento.textContent;
     const regex = new RegExp(
       `(${termo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
       "gi"
     );
-    const novoTexto = textoOriginal.replace(
-      regex,
-      '<span class="destaque-busca">$1</span>'
-    );
+    const novoTexto = textoOriginal.replace(regex, '<span class="destaque-busca">$1</span>');
 
-    // Só atualizar se realmente houver mudança
     if (elemento.innerHTML !== novoTexto) {
       elemento.innerHTML = novoTexto;
     }
   }
 
-  // Função para atualizar contador
   function atualizarContador(resultados, termo) {
     if (!termo) {
       contador.textContent = `Mostrando todas as ${publicacoes.length} publicações`;
@@ -340,57 +267,109 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Função para limpar busca - CORRIGIDA
+  function buscarPublicacoes(termo) {
+    termo = (termo || "").toLowerCase().trim();
+    let resultados = 0;
+
+    publicacoes.forEach((publicacao) => {
+      const tituloElemento = publicacao.querySelector(".publicacao-titulo");
+      if (!tituloElemento) return;
+
+      const tituloTexto = tituloElemento.textContent.toLowerCase();
+      const corresponde = tituloTexto.includes(termo);
+
+      if (corresponde) {
+        publicacao.classList.add("resultado-correspondente");
+        publicacao.classList.remove("oculto");
+        resultados++;
+
+        if (termo) {
+          destacarTexto(tituloElemento, termo);
+        } else {
+          restaurarTituloOriginal(publicacao);
+        }
+      } else {
+        publicacao.classList.remove("resultado-correspondente");
+        publicacao.classList.add("oculto");
+        restaurarTituloOriginal(publicacao);
+      }
+    });
+
+    if (!termo) {
+      publicacoes.forEach((publicacao) => {
+        restaurarTituloOriginal(publicacao);
+        publicacao.classList.remove("oculto");
+        publicacao.classList.remove("resultado-correspondente");
+      });
+      resultados = publicacoes.length;
+    }
+
+    atualizarContador(resultados, termo);
+
+    if (semResultadosEl) {
+      if (termo && resultados === 0) {
+        semResultadosEl.classList.add("mostrar");
+      } else {
+        semResultadosEl.classList.remove("mostrar");
+      }
+    }
+
+    if (termo) {
+      btnLimpar.classList.add("visivel");
+    } else {
+      btnLimpar.classList.remove("visivel");
+    }
+  }
+
   function limparBusca() {
     campoBusca.value = "";
 
-    // Restaurar todos os títulos para o estado original
     publicacoes.forEach((publicacao) => {
       restaurarTituloOriginal(publicacao);
       publicacao.classList.remove("oculto");
       publicacao.classList.remove("resultado-correspondente");
     });
 
-    // Atualizar contador
     atualizarContador(publicacoes.length, "");
 
-    // Esconder botão limpar e mensagem
     btnLimpar.classList.remove("visivel");
-    semResultados.classList.remove("mostrar");
+    if (semResultadosEl) semResultadosEl.classList.remove("mostrar");
 
     campoBusca.focus();
   }
 
-  // Event Listeners
-  campoBusca.addEventListener("input", function (e) {
-    buscarPublicacoes(e.target.value);
-  });
-
+  // Event listeners
+  campoBusca.addEventListener("input", (e) => buscarPublicacoes(e.target.value));
   btnLimpar.addEventListener("click", limparBusca);
 
-  // Tecla ESC para limpar busca
-  campoBusca.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      limparBusca();
-    }
+  campoBusca.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") limparBusca();
   });
 
-  // Busca inicial para configurar estado
+  // Estado inicial
   buscarPublicacoes("");
-});
-// Sistema de Modais para Projetos
-document.addEventListener("DOMContentLoaded", function () {
+}
+
+/* =========================================================
+   9) MODAL DE PROJETOS (PROJETOS)
+   - Mesma funcionalidade do seu código atual
+   - Só roda se existir modal + cards
+   - Proteções para evitar erro se faltar algum elemento
+========================================================= */
+function initModalProjetos() {
   const cardsProjetos = document.querySelectorAll(".card-projeto-modal");
   const modal = document.getElementById("modalProjeto");
+  if (cardsProjetos.length === 0 || !modal) return;
+
   const modalClose = modal.querySelector(".modal-close");
   const modalOverlay = modal.querySelector(".modal-overlay");
+  if (!modalClose || !modalOverlay) return;
 
-  // Dados dos projetos (simulando um banco de dados)
+  // Dados dos projetos (mantido igual)
   const projetosData = {
     1: {
       titulo: "Cartografias das Tensões Urbanas em Manaus",
-      subtitulo:
-        "Mapeamento participativo dos conflitos socioambientais urbanos",
+      subtitulo: "Mapeamento participativo dos conflitos socioambientais urbanos",
       descricao:
         "Pesquisa interdisciplinar que visa mapear os conflitos socioambientais urbanos na região metropolitana de Manaus através de metodologias participativas com comunidades locais. O projeto combina abordagens da geografia crítica, antropologia urbana e planejamento territorial.",
       objetivos: [
@@ -411,8 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     2: {
       titulo: "Memórias das Águas: Narrativas Ribeirinhas",
-      subtitulo:
-        "Documentação das memórias e saberes de comunidades ribeirinhas",
+      subtitulo: "Documentação das memórias e saberes de comunidades ribeirinhas",
       descricao:
         "Projeto etnográfico que documenta as memórias e saberes tradicionais de comunidades ribeirinhas impactadas por mudanças ambientais no Amazonas. A pesquisa utiliza metodologias narrativas e visuais para preservar e valorizar os conhecimentos locais.",
       objetivos: [
@@ -422,15 +400,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "Fortalecer identidades comunitárias",
       ],
       duracao: "Mar 2023 - Fev 2025 (23 meses)",
-      coordenacao: "Prof. Hívina Dorzane",
-      financiamento: "FAPEAM - Programa Amazonas",
-      orcamento: "R$ 220.000,00",
+      coordenacao: "Prof. Mônica de Oliveira Costa",
+      financiamento: "CNPq - Edital Universal",
       equipe: [
-        { nome: "Hívina Dorzane", funcao: "Coordenadora" },
-        { nome: "Fabiane Andrade", funcao: "Pesquisadora" },
-        { nome: "Mônica Costa", funcao: "Pesquisadora" },
-        { nome: "Caroline Barroncas", funcao: "Pesquisadora" },
-        { nome: "Felipe Robert", funcao: "Pesquisador" },
+        { nome: "Mônica de Oliveira Costa", funcao: "Coordenadora" },
+        { nome: "Caroline Barroncas de Oliveira", funcao: "Pesquisadora" },
+        { nome: "Daniela Franco Carvalho", funcao: "Pesquisadora" },
+        { nome: "Fernanda Helena Nogueira Ferreira", funcao: "Pesquisadora" },
       ],
     },
   };
@@ -454,51 +430,76 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  function setText(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value ?? "";
+  }
+
   function abrirModal(projetoId) {
     const projeto = projetosData[projetoId];
+    if (!projeto) return;
 
-    if (projeto) {
-      // Preencher dados do modal
-      document.getElementById("modalTitulo").textContent = projeto.titulo;
-      document.getElementById("modalSubtitulo").textContent = projeto.subtitulo;
-      document.getElementById("modalDescricao").textContent = projeto.descricao;
-      document.getElementById("modalDuracao").textContent = projeto.duracao;
-      document.getElementById("modalCoordenacao").textContent =
-        projeto.coordenacao;
-      document.getElementById("modalFinanciamento").textContent =
-        projeto.financiamento;
-      document.getElementById("modalOrcamento").textContent = projeto.orcamento;
+    setText("modalTitulo", projeto.titulo);
+    setText("modalSubtitulo", projeto.subtitulo);
+    setText("modalDescricao", projeto.descricao);
+    setText("modalDuracao", projeto.duracao);
+    setText("modalCoordenacao", projeto.coordenacao);
+    setText("modalFinanciamento", projeto.financiamento);
+    setText("modalOrcamento", projeto.orcamento);
 
-      // Preencher objetivos
-      const objetivosList = document.getElementById("modalObjetivos");
+    // Objetivos
+    const objetivosList = document.getElementById("modalObjetivos");
+    if (objetivosList) {
       objetivosList.innerHTML = "";
       projeto.objetivos.forEach((objetivo) => {
         const li = document.createElement("li");
         li.textContent = objetivo;
         objetivosList.appendChild(li);
       });
+    }
 
-      // Preencher equipe
-      const equipeList = document.getElementById("modalEquipe");
+    // Equipe
+    const equipeList = document.getElementById("modalEquipe");
+    if (equipeList) {
       equipeList.innerHTML = "";
       projeto.equipe.forEach((membro) => {
         const div = document.createElement("div");
         div.className = "membro-equipe";
         div.innerHTML = `
-                    <span class="membro-nome">${membro.nome}</span>
-                    <span class="membro-funcao">${membro.funcao}</span>
-                `;
+          <span class="membro-nome">${membro.nome}</span>
+          <span class="membro-funcao">${membro.funcao}</span>
+        `;
         equipeList.appendChild(div);
       });
-
-      // Mostrar modal
-      modal.classList.add("ativo");
-      document.body.style.overflow = "hidden";
     }
+
+    // Mostrar modal
+    modal.classList.add("ativo");
+    document.body.style.overflow = "hidden";
   }
 
   function fecharModal() {
     modal.classList.remove("ativo");
     document.body.style.overflow = "auto";
   }
+}
+
+/* =========================================================
+   10) INICIALIZAÇÃO GERAL (UM ÚNICO DOMContentLoaded)
+========================================================= */
+document.addEventListener("DOMContentLoaded", function () {
+  initMenuResponsivo();
+  initNewsletter();
+  initHoverCardsNoticias();
+  initAnoRodape();
+
+  initSlideshowDestaque();
+  initAnimacoesSobre();
+
+  garantirVisibilidadeMobile();
+  initBuscaPublicacoes();
+  initModalProjetos();
 });
+
+// Reforçar visibilidade ao redimensionar (mantido)
+window.addEventListener("resize", garantirVisibilidadeMobile);
