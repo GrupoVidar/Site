@@ -117,7 +117,10 @@ function initAnoRodape() {
   if (!yearElement) return;
 
   const currentYear = new Date().getFullYear();
-  yearElement.textContent = yearElement.textContent.replace(/\d{4}/, currentYear);
+  yearElement.textContent = yearElement.textContent.replace(
+    /\d{4}/,
+    currentYear
+  );
 }
 
 /* =========================================================
@@ -156,7 +159,9 @@ function initAnimacoesSobre() {
 
           // Delay individual para os itens da timeline (mantido)
           if (entry.target.classList.contains("timeline-item")) {
-            const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+            const index = Array.from(
+              entry.target.parentElement.children
+            ).indexOf(entry.target);
             entry.target.style.transitionDelay = `${index * 0.2}s`;
           }
         }
@@ -178,7 +183,12 @@ function initAnimacoesSobre() {
 ========================================================= */
 function garantirVisibilidadeMobile() {
   if (window.innerWidth <= 768) {
-    const elementosCriticos = ["main", "section", ".container", ".grid-noticias"];
+    const elementosCriticos = [
+      "main",
+      "section",
+      ".container",
+      ".grid-noticias",
+    ];
 
     elementosCriticos.forEach((seletor) => {
       const elementos = document.querySelectorAll(seletor);
@@ -204,7 +214,14 @@ function initBuscaPublicacoes() {
   const barraBuscaContainer = document.querySelector(".barra-busca-container");
 
   // Se não for a página de publicações, não roda
-  if (!campoBusca || !btnLimpar || !contador || !barraBuscaContainer || publicacoes.length === 0) return;
+  if (
+    !campoBusca ||
+    !btnLimpar ||
+    !contador ||
+    !barraBuscaContainer ||
+    publicacoes.length === 0
+  )
+    return;
 
   // Armazenar os títulos originais para restaurar depois
   const titulosOriginais = new Map();
@@ -226,7 +243,10 @@ function initBuscaPublicacoes() {
   // Evita duplicar caso o script seja reexecutado por algum motivo.
   const jaExisteSemResultados = document.querySelector(".sem-resultados");
   if (!jaExisteSemResultados) {
-    barraBuscaContainer.parentNode.insertBefore(semResultados, barraBuscaContainer.nextSibling);
+    barraBuscaContainer.parentNode.insertBefore(
+      semResultados,
+      barraBuscaContainer.nextSibling
+    );
   } else {
     // Se já existe, usa o existente
     semResultados.remove();
@@ -236,7 +256,11 @@ function initBuscaPublicacoes() {
   function restaurarTituloOriginal(publicacao) {
     const tituloOriginal = titulosOriginais.get(publicacao);
     const tituloElemento = publicacao.querySelector(".publicacao-titulo");
-    if (tituloOriginal && tituloElemento && tituloElemento.innerHTML !== tituloOriginal) {
+    if (
+      tituloOriginal &&
+      tituloElemento &&
+      tituloElemento.innerHTML !== tituloOriginal
+    ) {
       tituloElemento.innerHTML = tituloOriginal;
     }
   }
@@ -248,7 +272,10 @@ function initBuscaPublicacoes() {
       `(${termo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
       "gi"
     );
-    const novoTexto = textoOriginal.replace(regex, '<span class="destaque-busca">$1</span>');
+    const novoTexto = textoOriginal.replace(
+      regex,
+      '<span class="destaque-busca">$1</span>'
+    );
 
     if (elemento.innerHTML !== novoTexto) {
       elemento.innerHTML = novoTexto;
@@ -339,7 +366,9 @@ function initBuscaPublicacoes() {
   }
 
   // Event listeners
-  campoBusca.addEventListener("input", (e) => buscarPublicacoes(e.target.value));
+  campoBusca.addEventListener("input", (e) =>
+    buscarPublicacoes(e.target.value)
+  );
   btnLimpar.addEventListener("click", limparBusca);
 
   campoBusca.addEventListener("keydown", (e) => {
@@ -369,7 +398,8 @@ function initModalProjetos() {
   const projetosData = {
     1: {
       titulo: "Cartografias das Tensões Urbanas em Manaus",
-      subtitulo: "Mapeamento participativo dos conflitos socioambientais urbanos",
+      subtitulo:
+        "Mapeamento participativo dos conflitos socioambientais urbanos",
       descricao:
         "Pesquisa interdisciplinar que visa mapear os conflitos socioambientais urbanos na região metropolitana de Manaus através de metodologias participativas com comunidades locais. O projeto combina abordagens da geografia crítica, antropologia urbana e planejamento territorial.",
       objetivos: [
@@ -390,7 +420,8 @@ function initModalProjetos() {
     },
     2: {
       titulo: "Memórias das Águas: Narrativas Ribeirinhas",
-      subtitulo: "Documentação das memórias e saberes de comunidades ribeirinhas",
+      subtitulo:
+        "Documentação das memórias e saberes de comunidades ribeirinhas",
       descricao:
         "Projeto etnográfico que documenta as memórias e saberes tradicionais de comunidades ribeirinhas impactadas por mudanças ambientais no Amazonas. A pesquisa utiliza metodologias narrativas e visuais para preservar e valorizar os conhecimentos locais.",
       objetivos: [
@@ -503,3 +534,89 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Reforçar visibilidade ao redimensionar (mantido)
 window.addEventListener("resize", garantirVisibilidadeMobile);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hero = document.querySelector(".hero-vidar-anim");
+  const header = document.querySelector("header");
+
+  if (!hero || !header) return;
+
+  // Começa com header oculto
+  document.body.classList.add("header-oculto");
+  document.body.classList.remove("header-visivel");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+
+      if (entry.isIntersecting) {
+        // Ainda está no hero → header some
+        document.body.classList.add("header-oculto");
+        document.body.classList.remove("header-visivel");
+      } else {
+        // Saiu do hero → header aparece
+        document.body.classList.remove("header-oculto");
+        document.body.classList.add("header-visivel");
+      }
+    },
+    {
+      threshold: 0,
+    }
+  );
+
+  observer.observe(hero);
+});
+
+// =========================================================
+// HEADER SOME ENQUANTO O HERO ESTIVER VISÍVEL (HOME)
+// =========================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const hero = document.querySelector(".hero-vidar-anim");
+  const header = document.querySelector("header");
+  const menuToggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("menu");
+
+  // Só aplica na página que tem o hero
+  if (!hero || !header) return;
+
+  // Marca o body para ativar os estilos específicos (header fix + compensação)
+  document.body.classList.add("tem-hero");
+
+  // Helper: fechar menu se estiver aberto
+  function fecharMenuMobile() {
+    if (menu && menu.classList.contains("show")) {
+      menu.classList.remove("show");
+
+      // reset do ícone hambúrguer (mantém sua lógica atual)
+      if (menuToggle) {
+        const spans = menuToggle.querySelectorAll("span");
+        if (spans.length >= 3) {
+          spans[0].style.transform = "none";
+          spans[1].style.opacity = "1";
+          spans[1].style.transform = "none";
+          spans[2].style.transform = "none";
+        }
+      }
+    }
+  }
+
+  // Observer: se o hero estiver na tela => header some
+  const obs = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+
+      if (entry.isIntersecting) {
+        header.classList.add("header--hidden");
+        fecharMenuMobile(); // evita menu bugado enquanto header some
+      } else {
+        header.classList.remove("header--hidden");
+      }
+    },
+    {
+      // Quando ~60% do hero estiver visível, mantém header escondido
+      threshold: 0.6,
+    }
+  );
+
+  obs.observe(hero);
+});

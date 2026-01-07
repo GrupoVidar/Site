@@ -251,32 +251,32 @@ nav ul li a.ativo::after {
     visibility: visible !important;
   }
 
-  nav ul {
-    display: none !important;
+  @media (max-width: 768px) {
+    nav ul {
+      display: none !important;
 
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
 
-    background: var(--branco);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      background: var(--branco);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 
-    padding: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
+      padding: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
 
-    min-height: auto;
+      z-index: 1001;
+    }
 
-    /* MELHORIA: menu abaixo do header, acima do conteúdo */
-    z-index: 1999;
-
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
-
-  nav ul.show {
-    display: flex !important;
+    /* ✅ quando abre, cobre o restante da tela */
+    nav ul.show {
+      display: flex !important;
+      min-height: 55vh !important;
+      height: 55vh !important;
+      overflow: hidden !important; /* sem scroll interno */
+    }
   }
 
   nav ul li {
@@ -286,7 +286,7 @@ nav ul li a.ativo::after {
 
   nav ul li a {
     display: block;
-    padding: 12px 15px;
+    padding: 10px 15px !important; /* um pouco menor */
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     width: 100%;
   }
@@ -335,8 +335,219 @@ nav ul li a.ativo::after {
   padding: 0 1rem;
 }
 
+/* =========================================
+  5.0.1) INDEX.HTML HEADER OCULTO NO HERO (VIDAR)
+========================================= */
+
+/* Estado padrão: header escondido enquanto no hero */
+body.header-oculto header {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Quando sair do hero: header aparece */
+body.header-visivel header {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 /* =========================================================
-   5) INDEX.HTML — HERO / DESTAQUE PRINCIPAL
+   HEADER SUMIR NA HERO (SÓ QUANDO EXISTIR HERO NA PÁGINA)
+========================================================= */
+
+/* Quando a home tiver hero, vamos deixar o header fixo
+   (assim ele não "empurra" o layout e não cria faixa clara) */
+body.tem-hero header {
+  position: fixed; /* em vez de sticky */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+/* Compensa o espaço do header no topo da página */
+body.tem-hero {
+  padding-top: 80px; /* desktop */
+}
+
+@media (max-width: 768px) {
+  body.tem-hero {
+    padding-top: 70px; /* mobile */
+  }
+}
+
+/* Para o hero "encostar" no topo da tela (sem faixa) */
+body.tem-hero .hero-vidar-anim {
+  margin-top: -80px; /* desktop */
+}
+
+@media (max-width: 768px) {
+  body.tem-hero .hero-vidar-anim {
+    margin-top: -70px; /* mobile */
+  }
+}
+
+/* Estado escondido do header */
+header.header--hidden {
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: none;
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+/* Estado normal (visível) */
+header {
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+/* Garantir que o menu mobile fique acima de qualquer seção */
+@media (max-width: 768px) {
+  nav ul {
+    z-index: 9999 !important;
+  }
+}
+
+/* =========================================
+   5.0.2) INDEX.HTML HERO ANIMADO (estilo “Clarice”) - VIDAR
+========================================= */
+.hero-vidar-anim {
+  position: relative;
+  width: 100vw;
+  min-height: 65vh;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--verde-cinza) 0%, #4a4b3c 100%);
+  overflow: hidden;
+}
+
+/* SVG das linhas */
+.hero-vidar-linhas {
+  position: absolute;
+  inset: -20%;
+  width: 140%;
+  height: 140%;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Aparência das linhas */
+.hero-vidar-linhas .linhas path {
+  fill: none;
+  stroke: var(--terra-queimada);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+
+  animation: vidar-desenhar 1.2s ease forwards,
+    vidar-pulsar 5s ease-in-out 2s infinite;
+}
+
+/* Conteúdo por cima */
+.hero-vidar-conteudo {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 2rem;
+  text-align: center;
+  color: var(--branco);
+}
+
+.hero-vidar-conteudo h1 {
+  font-family: "Edwardian Script ITC";
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.hero-vidar-conteudo p {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-style: italic;
+  opacity: 0.95;
+}
+
+/* Movimento lento do grupo inteiro (efeito “flutuando”) */
+.hero-vidar-linhas .linhas {
+  transform-origin: center;
+  animation: vidar-flutuar 12s ease-in-out infinite alternate;
+}
+
+@keyframes vidar-flutuar {
+  0% {
+    transform: translate3d(-20px, 15px, 0) rotate(-3deg) scale(1.03);
+  }
+  100% {
+    transform: translate3d(25px, -20px, 0) rotate(3deg) scale(1.06);
+  }
+}
+
+@keyframes vidar-desenhar {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Um “respirar” bem leve no traço */
+@keyframes vidar-pulsar {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .hero-vidar-anim {
+    min-height: 65vh;
+  }
+
+  .hero-vidar-linhas {
+    inset: -40%;
+    width: 180%;
+    height: 180%;
+    opacity: 0.85;
+  }
+}
+
+/* Acessibilidade: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+  .hero-vidar-linhas .linhas,
+  .hero-vidar-linhas .linhas path {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* =========================================================
+   FIX — HERO VIDAR CENTRALIZADO NO MOBILE
+   (override do "display:block" forçado no mobile)
+========================================================= */
+@media (max-width: 768px) {
+  .hero-vidar-anim {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    /* ocupa melhor a tela no mobile */
+    min-height: 55vh !important;
+    height: 55vh !important;
+  }
+}
+
+/* =========================================================
+   5.1) INDEX.HTML — HERO / DESTAQUE PRINCIPAL
 ========================================================= */
 .destaque-principal-section {
   width: 100%;
@@ -2586,12 +2797,18 @@ footer {
 .modais-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 3rem;
   gap: 2rem;
 }
 
+.header-content {
+  max-width: 600px;
+  margin-left: 4%;
+}
+
 .header-content h2 {
+  text-align: left;
   align-items: center;
   color: var(--verde-cinza);
   font-size: 2.5rem;
@@ -2600,6 +2817,8 @@ footer {
 }
 
 .header-content p {
+  text-align: left;
+  margin-top: 0.5rem;
   align-items: center;
   color: var(--preto-elegante);
   font-size: 1.1rem;
@@ -2667,7 +2886,7 @@ footer {
 
 .projeto-thumbnail {
   position: relative;
-  height: 200px;
+  height: 400px;
   overflow: hidden;
 }
 
