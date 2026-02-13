@@ -1,10 +1,10 @@
 /**
  * =========================================================
- * VIDAR EM IN-TENSÃƒâ€¢ES Ã¢â‚¬â€ SCRIPT.JS (REFATORADO E SEGURO)
+ * VIDAR EM IN-TENSÕES - SCRIPT.JS (REFATORADO E SEGURO)
  * - Mesma funcionalidade do seu JS atual
- * - InicializaÃƒÂ§ÃƒÂ£o por pÃƒÂ¡gina (sÃƒÂ³ roda o que existir)
- * - Um ÃƒÂºnico DOMContentLoaded (evita duplicidades)
- * - MantÃƒÂ©m seu comportamento atual (sem mudar layout)
+ * - Inicialização por página (só roda o que existir)
+ * - Um único DOMContentLoaded (evita duplicidades)
+ * - Mantém seu comportamento atual (sem mudar layout)
  * =========================================================
  */
 
@@ -220,7 +220,7 @@ function initNewsletter() {
       alert(`Obrigado por se inscrever com o e-mail: ${email}`);
       formNewsletter.reset();
     } else {
-      alert("Por favor, insira um e-mail vÃƒÂ¡lido.");
+      alert("Por favor, insira um e-mail válido.");
       emailInput.focus();
     }
   });
@@ -232,7 +232,7 @@ function validateEmail(email) {
 }
 
 /* =========================================================
-   3) DESTAQUE NOS CARDS DE NOTÃƒÂCIAS (INDEX)
+   3) DESTAQUE NOS CARDS DE NOTCIAS (INDEX)
 ========================================================= */
 function initHoverCardsNoticias() {
   const cards = document.querySelectorAll(".card-noticia");
@@ -250,7 +250,7 @@ function initHoverCardsNoticias() {
 }
 
 /* =========================================================
-   4) ATUALIZAR ANO DO RODAPÃƒâ€° (GLOBAL)
+   4) ATUALIZAR ANO DO RODAP (GLOBAL)
 ========================================================= */
 function initAnoRodape() {
   const yearElement = document.querySelector("footer p:last-child");
@@ -264,7 +264,7 @@ function initAnoRodape() {
 }
 
 /* =========================================================
-   5) SLIDESHOW AUTOMÃƒÂTICO (INDEX)
+   5) SLIDESHOW AUTOMTICO (INDEX)
 ========================================================= */
 function initSlideshowDestaque() {
   const slides = document.querySelectorAll(".slide-bg");
@@ -282,7 +282,7 @@ function initSlideshowDestaque() {
 }
 
 /* =========================================================
-   6) ANIMAÃƒâ€¡Ãƒâ€¢ES DA PÃƒÂGINA SOBRE
+   6) ANIMAÇÕES DA PÁGINA SOBRE
 ========================================================= */
 function initAnimacoesSobre() {
   const elementos = document.querySelectorAll(
@@ -342,9 +342,9 @@ function garantirVisibilidadeMobile() {
 }
 
 /* =========================================================
-   8) SISTEMA DE BUSCA EM TEMPO REAL (PUBLICAÃƒâ€¡Ãƒâ€¢ES)
-   - Mesma lÃƒÂ³gica do seu cÃƒÂ³digo atual
-   - SÃƒÂ³ inicializa se existir barra/campo/itens
+   8) SISTEMA DE BUSCA EM TEMPO REAL (PUBLICAÇÕES)
+   - Mesma lógica do seu código atual
+   - Só inicializa se existir barra/campo/itens
 ========================================================= */
 function initBuscaPublicacoes() {
   const campoBusca = document.getElementById("campoBusca");
@@ -353,7 +353,7 @@ function initBuscaPublicacoes() {
   const publicacoes = document.querySelectorAll(".publicacao-item");
   const barraBuscaContainer = document.querySelector(".barra-busca-container");
 
-  // Se nÃƒÂ£o for a pÃƒÂ¡gina de publicaÃƒÂ§ÃƒÂµes, nÃƒÂ£o roda
+  // Se não for a página de publicações, não roda
   if (
     !campoBusca ||
     !btnLimpar ||
@@ -363,7 +363,7 @@ function initBuscaPublicacoes() {
   )
     return;
 
-  // Armazenar os tÃƒÂ­tulos originais para restaurar depois
+  // Armazenar os títulos originais para restaurar depois
   const titulosOriginais = new Map();
   publicacoes.forEach((pub) => {
     const titulo = pub.querySelector(".publicacao-titulo");
@@ -375,11 +375,11 @@ function initBuscaPublicacoes() {
   semResultados.className = "sem-resultados";
   semResultados.innerHTML = `
     <i class="fas fa-search"></i>
-    <h3>Nenhuma publicaÃƒÂ§ÃƒÂ£o encontrada</h3>
+    <h3>Nenhuma publicação encontrada</h3>
     <p>Tente usar outros termos ou verificar a ortografia.</p>
   `;
 
-  // Inserir apÃƒÂ³s a barra de busca (somente se ainda nÃƒÂ£o existe)
+  // Inserir após a barra de busca (somente se ainda não existe)
   // Evita duplicar caso o script seja reexecutado por algum motivo.
   const jaExisteSemResultados = document.querySelector(".sem-resultados");
   if (!jaExisteSemResultados) {
@@ -388,7 +388,7 @@ function initBuscaPublicacoes() {
       barraBuscaContainer.nextSibling
     );
   } else {
-    // Se jÃƒÂ¡ existe, usa o existente
+    // Se já existe, usa o existente
     semResultados.remove();
   }
   const semResultadosEl = document.querySelector(".sem-resultados");
@@ -424,13 +424,13 @@ function initBuscaPublicacoes() {
 
   function atualizarContador(resultados, termo) {
     if (!termo) {
-      contador.textContent = `Mostrando todas as ${publicacoes.length} publicaÃƒÂ§ÃƒÂµes`;
+      contador.textContent = `Mostrando todas as ${publicacoes.length} publicações`;
     } else if (resultados === 0) {
       contador.textContent = `Nenhum resultado para "${termo}"`;
     } else if (resultados === 1) {
-      contador.textContent = `1 publicaÃƒÂ§ÃƒÂ£o encontrada para "${termo}"`;
+      contador.textContent = `1 publicação encontrada para "${termo}"`;
     } else {
-      contador.textContent = `${resultados} publicaÃƒÂ§ÃƒÂµes encontradas para "${termo}"`;
+      contador.textContent = `${resultados} publicações encontradas para "${termo}"`;
     }
   }
 
@@ -521,9 +521,9 @@ function initBuscaPublicacoes() {
 
 /* =========================================================
    9) MODAL DE PROJETOS (PROJETOS)
-   - Mesma funcionalidade do seu cÃƒÂ³digo atual
-   - SÃƒÂ³ roda se existir modal + cards
-   - ProteÃƒÂ§ÃƒÂµes para evitar erro se faltar algum elemento
+   - Mesma funcionalidade do seu código atual
+   - Só roda se existir modal + cards
+   - Proteções para evitar erro se faltar algum elemento
 ========================================================= */
 function initModalProjetos() {
   const cardsProjetos = document.querySelectorAll(".card-projeto-modal");
@@ -537,16 +537,16 @@ function initModalProjetos() {
   // Dados dos projetos (mantido igual)
   const projetosData = {
     1: {
-      titulo: "Cartografias das TensÃƒÂµes Urbanas em Manaus",
+      titulo: "Cartografias das Tensões Urbanas em Manaus",
       subtitulo:
         "Mapeamento participativo dos conflitos socioambientais urbanos",
       descricao:
-        "Pesquisa interdisciplinar que visa mapear os conflitos socioambientais urbanos na regiÃƒÂ£o metropolitana de Manaus atravÃƒÂ©s de metodologias participativas com comunidades locais. O projeto combina abordagens da geografia crÃƒÂ­tica, antropologia urbana e planejamento territorial.",
+        "Pesquisa interdisciplinar que visa mapear os conflitos socioambientais urbanos na região metropolitana de Manaus através de metodologias participativas com comunidades locais. O projeto combina abordagens da geografia crítica, antropologia urbana e planejamento territorial.",
       objetivos: [
-        "Identificar zonas de tensÃƒÂ£o socioambiental urbana",
+        "Identificar zonas de tensão socioambiental urbana",
         "Desenvolver metodologias participativas de mapeamento",
         "Produzir cartografias colaborativas com comunidades",
-        "Elaborar recomendaÃƒÂ§ÃƒÂµes para polÃƒÂ­ticas pÃƒÂºblicas",
+        "Elaborar recomendações para políticas públicas",
       ],
       duracao: "Jan 2023 - Dez 2024 (24 meses)",
       coordenacao: "Prof. Fabiane Andrade",
@@ -554,27 +554,27 @@ function initModalProjetos() {
       orcamento: "R$ 180.000,00",
       equipe: [
         { nome: "Fabiane Andrade", funcao: "Coordenadora" },
-        { nome: "HÃƒÂ­vina Dorzane", funcao: "Pesquisadora" },
-        { nome: "MÃƒÂ´nica Costa", funcao: "Pesquisadora" },
+        { nome: "Hívina Dorzane", funcao: "Pesquisadora" },
+        { nome: "Mônica Costa", funcao: "Pesquisadora" },
       ],
     },
     2: {
-      titulo: "MemÃƒÂ³rias das ÃƒÂguas: Narrativas Ribeirinhas",
+      titulo: "Memórias das guas: Narrativas Ribeirinhas",
       subtitulo:
-        "DocumentaÃƒÂ§ÃƒÂ£o das memÃƒÂ³rias e saberes de comunidades ribeirinhas",
+        "Documentação das memórias e saberes de comunidades ribeirinhas",
       descricao:
-        "Projeto etnogrÃƒÂ¡fico que documenta as memÃƒÂ³rias e saberes tradicionais de comunidades ribeirinhas impactadas por mudanÃƒÂ§as ambientais no Amazonas. A pesquisa utiliza metodologias narrativas e visuais para preservar e valorizar os conhecimentos locais.",
+        "Projeto etnográfico que documenta as memórias e saberes tradicionais de comunidades ribeirinhas impactadas por mudanças ambientais no Amazonas. A pesquisa utiliza metodologias narrativas e visuais para preservar e valorizar os conhecimentos locais.",
       objetivos: [
-        "Documentar memÃƒÂ³rias e saberes tradicionais",
-        "Analisar impactos das mudanÃƒÂ§as ambientais",
-        "Preservar patrimÃƒÂ´nio cultural imaterial",
-        "Fortalecer identidades comunitÃƒÂ¡rias",
+        "Documentar memórias e saberes tradicionais",
+        "Analisar impactos das mudanças ambientais",
+        "Preservar patrimônio cultural imaterial",
+        "Fortalecer identidades comunitárias",
       ],
       duracao: "Mar 2023 - Fev 2025 (23 meses)",
-      coordenacao: "Prof. MÃƒÂ´nica de Oliveira Costa",
+      coordenacao: "Prof. Mônica de Oliveira Costa",
       financiamento: "CNPq - Edital Universal",
       equipe: [
-        { nome: "MÃƒÂ´nica de Oliveira Costa", funcao: "Coordenadora" },
+        { nome: "Mônica de Oliveira Costa", funcao: "Coordenadora" },
         { nome: "Caroline Barroncas de Oliveira", funcao: "Pesquisadora" },
         { nome: "Daniela Franco Carvalho", funcao: "Pesquisadora" },
         { nome: "Fernanda Helena Nogueira Ferreira", funcao: "Pesquisadora" },
@@ -656,7 +656,7 @@ function initModalProjetos() {
 }
 
 /* =========================================================
-   10) INICIALIZAÃƒâ€¡ÃƒÆ’O GERAL (UM ÃƒÅ¡NICO DOMContentLoaded)
+   10) INICIALIZAÇÃO GERAL (UM ÚNICO DOMContentLoaded)
 ========================================================= */
 document.addEventListener("DOMContentLoaded", function () {
   initMenuResponsivo();
@@ -673,7 +673,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initOndasHeroMouse();
 });
 
-// ReforÃƒÂ§ar visibilidade ao redimensionar (mantido)
+// Reforçar visibilidade ao redimensionar (mantido)
 window.addEventListener("resize", garantirVisibilidadeMobile);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -682,7 +682,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!hero || !header) return;
 
-  // ComeÃƒÂ§a com header oculto
+  // Começa com header oculto
   document.body.classList.add("header-oculto");
   document.body.classList.remove("header-visivel");
 
@@ -691,11 +691,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const entry = entries[0];
 
       if (entry.isIntersecting) {
-        // Ainda estÃƒÂ¡ no hero Ã¢â€ â€™ header some
+        // Ainda está no hero  header some
         document.body.classList.add("header-oculto");
         document.body.classList.remove("header-visivel");
       } else {
-        // Saiu do hero Ã¢â€ â€™ header aparece
+        // Saiu do hero  header aparece
         document.body.classList.remove("header-oculto");
         document.body.classList.add("header-visivel");
       }
@@ -709,7 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================================
-// HEADER SOME ENQUANTO O HERO ESTIVER VISÃƒÂVEL (HOME)
+// HEADER SOME ENQUANTO O HERO ESTIVER VISVEL (HOME)
 // =========================================================
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero-vidar-anim");
@@ -717,10 +717,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
 
-  // SÃƒÂ³ aplica na pÃƒÂ¡gina que tem o hero
+  // Só aplica na página que tem o hero
   if (!hero || !header) return;
 
-  // Marca o body para ativar os estilos especÃƒÂ­ficos (header fix + compensaÃƒÂ§ÃƒÂ£o)
+  // Marca o body para ativar os estilos específicos (header fix + compensação)
   document.body.classList.add("tem-hero");
 
   // Helper: fechar menu se estiver aberto
@@ -728,7 +728,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (menu && menu.classList.contains("show")) {
       menu.classList.remove("show");
 
-      // reset do ÃƒÂ­cone hambÃƒÂºrguer (mantÃƒÂ©m sua lÃƒÂ³gica atual)
+      // reset do ícone hambúrguer (mantém sua lógica atual)
       if (menuToggle) {
         const spans = menuToggle.querySelectorAll("span");
         if (spans.length >= 3) {
@@ -754,7 +754,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
     {
-      // Quando ~60% do hero estiver visÃƒÂ­vel, mantÃƒÂ©m header escondido
+      // Quando ~60% do hero estiver visível, mantém header escondido
       threshold: 0.6,
     }
   );
