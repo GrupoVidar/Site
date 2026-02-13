@@ -1,12 +1,152 @@
 /**
  * =========================================================
- * VIDAR EM IN-TENSÕES — SCRIPT.JS (REFATORADO E SEGURO)
+ * VIDAR EM IN-TENSÃƒâ€¢ES Ã¢â‚¬â€ SCRIPT.JS (REFATORADO E SEGURO)
  * - Mesma funcionalidade do seu JS atual
- * - Inicialização por página (só roda o que existir)
- * - Um único DOMContentLoaded (evita duplicidades)
- * - Mantém seu comportamento atual (sem mudar layout)
+ * - InicializaÃƒÂ§ÃƒÂ£o por pÃƒÂ¡gina (sÃƒÂ³ roda o que existir)
+ * - Um ÃƒÂºnico DOMContentLoaded (evita duplicidades)
+ * - MantÃƒÂ©m seu comportamento atual (sem mudar layout)
  * =========================================================
  */
+
+
+/* =========================================================
+   10) ONDAS INTERATIVAS NO HERO (INDEX)
+========================================================= */
+function initOndasHeroMouse() {
+  const hero = document.querySelector(".hero-vidar-anim");
+  const canvas = document.querySelector(".hero-vidar-ondas");
+  if (!hero || !canvas) return;
+
+  const context = canvas.getContext("2d");
+  if (!context) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (reduceMotion.matches) return;
+
+  let width = 0;
+  let height = 0;
+  let lastSpawn = 0;
+
+  const ripples = [];
+  const pointer = { x: 0, y: 0, active: false };
+
+  function resizeCanvas() {
+    const rect = hero.getBoundingClientRect();
+    width = Math.max(1, Math.floor(rect.width));
+    height = Math.max(1, Math.floor(rect.height));
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function addRipple(x, y, baseRadius = 8) {
+    ripples.push({
+      x,
+      y,
+      radius: baseRadius,
+      alpha: 0.36,
+      speed: 2.6 + Math.random() * 0.8,
+    });
+  }
+
+  function drawRipples() {
+    for (let index = ripples.length - 1; index >= 0; index--) {
+      const ripple = ripples[index];
+      ripple.radius += ripple.speed;
+      ripple.alpha *= 0.972;
+
+      if (ripple.alpha < 0.02) {
+        ripples.splice(index, 1);
+        continue;
+      }
+
+      const gradient = context.createRadialGradient(
+        ripple.x,
+        ripple.y,
+        0,
+        ripple.x,
+        ripple.y,
+        ripple.radius
+      );
+
+      gradient.addColorStop(0, `rgba(243, 231, 205, ${ripple.alpha * 0.24})`);
+      gradient.addColorStop(1, "rgba(243, 231, 205, 0)");
+
+      context.fillStyle = gradient;
+      context.beginPath();
+      context.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+      context.fill();
+
+      context.lineWidth = 1.6;
+      context.strokeStyle = `rgba(243, 231, 205, ${ripple.alpha * 0.6})`;
+      context.beginPath();
+      context.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+      context.stroke();
+    }
+  }
+
+  function drawWaveBands(time) {
+    const normalizedX = pointer.active ? pointer.x / width : 0.5;
+    const amplitudeBase = 8 + normalizedX * 8;
+    const lines = 4;
+
+    for (let line = 0; line < lines; line++) {
+      const yBase = height * (0.24 + line * 0.17);
+      const amplitude = amplitudeBase + line * 1.8;
+      const frequency = 0.008 + line * 0.0013;
+      const phase = time * (0.0014 + line * 0.0004);
+
+      context.lineWidth = 1.1 + line * 0.25;
+      context.strokeStyle = `rgba(243, 231, 205, ${0.07 + line * 0.03})`;
+      context.beginPath();
+
+      for (let x = 0; x <= width; x += 8) {
+        const influence = pointer.active
+          ? Math.max(0, 1 - Math.abs(x - pointer.x) / 360)
+          : 0.2;
+        const y =
+          yBase +
+          Math.sin(x * frequency + phase) * amplitude * (0.55 + influence);
+        if (x === 0) context.moveTo(x, y);
+        else context.lineTo(x, y);
+      }
+      context.stroke();
+    }
+  }
+
+  function render(time) {
+    context.clearRect(0, 0, width, height);
+    drawWaveBands(time || 0);
+    drawRipples();
+    requestAnimationFrame(render);
+  }
+
+  function handlePointerMove(event) {
+    const rect = canvas.getBoundingClientRect();
+    pointer.x = event.clientX - rect.left;
+    pointer.y = event.clientY - rect.top;
+    pointer.active = true;
+
+    const now = performance.now();
+    if (now - lastSpawn > 28) {
+      addRipple(pointer.x, pointer.y, 9);
+      lastSpawn = now;
+    }
+  }
+
+  function handlePointerLeave() {
+    pointer.active = false;
+  }
+
+  resizeCanvas();
+  requestAnimationFrame(render);
+
+  window.addEventListener("resize", resizeCanvas);
+  hero.addEventListener("mousemove", handlePointerMove);
+  hero.addEventListener("mouseleave", handlePointerLeave);
+}
 
 /* =========================================================
    1) MENU RESPONSIVO (GLOBAL)
@@ -80,7 +220,7 @@ function initNewsletter() {
       alert(`Obrigado por se inscrever com o e-mail: ${email}`);
       formNewsletter.reset();
     } else {
-      alert("Por favor, insira um e-mail válido.");
+      alert("Por favor, insira um e-mail vÃƒÂ¡lido.");
       emailInput.focus();
     }
   });
@@ -92,7 +232,7 @@ function validateEmail(email) {
 }
 
 /* =========================================================
-   3) DESTAQUE NOS CARDS DE NOTÍCIAS (INDEX)
+   3) DESTAQUE NOS CARDS DE NOTÃƒÂCIAS (INDEX)
 ========================================================= */
 function initHoverCardsNoticias() {
   const cards = document.querySelectorAll(".card-noticia");
@@ -110,7 +250,7 @@ function initHoverCardsNoticias() {
 }
 
 /* =========================================================
-   4) ATUALIZAR ANO DO RODAPÉ (GLOBAL)
+   4) ATUALIZAR ANO DO RODAPÃƒâ€° (GLOBAL)
 ========================================================= */
 function initAnoRodape() {
   const yearElement = document.querySelector("footer p:last-child");
@@ -124,7 +264,7 @@ function initAnoRodape() {
 }
 
 /* =========================================================
-   5) SLIDESHOW AUTOMÁTICO (INDEX)
+   5) SLIDESHOW AUTOMÃƒÂTICO (INDEX)
 ========================================================= */
 function initSlideshowDestaque() {
   const slides = document.querySelectorAll(".slide-bg");
@@ -142,7 +282,7 @@ function initSlideshowDestaque() {
 }
 
 /* =========================================================
-   6) ANIMAÇÕES DA PÁGINA SOBRE
+   6) ANIMAÃƒâ€¡Ãƒâ€¢ES DA PÃƒÂGINA SOBRE
 ========================================================= */
 function initAnimacoesSobre() {
   const elementos = document.querySelectorAll(
@@ -202,9 +342,9 @@ function garantirVisibilidadeMobile() {
 }
 
 /* =========================================================
-   8) SISTEMA DE BUSCA EM TEMPO REAL (PUBLICAÇÕES)
-   - Mesma lógica do seu código atual
-   - Só inicializa se existir barra/campo/itens
+   8) SISTEMA DE BUSCA EM TEMPO REAL (PUBLICAÃƒâ€¡Ãƒâ€¢ES)
+   - Mesma lÃƒÂ³gica do seu cÃƒÂ³digo atual
+   - SÃƒÂ³ inicializa se existir barra/campo/itens
 ========================================================= */
 function initBuscaPublicacoes() {
   const campoBusca = document.getElementById("campoBusca");
@@ -213,7 +353,7 @@ function initBuscaPublicacoes() {
   const publicacoes = document.querySelectorAll(".publicacao-item");
   const barraBuscaContainer = document.querySelector(".barra-busca-container");
 
-  // Se não for a página de publicações, não roda
+  // Se nÃƒÂ£o for a pÃƒÂ¡gina de publicaÃƒÂ§ÃƒÂµes, nÃƒÂ£o roda
   if (
     !campoBusca ||
     !btnLimpar ||
@@ -223,7 +363,7 @@ function initBuscaPublicacoes() {
   )
     return;
 
-  // Armazenar os títulos originais para restaurar depois
+  // Armazenar os tÃƒÂ­tulos originais para restaurar depois
   const titulosOriginais = new Map();
   publicacoes.forEach((pub) => {
     const titulo = pub.querySelector(".publicacao-titulo");
@@ -235,11 +375,11 @@ function initBuscaPublicacoes() {
   semResultados.className = "sem-resultados";
   semResultados.innerHTML = `
     <i class="fas fa-search"></i>
-    <h3>Nenhuma publicação encontrada</h3>
+    <h3>Nenhuma publicaÃƒÂ§ÃƒÂ£o encontrada</h3>
     <p>Tente usar outros termos ou verificar a ortografia.</p>
   `;
 
-  // Inserir após a barra de busca (somente se ainda não existe)
+  // Inserir apÃƒÂ³s a barra de busca (somente se ainda nÃƒÂ£o existe)
   // Evita duplicar caso o script seja reexecutado por algum motivo.
   const jaExisteSemResultados = document.querySelector(".sem-resultados");
   if (!jaExisteSemResultados) {
@@ -248,7 +388,7 @@ function initBuscaPublicacoes() {
       barraBuscaContainer.nextSibling
     );
   } else {
-    // Se já existe, usa o existente
+    // Se jÃƒÂ¡ existe, usa o existente
     semResultados.remove();
   }
   const semResultadosEl = document.querySelector(".sem-resultados");
@@ -284,13 +424,13 @@ function initBuscaPublicacoes() {
 
   function atualizarContador(resultados, termo) {
     if (!termo) {
-      contador.textContent = `Mostrando todas as ${publicacoes.length} publicações`;
+      contador.textContent = `Mostrando todas as ${publicacoes.length} publicaÃƒÂ§ÃƒÂµes`;
     } else if (resultados === 0) {
       contador.textContent = `Nenhum resultado para "${termo}"`;
     } else if (resultados === 1) {
-      contador.textContent = `1 publicação encontrada para "${termo}"`;
+      contador.textContent = `1 publicaÃƒÂ§ÃƒÂ£o encontrada para "${termo}"`;
     } else {
-      contador.textContent = `${resultados} publicações encontradas para "${termo}"`;
+      contador.textContent = `${resultados} publicaÃƒÂ§ÃƒÂµes encontradas para "${termo}"`;
     }
   }
 
@@ -381,9 +521,9 @@ function initBuscaPublicacoes() {
 
 /* =========================================================
    9) MODAL DE PROJETOS (PROJETOS)
-   - Mesma funcionalidade do seu código atual
-   - Só roda se existir modal + cards
-   - Proteções para evitar erro se faltar algum elemento
+   - Mesma funcionalidade do seu cÃƒÂ³digo atual
+   - SÃƒÂ³ roda se existir modal + cards
+   - ProteÃƒÂ§ÃƒÂµes para evitar erro se faltar algum elemento
 ========================================================= */
 function initModalProjetos() {
   const cardsProjetos = document.querySelectorAll(".card-projeto-modal");
@@ -397,16 +537,16 @@ function initModalProjetos() {
   // Dados dos projetos (mantido igual)
   const projetosData = {
     1: {
-      titulo: "Cartografias das Tensões Urbanas em Manaus",
+      titulo: "Cartografias das TensÃƒÂµes Urbanas em Manaus",
       subtitulo:
         "Mapeamento participativo dos conflitos socioambientais urbanos",
       descricao:
-        "Pesquisa interdisciplinar que visa mapear os conflitos socioambientais urbanos na região metropolitana de Manaus através de metodologias participativas com comunidades locais. O projeto combina abordagens da geografia crítica, antropologia urbana e planejamento territorial.",
+        "Pesquisa interdisciplinar que visa mapear os conflitos socioambientais urbanos na regiÃƒÂ£o metropolitana de Manaus atravÃƒÂ©s de metodologias participativas com comunidades locais. O projeto combina abordagens da geografia crÃƒÂ­tica, antropologia urbana e planejamento territorial.",
       objetivos: [
-        "Identificar zonas de tensão socioambiental urbana",
+        "Identificar zonas de tensÃƒÂ£o socioambiental urbana",
         "Desenvolver metodologias participativas de mapeamento",
         "Produzir cartografias colaborativas com comunidades",
-        "Elaborar recomendações para políticas públicas",
+        "Elaborar recomendaÃƒÂ§ÃƒÂµes para polÃƒÂ­ticas pÃƒÂºblicas",
       ],
       duracao: "Jan 2023 - Dez 2024 (24 meses)",
       coordenacao: "Prof. Fabiane Andrade",
@@ -414,27 +554,27 @@ function initModalProjetos() {
       orcamento: "R$ 180.000,00",
       equipe: [
         { nome: "Fabiane Andrade", funcao: "Coordenadora" },
-        { nome: "Hívina Dorzane", funcao: "Pesquisadora" },
-        { nome: "Mônica Costa", funcao: "Pesquisadora" },
+        { nome: "HÃƒÂ­vina Dorzane", funcao: "Pesquisadora" },
+        { nome: "MÃƒÂ´nica Costa", funcao: "Pesquisadora" },
       ],
     },
     2: {
-      titulo: "Memórias das Águas: Narrativas Ribeirinhas",
+      titulo: "MemÃƒÂ³rias das ÃƒÂguas: Narrativas Ribeirinhas",
       subtitulo:
-        "Documentação das memórias e saberes de comunidades ribeirinhas",
+        "DocumentaÃƒÂ§ÃƒÂ£o das memÃƒÂ³rias e saberes de comunidades ribeirinhas",
       descricao:
-        "Projeto etnográfico que documenta as memórias e saberes tradicionais de comunidades ribeirinhas impactadas por mudanças ambientais no Amazonas. A pesquisa utiliza metodologias narrativas e visuais para preservar e valorizar os conhecimentos locais.",
+        "Projeto etnogrÃƒÂ¡fico que documenta as memÃƒÂ³rias e saberes tradicionais de comunidades ribeirinhas impactadas por mudanÃƒÂ§as ambientais no Amazonas. A pesquisa utiliza metodologias narrativas e visuais para preservar e valorizar os conhecimentos locais.",
       objetivos: [
-        "Documentar memórias e saberes tradicionais",
-        "Analisar impactos das mudanças ambientais",
-        "Preservar patrimônio cultural imaterial",
-        "Fortalecer identidades comunitárias",
+        "Documentar memÃƒÂ³rias e saberes tradicionais",
+        "Analisar impactos das mudanÃƒÂ§as ambientais",
+        "Preservar patrimÃƒÂ´nio cultural imaterial",
+        "Fortalecer identidades comunitÃƒÂ¡rias",
       ],
       duracao: "Mar 2023 - Fev 2025 (23 meses)",
-      coordenacao: "Prof. Mônica de Oliveira Costa",
+      coordenacao: "Prof. MÃƒÂ´nica de Oliveira Costa",
       financiamento: "CNPq - Edital Universal",
       equipe: [
-        { nome: "Mônica de Oliveira Costa", funcao: "Coordenadora" },
+        { nome: "MÃƒÂ´nica de Oliveira Costa", funcao: "Coordenadora" },
         { nome: "Caroline Barroncas de Oliveira", funcao: "Pesquisadora" },
         { nome: "Daniela Franco Carvalho", funcao: "Pesquisadora" },
         { nome: "Fernanda Helena Nogueira Ferreira", funcao: "Pesquisadora" },
@@ -516,7 +656,7 @@ function initModalProjetos() {
 }
 
 /* =========================================================
-   10) INICIALIZAÇÃO GERAL (UM ÚNICO DOMContentLoaded)
+   10) INICIALIZAÃƒâ€¡ÃƒÆ’O GERAL (UM ÃƒÅ¡NICO DOMContentLoaded)
 ========================================================= */
 document.addEventListener("DOMContentLoaded", function () {
   initMenuResponsivo();
@@ -530,9 +670,10 @@ document.addEventListener("DOMContentLoaded", function () {
   garantirVisibilidadeMobile();
   initBuscaPublicacoes();
   initModalProjetos();
+  initOndasHeroMouse();
 });
 
-// Reforçar visibilidade ao redimensionar (mantido)
+// ReforÃƒÂ§ar visibilidade ao redimensionar (mantido)
 window.addEventListener("resize", garantirVisibilidadeMobile);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -541,7 +682,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!hero || !header) return;
 
-  // Começa com header oculto
+  // ComeÃƒÂ§a com header oculto
   document.body.classList.add("header-oculto");
   document.body.classList.remove("header-visivel");
 
@@ -550,11 +691,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const entry = entries[0];
 
       if (entry.isIntersecting) {
-        // Ainda está no hero → header some
+        // Ainda estÃƒÂ¡ no hero Ã¢â€ â€™ header some
         document.body.classList.add("header-oculto");
         document.body.classList.remove("header-visivel");
       } else {
-        // Saiu do hero → header aparece
+        // Saiu do hero Ã¢â€ â€™ header aparece
         document.body.classList.remove("header-oculto");
         document.body.classList.add("header-visivel");
       }
@@ -568,7 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================================
-// HEADER SOME ENQUANTO O HERO ESTIVER VISÍVEL (HOME)
+// HEADER SOME ENQUANTO O HERO ESTIVER VISÃƒÂVEL (HOME)
 // =========================================================
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero-vidar-anim");
@@ -576,10 +717,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
 
-  // Só aplica na página que tem o hero
+  // SÃƒÂ³ aplica na pÃƒÂ¡gina que tem o hero
   if (!hero || !header) return;
 
-  // Marca o body para ativar os estilos específicos (header fix + compensação)
+  // Marca o body para ativar os estilos especÃƒÂ­ficos (header fix + compensaÃƒÂ§ÃƒÂ£o)
   document.body.classList.add("tem-hero");
 
   // Helper: fechar menu se estiver aberto
@@ -587,7 +728,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (menu && menu.classList.contains("show")) {
       menu.classList.remove("show");
 
-      // reset do ícone hambúrguer (mantém sua lógica atual)
+      // reset do ÃƒÂ­cone hambÃƒÂºrguer (mantÃƒÂ©m sua lÃƒÂ³gica atual)
       if (menuToggle) {
         const spans = menuToggle.querySelectorAll("span");
         if (spans.length >= 3) {
@@ -613,7 +754,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
     {
-      // Quando ~60% do hero estiver visível, mantém header escondido
+      // Quando ~60% do hero estiver visÃƒÂ­vel, mantÃƒÂ©m header escondido
       threshold: 0.6,
     }
   );

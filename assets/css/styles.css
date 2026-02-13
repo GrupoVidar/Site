@@ -3644,6 +3644,15 @@ body.index-page .hero-vidar-anim {
   animation: index-hero-palette 20s ease-in-out infinite alternate;
 }
 
+body.index-page .hero-vidar-ondas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
 body.index-page .hero-vidar-anim::before {
   content: none;
 }
@@ -3655,6 +3664,10 @@ body.index-page .hero-vidar-anim::after {
 body.index-page .hero-vidar-linhas .linhas {
   transform-origin: center;
   animation: index-rio-grupo 18s ease-in-out infinite alternate;
+}
+
+body.index-page .hero-vidar-linhas {
+  z-index: 0;
 }
 
 body.index-page .hero-vidar-linhas .linhas path {
@@ -3775,6 +3788,10 @@ body.index-page .hero-vidar-conteudo h1 {
   letter-spacing: 0.01em;
   line-height: 1.02;
   text-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+}
+
+body.index-page .hero-vidar-conteudo {
+  z-index: 2;
 }
 body.index-page .destaque-principal-section {
   margin-top: -6.5rem;
