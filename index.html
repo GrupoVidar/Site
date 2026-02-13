@@ -27,7 +27,7 @@
     />
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
-  <body>
+  <body class="index-page">
     <header>
       <div class="header-container">
         <div class="logo">
@@ -66,6 +66,28 @@
 
     <section class="hero-vidar-anim">
       <svg class="hero-vidar-linhas" viewBox="0 0 1200 700" aria-hidden="true">
+        <defs>
+          <linearGradient id="rio-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f3e7cd" />
+            <stop offset="45%" stop-color="#b5a084" />
+            <stop offset="100%" stop-color="#924b38" />
+          </linearGradient>
+          <linearGradient id="rio-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b5a084" />
+            <stop offset="50%" stop-color="#5b5c4c" />
+            <stop offset="100%" stop-color="#f3e7cd" />
+          </linearGradient>
+          <linearGradient id="rio-grad-3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#924b38" />
+            <stop offset="55%" stop-color="#b5a084" />
+            <stop offset="100%" stop-color="#f3e7cd" />
+          </linearGradient>
+          <linearGradient id="rio-grad-4" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#5b5c4c" />
+            <stop offset="50%" stop-color="#f3e7cd" />
+            <stop offset="100%" stop-color="#924b38" />
+          </linearGradient>
+        </defs>
         <g class="linhas">
           <path d="M80,520 C220,120 520,80 640,240 C760,410 980,380 1120,180" />
           <path
@@ -88,88 +110,54 @@
 
     <!-- Destaque Principal - Ocupa toda a largura -->
     <section class="destaque-principal-section">
-      <div class="destaque-principal" aria-labelledby="destaque-title">
-        <div class="imagem-container">
-          <!-- Mantive as imagens como slideshow (primeira ativa) -->
-          <div
-            class="slide-bg active"
-            style="
-              background-image: url(&quot;./assets/images/Projetos/Evento25-09.jpg&quot;);
-            "
-          ></div>
-          <div
-            class="slide-bg"
-            style="
-              background-image: url(&quot;./assets/images/Projetos/2evento25-09.jpg&quot;);
-            "
-          ></div>
-          <div
-            class="slide-bg"
-            style="
-              background-image: url(&quot;./assets/images/Projetos/1evento25-09.jpg&quot;);
-            "
-          ></div>
-          <div class="gradient-overlay"></div>
-        </div>
-
-        <!-- Conteúdo do Destaque Fotográfico: centralizado sobre a imagem -->
-        <div
-          class="conteudo-principal"
-          style="
-            text-align: center;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 920px;
-          "
-        >
-          <span
-            class="badge evento"
-            style="display: inline-block; margin-bottom: 0.6rem"
-            >Evento em Destaque</span
-          >
-          <h1
-            id="destaque-title"
-            style="font-size: clamp(2rem, 4vw, 3rem); margin: 0.25rem 0 0.6rem"
-          >
-            Lançamento de Obra Infanto Juvenil
-          </h1>
-          <p
-            class="descricao"
-            style="
-              font-size: clamp(1rem, 2vw, 1.15rem);
-              max-width: 760px;
-              margin: 0 auto 1rem;
-              opacity: 0.95;
-            "
-          >
+      <div class="destaque-editorial" aria-labelledby="destaque-title">
+        <div class="evento-principal">
+          <span class="badge evento">Evento em Destaque</span>
+          <h2 id="destaque-title">Lançamento de Obra Infanto Juvenil</h2>
+          <p class="descricao">
             Amanhã é o grande dia do lançamento dos livros "Invencionices
             floresteiras" e "En-cantações de um devir-mulher amazônida" e do
             documentário "Mulheres Amazônidas: tecelãs dos rios".
           </p>
 
-          <div
-            class="meta-info"
-            style="justify-content: center; gap: 18px; margin-bottom: 1rem"
-          >
-            <span class="data">📅 26 de Setembro 2024</span>
-            <span class="local">📍 UEA - Campus Central</span>
+          <div class="meta-info">
+            <span class="data">26 de Setembro de 2024</span>
+            <span class="local">UEA - Campus Central</span>
+            <span class="modalidade">Evento Presencial</span>
           </div>
 
-          <div class="botoes-acao" style="justify-content: center">
-            <a
-              href="#"
-              class="btn btn-primario"
-              style="padding: 14px 28px; font-size: 1rem"
-              >Participar do Evento</a
-            >
-            <a
-              href="#"
-              class="btn btn-secundario"
-              style="padding: 14px 28px; font-size: 1rem; margin-left: 10px"
-              >Saiba Mais</a
-            >
+          <div class="botoes-acao">
+            <a href="#" class="btn btn-primario">Participar do Evento</a>
+            <a href="#" class="btn btn-secundario">Programação Completa</a>
           </div>
         </div>
+
+        <aside class="proximos-eventos" aria-label="Próximos eventos">
+          <h3>Próximos Eventos</h3>
+          <ul class="lista-eventos">
+            <li>
+              <span class="evento-data">03 OUT</span>
+              <div class="evento-info">
+                <strong>Roda de Conversa em Educação e Amazônia</strong>
+                <p>Auditório ENS/UEA - 18h30</p>
+              </div>
+            </li>
+            <li>
+              <span class="evento-data">10 OUT</span>
+              <div class="evento-info">
+                <strong>Seminário de Arte e Ciência</strong>
+                <p>Sala Multimídia - 14h</p>
+              </div>
+            </li>
+            <li>
+              <span class="evento-data">24 OUT</span>
+              <div class="evento-info">
+                <strong>Encontro de Pesquisadoras do VIDAR</strong>
+                <p>Formato híbrido - 19h</p>
+              </div>
+            </li>
+          </ul>
+        </aside>
       </div>
     </section>
 
@@ -274,7 +262,7 @@
             <i class="fab fa-youtube"></i>
           </a>
         </div>
-        <p>&copy; 2023 Vidar em In-Tensões. Todos os direitos reservados.</p>
+        <p>© 2023 Vidar em In-Tensões. Todos os direitos reservados.</p>
       </div>
     </footer>
 
