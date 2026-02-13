@@ -4108,7 +4108,7 @@ body.index-page .frase-destaque.imagem .credito-foto {
 
 @media (max-width: 768px) {
   body.index-page .hero-vidar-anim {
-    min-height: 58vh !important;
+    min-height: 64vh !important;
     height: auto !important;
   }
 
@@ -4119,11 +4119,12 @@ body.index-page .frase-destaque.imagem .credito-foto {
   }
 
   body.index-page .hero-vidar-conteudo h1 {
-    font-size: clamp(2.5rem, 11vw, 3.6rem);
+    font-size: clamp(2rem, 9vw, 2.9rem);
+    line-height: 1.18;
   }
 
   body.index-page .destaque-principal-section {
-    margin-top: -2.5rem;
+    margin-top: 0.6rem;
     padding: 0 0.8rem;
   }
 
@@ -4189,7 +4190,12 @@ body.index-page .frase-destaque.imagem .credito-foto {
 
 @media (max-width: 480px) {
   body.index-page .hero-vidar-anim {
-    min-height: 52vh !important;
+    min-height: 60vh !important;
+  }
+
+  body.index-page .hero-vidar-conteudo h1 {
+    font-size: clamp(1.8rem, 8.5vw, 2.5rem);
+    line-height: 1.2;
   }
 
   body.index-page .destaque-principal {
@@ -4207,5 +4213,176 @@ body.index-page .frase-destaque.imagem .credito-foto {
   body.index-page .frase-destaque.imagem {
     height: 56vh;
     min-height: 360px;
+  }
+}
+
+/* =========================================================
+   21) HOME + SOBRE (NOVO TEMA)
+========================================================= */
+body.index-page .atalho-sobre-fixo {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  z-index: 3000;
+  padding: 0.72rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--bege-claro);
+  background: linear-gradient(135deg, var(--verde-cinza), #2f5960);
+  border: 1px solid rgba(243, 231, 205, 0.45);
+  box-shadow: 0 10px 26px rgba(25, 22, 22, 0.26);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.index-page .atalho-sobre-fixo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(25, 22, 22, 0.32);
+}
+
+body.sobre-page {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(181, 160, 132, 0.22), transparent 32%),
+    radial-gradient(circle at 88% 18%, rgba(47, 89, 96, 0.2), transparent 34%),
+    linear-gradient(180deg, #f9f3e8 0%, #efe4d0 100%);
+}
+
+body.sobre-page .container {
+  max-width: 1240px;
+  margin-top: 1.2rem;
+}
+
+body.sobre-page .titulo-secao {
+  color: var(--terra-queimada);
+  border-bottom-color: #2f5960;
+}
+
+body.sobre-page .sobre-hero {
+  background:
+    linear-gradient(125deg, rgba(47, 89, 96, 0.95) 0%, rgba(91, 92, 76, 0.94) 56%, rgba(146, 75, 56, 0.92) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(243, 231, 205, 0.38);
+  box-shadow: 0 20px 48px rgba(25, 22, 22, 0.24);
+}
+
+body.sobre-page .sobre-subtitulo {
+  color: rgba(243, 231, 205, 0.96);
+}
+
+body.sobre-page .timeline-section {
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.95), rgba(243, 231, 205, 0.9));
+  border: 1px solid rgba(91, 92, 76, 0.25);
+  box-shadow: 0 16px 36px rgba(25, 22, 22, 0.12);
+}
+
+body.sobre-page .timeline::before {
+  background: linear-gradient(180deg, #2f5960, var(--terra-queimada));
+}
+
+body.sobre-page .timeline-year {
+  background: linear-gradient(135deg, var(--terra-queimada), #7d4232);
+  color: var(--bege-claro);
+  border: 2px solid rgba(243, 231, 205, 0.72);
+}
+
+body.sobre-page .timeline-content {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(181, 160, 132, 0.42);
+  box-shadow: 0 8px 26px rgba(25, 22, 22, 0.12);
+}
+
+body.sobre-page .timeline-content h3 {
+  color: #2f5960;
+}
+
+body.sobre-page .linhas-pesquisa {
+  background:
+    linear-gradient(160deg, rgba(47, 89, 96, 0.9) 0%, rgba(91, 92, 76, 0.92) 52%, rgba(146, 75, 56, 0.9) 100%);
+  border: 1px solid rgba(243, 231, 205, 0.35);
+  box-shadow: 0 16px 40px rgba(25, 22, 22, 0.2);
+}
+
+body.sobre-page .linhas-pesquisa .titulo-secao {
+  color: var(--bege-claro);
+  border-bottom-color: rgba(243, 231, 205, 0.58);
+}
+
+body.sobre-page .linha-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(243, 231, 205, 0.42);
+}
+
+body.sobre-page .linha-card h3 {
+  color: #2f5960;
+}
+
+body.sobre-page .missao-visao {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(236, 225, 205, 0.92));
+  border: 1px solid rgba(146, 75, 56, 0.22);
+  box-shadow: 0 14px 34px rgba(25, 22, 22, 0.12);
+}
+
+body.sobre-page .pilar-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(91, 92, 76, 0.22);
+}
+
+body.sobre-page .pilar-card h3 {
+  color: var(--terra-queimada);
+}
+
+body.sobre-page .fundadoras-section {
+  background: linear-gradient(180deg, rgba(243, 231, 205, 0.92), rgba(230, 217, 194, 0.9));
+  border: 1px solid rgba(91, 92, 76, 0.22);
+  border-radius: 16px;
+  padding: 3rem 1.6rem;
+}
+
+body.sobre-page .card-fundadora {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(146, 75, 56, 0.18);
+}
+
+body.sobre-page .fundadora-conteudo h3 {
+  color: #2f5960;
+}
+
+body.sobre-page .parcerias-section {
+  background:
+    linear-gradient(130deg, rgba(47, 89, 96, 0.92) 0%, rgba(91, 92, 76, 0.9) 58%, rgba(146, 75, 56, 0.9) 100%);
+  border: 1px solid rgba(243, 231, 205, 0.36);
+  box-shadow: 0 16px 38px rgba(25, 22, 22, 0.2);
+}
+
+body.sobre-page .parcerias-section .titulo-secao {
+  color: var(--bege-claro);
+  border-bottom-color: rgba(243, 231, 205, 0.6);
+}
+
+body.sobre-page .parceiro-logo {
+  color: #264d57;
+  border: 1px solid rgba(243, 231, 205, 0.5);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+body.sobre-page .parceiro-logo:hover {
+  background: var(--terra-queimada);
+  color: #fff;
+}
+
+body.sobre-page .parcerias-texto {
+  color: rgba(243, 231, 205, 0.95);
+}
+
+@media (max-width: 768px) {
+  body.index-page .atalho-sobre-fixo {
+    right: 10px;
+    bottom: 12px;
+    font-size: 0.82rem;
+    padding: 0.62rem 0.88rem;
+  }
+
+  body.sobre-page .fundadoras-section {
+    padding: 2.2rem 1rem;
   }
 }
