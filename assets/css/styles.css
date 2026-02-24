@@ -4643,6 +4643,82 @@ body.index-page .vitrine-topicos li {
   color: #f8f1e2;
   font-size: 0.84rem;
 }
+
+body.index-page .pagina9-vitrine-home {
+  width: min(1280px, calc(100% - 2rem));
+  margin: 2rem auto 0;
+  padding: 1.7rem 1.6rem 1.8rem;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 8% 10%, rgba(243, 231, 205, 0.28), transparent 30%),
+    linear-gradient(130deg, #285864 0%, #406758 52%, #7f432f 100%);
+  border: 1px solid rgba(243, 231, 205, 0.34);
+  box-shadow: 0 20px 34px rgba(25, 22, 22, 0.25);
+}
+
+body.index-page .pagina9-header {
+  max-width: 900px;
+  margin: 0 auto 1.2rem;
+  text-align: center;
+}
+
+body.index-page .pagina9-header h2 {
+  font-family: "Playfair Display", serif;
+  color: #f8f1e2;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin-bottom: 0.4rem;
+}
+
+body.index-page .pagina9-header p {
+  color: rgba(248, 241, 226, 0.95);
+  font-size: 1rem;
+}
+
+body.index-page .pagina9-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 1.1rem;
+}
+
+body.index-page .pagina9-card {
+  background: rgba(250, 245, 234, 0.95);
+  border: 1px solid rgba(243, 231, 205, 0.56);
+  border-radius: 16px;
+  padding: 0.95rem;
+  box-shadow: 0 10px 20px rgba(25, 22, 22, 0.2);
+}
+
+body.index-page .pagina9-capa {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3e7cd;
+  margin-bottom: 0.72rem;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.index-page .pagina9-capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+body.index-page .pagina9-card h3 {
+  font-family: "Playfair Display", serif;
+  color: #6f3f29;
+  font-size: 1.08rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+body.index-page .pagina9-card p {
+  color: #1f5663;
+  font-size: 0.92rem;
+  margin: 0;
+}
 @media (max-width: 768px) {
   body.index-page .atalho-sobre-fixo {
     right: 10px;
@@ -4665,6 +4741,20 @@ body.index-page .vitrine-topicos li {
   body.index-page .vitrine-publicacoes-footer {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  body.index-page .pagina9-vitrine-home {
+    width: min(1280px, calc(100% - 1.4rem));
+    margin: 1.1rem auto 0;
+    padding: 1rem 0.85rem 1.1rem;
+  }
+
+  body.index-page .pagina9-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.index-page .pagina9-capa img {
+    height: 100%;
   }
 
   body.index-page .vitrine-publicacoes-header p {
@@ -4709,5 +4799,198 @@ body.index-page .vitrine-topicos li {
     font-size: 2.1rem !important;
     line-height: 1.2 !important;
     margin: 0.25rem auto 0 !important;
+  }
+}
+
+/* =========================================================
+   22) PROJETOS (TEMA VISUAL)
+========================================================= */
+body.projetos-page {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(146, 75, 56, 0.13), transparent 28%),
+    radial-gradient(circle at 88% 15%, rgba(31, 86, 99, 0.16), transparent 30%),
+    linear-gradient(180deg, #efe4d0 0%, #eadbc3 100%);
+}
+
+body.projetos-page .projetos-modais {
+  width: min(1280px, calc(100% - 2rem));
+  margin: 1.4rem auto 2.8rem;
+  padding: 1.8rem 1.4rem 2.2rem;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(243, 231, 205, 0.7), transparent 35%),
+    rgba(255, 251, 243, 0.93);
+  border: 1px solid rgba(118, 90, 66, 0.25);
+  box-shadow: 0 20px 40px rgba(30, 24, 20, 0.16);
+}
+
+body.projetos-page .modais-header {
+  padding: 1.4rem 1.3rem;
+  border-radius: 16px;
+  background: linear-gradient(
+    126deg,
+    rgba(37, 89, 103, 0.95) 0%,
+    rgba(73, 105, 89, 0.95) 52%,
+    rgba(129, 74, 53, 0.95) 100%
+  );
+  border: 1px solid rgba(243, 231, 205, 0.35);
+  box-shadow: 0 14px 28px rgba(25, 22, 22, 0.2);
+}
+
+body.projetos-page .header-content {
+  margin-left: 0;
+}
+
+body.projetos-page .header-content h2 {
+  color: #f8f1e2;
+}
+
+body.projetos-page .header-content p {
+  color: rgba(248, 241, 226, 0.94);
+}
+
+body.projetos-page .stat-item {
+  background: rgba(243, 231, 205, 0.94);
+  border: 1px solid rgba(243, 231, 205, 0.6);
+  box-shadow: 0 10px 22px rgba(25, 22, 22, 0.15);
+}
+
+body.projetos-page .stat-number {
+  color: #7e4530;
+}
+
+body.projetos-page .stat-label {
+  color: #355f67;
+}
+
+body.projetos-page .grid-projetos-modais {
+  gap: 1.6rem;
+}
+
+body.projetos-page .card-projeto-modal {
+  border-radius: 18px;
+  border: 1px solid rgba(111, 63, 41, 0.23);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(246, 237, 221, 0.97));
+  box-shadow: 0 12px 30px rgba(35, 27, 22, 0.14);
+}
+
+body.projetos-page .card-projeto-modal:hover {
+  box-shadow: 0 18px 34px rgba(31, 86, 99, 0.22);
+  border-color: rgba(31, 86, 99, 0.55);
+}
+
+body.projetos-page .projeto-thumbnail {
+  height: 320px;
+}
+
+body.projetos-page .thumbnail-overlay {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(31, 86, 99, 0.78) 0%,
+      rgba(126, 69, 48, 0.84) 100%
+    );
+}
+
+body.projetos-page .badge.status.andamento {
+  background: rgba(243, 231, 205, 0.95);
+  color: #1f5663;
+  border: 1px solid rgba(31, 86, 99, 0.24);
+}
+
+body.projetos-page .badge.priority {
+  background: rgba(126, 69, 48, 0.92);
+  color: #f8f1e2;
+}
+
+body.projetos-page .card-info h3,
+body.projetos-page .progress-info,
+body.projetos-page .membro-nome,
+body.projetos-page .info-card h4 {
+  color: #1f5663;
+}
+
+body.projetos-page .tag {
+  background: rgba(31, 86, 99, 0.14);
+  color: #355f67;
+  border: 1px solid rgba(31, 86, 99, 0.18);
+}
+
+body.projetos-page .progress-bar {
+  background: rgba(181, 160, 132, 0.42);
+}
+
+body.projetos-page .progress-fill {
+  background: linear-gradient(90deg, #1f5663 0%, #7e4530 100%);
+}
+
+body.projetos-page .modal-overlay {
+  background: rgba(19, 18, 17, 0.72);
+}
+
+body.projetos-page .modal-container {
+  border: 1px solid rgba(243, 231, 205, 0.45);
+  background: linear-gradient(180deg, #fffdf8 0%, #f9efe0 100%);
+}
+
+body.projetos-page .modal-header {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(243, 231, 205, 0.45), transparent 34%),
+    linear-gradient(132deg, rgba(31, 86, 99, 0.95) 0%, rgba(128, 75, 54, 0.95) 100%);
+  border-bottom-color: rgba(243, 231, 205, 0.35);
+}
+
+body.projetos-page .modal-header h2,
+body.projetos-page .modal-header p {
+  color: #f8f1e2;
+}
+
+body.projetos-page .metodo-item {
+  border: 1px solid rgba(31, 86, 99, 0.14);
+  background: linear-gradient(180deg, rgba(243, 231, 205, 0.88), rgba(233, 218, 193, 0.72));
+}
+
+body.projetos-page .metodo-item:hover {
+  background: linear-gradient(120deg, #1f5663, #7e4530);
+}
+
+body.projetos-page .info-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(111, 63, 41, 0.24);
+}
+
+body.projetos-page .modal-footer {
+  background:
+    linear-gradient(180deg, rgba(243, 231, 205, 0.93), rgba(233, 218, 193, 0.95));
+}
+
+@media (max-width: 768px) {
+  body.projetos-page .projetos-modais {
+    width: calc(100% - 1.2rem);
+    margin: 0.9rem auto 1.8rem;
+    padding: 1rem 0.9rem 1.3rem;
+    border-radius: 16px;
+  }
+
+  body.projetos-page .modais-header {
+    padding: 1rem;
+  }
+
+  body.projetos-page .header-content h2 {
+    font-size: 2rem;
+  }
+
+  body.projetos-page .projeto-thumbnail {
+    height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  body.projetos-page .header-content h2 {
+    font-size: 1.7rem;
+  }
+
+  body.projetos-page .card-info h3 {
+    font-size: 1.12rem;
   }
 }
