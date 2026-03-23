@@ -1,89 +1,158 @@
-﻿# Site VIDAR em In-Tensões
+# Site VIDAR em In-Tensões
 
-Snapshot de status técnico e de conteúdo do site do Grupo de Estudos e Pesquisas VIDAR.
+Documentação operacional do site institucional do Grupo de Estudos e Pesquisas VIDAR.
 
-## Status atual (02/03/2026)
+## Estado atual
 
-- Estado geral: site estático funcional em HTML/CSS/JS.
-- Páginas principais publicadas: 5 (`index.html`, `publicacoes.html`, `projetos.html`, `pesquisadores.html`, `sobre.html`).
-- Base de código atual: `main` no commit `5bd290e`.
-- Build/deploy: sem pipeline automatizado no repositório (execução direta no navegador ou com servidor local simples).
+- Tipo de projeto: site estático em `HTML`, `CSS` e `JavaScript` puro.
+- Páginas principais: `index.html`, `publicacoes.html`, `projetos.html`, `pesquisadores.html` e `sobre.html`.
+- Estilos centralizados em `assets/css/styles.css`.
+- Scripts centralizados em `assets/js/script.js`.
+- Assets locais atuais:
+  - `51` arquivos em `assets/images/`
+  - `28` arquivos em `assets/Arquivos/`
+- Dependências externas carregadas por CDN:
+  - `Font Awesome`
+  - `Google Fonts` (`Dancing Script` e `Playfair Display`)
 
-## Estrutura e conteúdo por página
+## Estrutura do repositório
 
-### 1) Início (`index.html`)
+```text
+.
+|-- index.html
+|-- publicacoes.html
+|-- projetos.html
+|-- pesquisadores.html
+|-- sobre.html
+|-- README.md
+|-- agent.md
+`-- assets/
+    |-- css/
+    |   `-- styles.css
+    |-- js/
+    |   `-- script.js
+    |-- images/
+    |   |-- Projetos/
+    |   |-- home/
+    |   |-- guia-page9/
+    |   |-- parcerias/
+    |   `-- arquivos de identidade visual e pesquisadores
+    `-- Arquivos/
+        |-- Projetos/
+        |-- Publicacoes/
+        `-- Sobre/
+```
 
-- Hero animado com linhas SVG e efeito de ondas em `canvas` reagindo ao mouse.
-- Bloco de evento em destaque com chamadas para ação.
-- Vitrine de publicações (2 destaques com botão para PDF).
-- Vitrine de obras autorais do grupo (3 cards).
-- Seção “Nossos escritos” com 4 cards e links externos.
-- Seção de frase destaque com imagem.
-- Atalho fixo “Conheça o Grupo”.
+## Estrutura atual das páginas
 
-### 2) Publicações (`publicacoes.html`)
+### `index.html`
 
-- Listagem de **24 publicações** (`.publicacao-item`).
-- Busca em tempo real por título com contador e botão de limpar.
-- Cards com referência, resumo e links para PDF/periódico.
-- Seção de newsletter no final da página.
+- Hero principal com animação de ondas em `canvas` e interação por mouse.
+- Bloco de destaque principal com chamada para evento.
+- Vitrine de publicações em destaque.
+- Seção "Obras autorais do grupo".
+- Seção "Nossos escritos".
+- Bloco de frase destaque com imagem.
+- Rodapé institucional.
 
-### 3) Projetos (`projetos.html`)
+### `publicacoes.html`
 
-- Área de projetos com **2 cards principais**.
-- Modal dinâmico com detalhes completos do projeto (objetivos, equipe, metadados).
-- Ações para abrir arquivos relacionados em PDF.
+- Seção principal "Produções Acadêmicas".
+- `24` cards `.publicacao-item`.
+- Busca em tempo real por título.
+- Contador de resultados e botão de limpar busca.
+- Bloco de newsletter.
+- Rodapé institucional.
 
-### 4) Pesquisadores (`pesquisadores.html`)
+### `projetos.html`
 
-- Grade com **14 perfis** de pesquisadoras(es).
-- Cada perfil inclui foto, área, mini-bio e links de currículo (Lattes/ORCID quando disponível).
-- Inclui perfil da pesquisadora Alcidéia Margareth Trancoso.
+- Cabeçalho de projetos com estatísticas visuais.
+- Grid com `2` cards `.card-projeto-modal`.
+- Modal detalhado de projeto com descrição, objetivos, metodologia, metadados e equipe.
+- Rodapé institucional.
 
-### 5) Sobre (`sobre.html`)
+### `pesquisadores.html`
 
-- Hero institucional com apresentação do grupo.
-- Timeline histórica (2018–2026).
-- Linhas de pesquisa, compromissos e participação.
-- Cards de co-criadoras.
-- Blocos de fomento/parcerias com logos.
-- Seção de obras e mídias + newsletter.
+- Seção "Nossos Pesquisadores".
+- Grid com `14` perfis `.pesquisador`.
+- Perfis com foto, área, bio e links externos como Lattes e ORCID.
+- Rodapé institucional.
 
-## Recursos e arquivos
+### `sobre.html`
 
-- CSS principal único: `assets/css/styles.css`.
-- JavaScript principal único: `assets/js/script.js`.
-- Imagens locais: **51** arquivos em `assets/images/`.
-- PDFs locais: **28** arquivos em `assets/Arquivos/`.
+- Hero institucional.
+- Timeline com `4` itens.
+- Seção de linhas de pesquisa com `3` cards.
+- Seções de compromisso/participação com `6` cards `.pilar-card`.
+- Seção "Co-criadoras" com `3` cards.
+- Seção de parcerias, fomento e materiais.
+- Seção "Obras e Mídias".
+- Newsletter.
+- Rodapé institucional.
 
-## Funcionalidades JavaScript implementadas
+## Funcionalidades implementadas em `assets/js/script.js`
 
-- Menu responsivo (hambúrguer).
+- Menu responsivo com hambúrguer.
+- Validação básica do formulário de newsletter.
+- Destaque visual em cards da home.
+- Atualização automática do ano no rodapé.
+- Slideshow da home.
+- Animações com `IntersectionObserver` na página Sobre.
+- Garantia de visibilidade de elementos em mobile.
 - Busca dinâmica em publicações.
 - Modal de projetos.
-- Animações por `IntersectionObserver` na página Sobre.
-- Ondas interativas no hero da Home.
-- Newsletter com validação básica de e-mail.
-- Controle de visibilidade do header na Home conforme posição de scroll/hero.
+- Ondas interativas no hero da home.
+- Controle de visibilidade do header na home.
 
-## Pendências técnicas identificadas
+## Pontos de atenção atuais
 
-- Existe lógica duplicada de controle do header na Home (mais de um `DOMContentLoaded` e mais de um `IntersectionObserver` para o mesmo comportamento), o que aumenta risco de bugs de responsividade no mobile.
-- CSS centralizado em arquivo único extenso, com muitos blocos responsivos e sobrescritas, o que dificulta manutenção.
-- Há links de placeholder (`href="#"`) em partes de conteúdo que ainda precisam URL final.
-- Link quebrado detectado: `assets/Arquivos/Projetos/relatorio-cartografias.pdf` (referenciado em `projetos.html`, arquivo não existe no repositório).
+- O arquivo `assets/js/script.js` ainda possui múltiplos `DOMContentLoaded` e lógica duplicada para o controle do header da home, o que aumenta o risco de regressão.
+- O arquivo `assets/css/styles.css` concentra toda a responsividade do site e é extenso, com muitos blocos `@media`, o que exige cuidado em qualquer alteração visual.
+- Há link referenciando `./assets/Arquivos/Projetos/relatorio-cartografias.pdf` em `projetos.html`, mas esse arquivo não está presente no repositório.
+- O projeto ainda não possui pipeline de build, lint, testes automatizados ou deploy versionado no repositório.
 
-## Como executar localmente
+## Execução local
 
-### Opção 1: VS Code Live Server
+### Opção 1: abrir direto no navegador
 
-- Abra a pasta do projeto no VS Code.
-- Execute “Open with Live Server” no `index.html`.
+- Abra `index.html` no navegador.
 
-### Opção 2: Python
+### Opção 2: servidor local com Python
 
 ```bash
 python -m http.server 8000
 ```
 
-- Acesse `http://localhost:8000`.
+Acesse `http://localhost:8000`.
+
+## Testes automatizados
+
+O projeto agora possui uma suíte automatizada versionada com `Playwright`.
+
+### O que a suíte cobre hoje
+
+- carregamento das `5` páginas principais
+- verificação básica de header e footer
+- checagem de overflow horizontal em desktop e mobile
+- abertura e fechamento do menu mobile
+- busca de publicações
+- abertura e fechamento do modal de projetos
+
+### Comandos
+
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+Comandos adicionais:
+
+- `npm run test:headed`
+- `npm run test:ui`
+- `npm run test:debug`
+
+## Manutenção
+
+- Use `agent.md` como guia operacional para entender a arquitetura atual do site.
+- Toda alteração futura deve vir acompanhada de testes, com prioridade para verificação de responsividade e regressão visual.
