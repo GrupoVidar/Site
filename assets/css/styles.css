@@ -2008,6 +2008,16 @@ footer {
   align-items: center;
 }
 
+.footer-copyright {
+  margin-top: 0.6rem;
+}
+
+.footer-credito-dev {
+  margin-top: 0.15rem;
+  font-size: 0.92rem;
+  opacity: 0.92;
+}
+
 .social-links {
   display: flex;
   gap: 1.5rem;
@@ -2081,9 +2091,14 @@ footer {
     font-size: 1.1rem !important;
   }
 
-  .footer-content p:last-child {
+  .footer-copyright {
     font-size: 0.8rem !important;
     margin-top: 1rem !important;
+  }
+
+  .footer-credito-dev {
+    font-size: 0.8rem !important;
+    margin-top: 0.25rem !important;
   }
 }
 
@@ -2117,7 +2132,11 @@ footer {
     font-size: 1rem !important;
   }
 
-  .footer-content p:last-child {
+  .footer-copyright {
+    font-size: 0.75rem !important;
+  }
+
+  .footer-credito-dev {
     font-size: 0.75rem !important;
   }
 }
