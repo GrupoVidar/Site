@@ -3801,9 +3801,9 @@ body.index-page .destaque-principal-section {
 body.index-page .destaque-editorial {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
-  gap: 1.2rem;
-  padding: 1.4rem;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  padding: 1.1rem;
   border-radius: 24px;
   border: 1px solid rgba(243, 231, 205, 0.42);
   background:
@@ -3822,113 +3822,155 @@ body.index-page .destaque-editorial::before {
   pointer-events: none;
 }
 
-body.index-page .evento-principal {
+body.index-page .eventos-home-header {
   position: relative;
   z-index: 1;
-  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
   border-radius: 18px;
   background: rgba(25, 22, 22, 0.26);
   border: 1px solid rgba(243, 231, 205, 0.2);
 }
 
-body.index-page .evento-principal h2 {
+body.index-page .eventos-home-header-copy {
+  min-width: 0;
+}
+
+body.index-page .eventos-home-header h2 {
   color: var(--bege-claro);
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.7rem, 3.2vw, 2.7rem);
-  margin: 0.35rem 0 0.8rem;
-  line-height: 1.15;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  margin: 0.15rem 0 0.4rem;
+  line-height: 1.1;
 }
 
-body.index-page .evento-principal .descricao {
-  margin: 0 0 1.1rem;
-  max-width: 68ch;
+body.index-page .eventos-home-header .descricao {
+  margin: 0;
+  max-width: 58ch;
   text-align: left;
-  color: rgba(255, 255, 255, 0.95);
-  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
-body.index-page .evento-principal .meta-info {
-  justify-content: flex-start;
-  margin-bottom: 1rem;
+body.index-page .eventos-home-acoes {
+  flex-shrink: 0;
+  justify-content: flex-end;
 }
 
-body.index-page .evento-principal .meta-info span {
-  color: var(--bege-claro);
-  background: rgba(91, 92, 76, 0.4);
-  border-color: rgba(243, 231, 205, 0.3);
+body.index-page .eventos-home-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.95rem;
 }
 
-body.index-page .evento-principal .botoes-acao {
-  justify-content: flex-start;
+body.index-page .evento-card-home {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.8rem;
+  border-radius: 18px;
+  background: rgba(243, 231, 205, 0.94);
+  border: 1px solid rgba(91, 92, 76, 0.25);
+  box-shadow: 0 14px 28px rgba(25, 22, 22, 0.12);
 }
 
-body.index-page .evento-principal .btn-secundario {
+body.index-page .evento-card-imagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 118px;
+  width: 118px;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 160px;
+  background: linear-gradient(180deg, #f6efe5 0%, #efe2d2 100%);
+}
+
+body.index-page .evento-card-imagem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+body.index-page .evento-card-conteudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.55rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+body.index-page .evento-card-conteudo h3 {
+  color: var(--terra-queimada);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.05rem, 1.55vw, 1.35rem);
+  margin: 0;
+  line-height: 1.18;
+}
+
+body.index-page .evento-card-tag {
+  align-self: flex-start;
+  margin-bottom: 0.1rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(53, 95, 103, 0.12);
+  color: var(--verde-cinza);
+  border: 1px solid rgba(53, 95, 103, 0.18);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+body.index-page .evento-card-titulo {
+  color: var(--preto-elegante);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+body.index-page .evento-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.15rem;
+}
+
+body.index-page .evento-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  color: #4f4f46;
+  border: 1px solid rgba(181, 160, 132, 0.35);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+body.index-page .eventos-home-header .btn-secundario {
   color: var(--bege-claro);
   border-color: rgba(243, 231, 205, 0.7);
   background: rgba(25, 22, 22, 0.25);
+  min-width: auto;
+  padding: 0.68rem 1rem;
+  font-size: 0.88rem;
 }
 
-body.index-page .evento-principal .btn-secundario:hover {
+body.index-page .eventos-home-header .btn-secundario:hover {
   background: rgba(243, 231, 205, 0.9);
   color: var(--preto-elegante);
-}
-
-body.index-page .proximos-eventos {
-  position: relative;
-  z-index: 1;
-  padding: 1.1rem;
-  border-radius: 18px;
-  background: rgba(243, 231, 205, 0.92);
-  border: 1px solid rgba(91, 92, 76, 0.25);
-}
-
-body.index-page .proximos-eventos h3 {
-  color: var(--terra-queimada);
-  font-family: "Playfair Display", serif;
-  font-size: 1.35rem;
-  margin-bottom: 0.85rem;
-}
-
-body.index-page .lista-eventos {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-body.index-page .lista-eventos li {
-  display: grid;
-  grid-template-columns: 74px 1fr;
-  gap: 0.75rem;
-  align-items: center;
-  padding: 0.65rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(181, 160, 132, 0.35);
-}
-
-body.index-page .evento-data {
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.8rem;
-  color: var(--verde-cinza);
-  background: rgba(91, 92, 76, 0.14);
-  border-radius: 10px;
-  padding: 0.5rem 0.35rem;
-}
-
-body.index-page .evento-info strong {
-  display: block;
-  color: var(--preto-elegante);
-  font-size: 0.95rem;
-  line-height: 1.25;
-  margin-bottom: 0.2rem;
-}
-
-body.index-page .evento-info p {
-  color: #4f4f46;
-  font-size: 0.84rem;
-  line-height: 1.2;
 }
 
 body.index-page .destaque-principal {
@@ -4097,8 +4139,13 @@ body.index-page .frase-destaque.imagem .credito-foto {
     margin-top: -4.8rem;
   }
 
-  body.index-page .destaque-editorial {
-    grid-template-columns: 1fr;
+  body.index-page .eventos-home-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  body.index-page .eventos-home-header {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   body.index-page .destaque-principal {
@@ -4133,19 +4180,43 @@ body.index-page .frase-destaque.imagem .credito-foto {
     border-radius: 16px;
   }
 
-  body.index-page .evento-principal,
-  body.index-page .proximos-eventos {
+  body.index-page .eventos-home-header,
+  body.index-page .evento-card-home {
     border-radius: 14px;
-    padding: 0.95rem;
+    padding: 0.85rem;
   }
 
-  body.index-page .evento-principal .botoes-acao {
+  body.index-page .eventos-home-acoes,
+  body.index-page .eventos-home-header .botoes-acao {
     align-items: stretch;
+    width: 100%;
   }
 
-  body.index-page .lista-eventos li {
-    grid-template-columns: 64px 1fr;
-    padding: 0.55rem;
+  body.index-page .eventos-home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.index-page .evento-card-imagem {
+    flex: 0 0 104px;
+    width: 104px;
+    height: 144px;
+  }
+
+  body.index-page .evento-card-conteudo h3 {
+    font-size: 1.2rem;
+  }
+
+  body.index-page .evento-card-home {
+    align-items: center;
+  }
+
+  body.index-page .evento-card-conteudo {
+    justify-content: center;
+  }
+
+  body.index-page .evento-card-imagem img {
+    width: 100%;
+    height: 100%;
   }
 
   body.index-page .destaque-principal {
@@ -4185,6 +4256,19 @@ body.index-page .frase-destaque.imagem .credito-foto {
   body.index-page .frase-destaque.imagem {
     height: 62vh;
     min-height: 420px;
+  }
+}
+
+@media (max-width: 560px) {
+  body.index-page .evento-card-home {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.index-page .evento-card-imagem {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 210px;
   }
 }
 
