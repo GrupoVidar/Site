@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos - Vidar em In-Tensões</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="./assets/images/LogoVidar1.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body class="eventos-page">
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <a href="./index.html" class="logo">
+            <img
+              src="./assets/images/LogoVidar1.ico"
+              alt="Vidar em In-Tensões - Voltar para página inicial"
+              class="logo-icon"
+            />
+            <span class="logo-text-desktop">Vidar em In-Tensões</span>
+            <span class="logo-text-mobile">Vidar em In-Tensões</span>
+          </a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav>
+          <ul id="menu">
+            <li><a href="./index.html">Início</a></li>
+            <li><a href="./eventos.html" class="ativo">Eventos</a></li>
+            <li><a href="./publicacoes.html">Publicações</a></li>
+            <li><a href="./projetos.html">Projetos</a></li>
+            <li><a href="./pesquisadores.html">Pesquisadores</a></li>
+            <li><a href="./sobre.html">Sobre</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="eventos-main">
+      <section class="eventos-hero">
+        <div class="eventos-hero-copy">
+          <span class="eventos-kicker">Memória viva do grupo</span>
+          <h1>Eventos do VIDAR</h1>
+          <p class="eventos-hero-intro">
+            Esta página reúne a circulação do grupo entre encontros, defesas,
+            inaugurações e programações em construção, mantendo o histórico do
+            que já passou, do que acontece agora e do que ainda vai chegar.
+          </p>
+
+          <div class="eventos-hero-acoes">
+            <a href="#acervo-eventos" class="btn btn-primario"
+              >Ver acervo completo</a
+            >
+          </div>
+        </div>
+
+        <div class="eventos-hero-resumo">
+          <div class="evento-resumo-card">
+            <span class="evento-resumo-rotulo">Passados</span>
+            <strong>01</strong>
+            <p>Registros concluídos e já incorporados à memória do grupo.</p>
+          </div>
+          <div class="evento-resumo-card destaque">
+            <span class="evento-resumo-rotulo">Atuais</span>
+            <strong>02</strong>
+            <p>Defesas e encontros em curso no calendário mais recente.</p>
+          </div>
+          <div class="evento-resumo-card">
+            <span class="evento-resumo-rotulo">Futuros</span>
+            <strong>01</strong>
+            <p>Agenda pública preparada para receber novas programações.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="eventos-painel" aria-labelledby="painel-eventos-title">
+        <div class="eventos-painel-header">
+          <span class="badge evento">Agenda VIDAR</span>
+          <h2 id="painel-eventos-title">Leitura rápida do momento</h2>
+          <p>
+            Um recorte para localizar o que o grupo celebrou, o que acontece no
+            presente e o que segue em composição.
+          </p>
+        </div>
+
+        <div class="eventos-fases-grid">
+          <article class="fase-evento-card fase-passado">
+            <div class="fase-evento-topo">
+              <span class="fase-evento-chip">Passado recente</span>
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>09 mar 2026</h3>
+            <p>
+              Inauguração do CEIVA na Escola Fabio de Lucena e no CMAE,
+              ampliando as conexões do grupo com currículos vivos da Amazônia.
+            </p>
+          </article>
+
+          <article class="fase-evento-card fase-atual">
+            <div class="fase-evento-topo">
+              <span class="fase-evento-chip">Hoje</span>
+              <i class="fas fa-book-open-reader"></i>
+            </div>
+            <h3>31 mar 2026, 10h30</h3>
+            <p>
+              Defesa de dissertação de Hannyn Barbara Alves Garcia no
+              Laboratório MathGreen, ENS/UEA.
+            </p>
+          </article>
+
+          <article class="fase-evento-card fase-atual">
+            <div class="fase-evento-topo">
+              <span class="fase-evento-chip">Hoje</span>
+              <i class="fas fa-feather-pointed"></i>
+            </div>
+            <h3>31 mar 2026, 16h</h3>
+            <p>
+              Defesa de dissertação de Ana Maria Xavier da Silva Neta no Museu
+              da Cidade de Manaus.
+            </p>
+          </article>
+
+          <article class="fase-evento-card fase-futuro">
+            <div class="fase-evento-topo">
+              <span class="fase-evento-chip">Em composição</span>
+              <i class="fas fa-calendar-plus"></i>
+            </div>
+            <h3>Próximas agendas 2026</h3>
+            <p>
+              A página permanece aberta para novos encontros, rodas de conversa,
+              lançamentos e futuras bancas do grupo.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="eventos-linha" aria-labelledby="linha-eventos-title">
+        <h2 id="linha-eventos-title" class="titulo-secao">
+          Linha de acontecimentos
+        </h2>
+
+        <div class="eventos-linha-trilha">
+          <article class="linha-agenda-item passado">
+            <span class="linha-agenda-data">09/03/2026</span>
+            <div class="linha-agenda-conteudo">
+              <h3>Inauguração do CEIVA</h3>
+              <p>
+                Centro de Investigação de Currículos Vivos da Amazônia, em
+                articulação com escola, território e práticas coletivas.
+              </p>
+            </div>
+          </article>
+
+          <article class="linha-agenda-item atual">
+            <span class="linha-agenda-data">31/03/2026</span>
+            <div class="linha-agenda-conteudo">
+              <h3>Defesa de Hannyn Barbara Alves Garcia</h3>
+              <p>
+                Corpo em contaminações: entre imagens, sensações e uma
+                esquizo-ciência.
+              </p>
+            </div>
+          </article>
+
+          <article class="linha-agenda-item atual">
+            <span class="linha-agenda-data">31/03/2026</span>
+            <div class="linha-agenda-conteudo">
+              <h3>Defesa de Ana Maria Xavier da Silva Neta</h3>
+              <p>
+                Escritas em ensaio-ramificações: composições de uma docência
+                mulher em amazônias.
+              </p>
+            </div>
+          </article>
+
+          <article class="linha-agenda-item futuro">
+            <span class="linha-agenda-data">Em atualização</span>
+            <div class="linha-agenda-conteudo">
+              <h3>Próximas inserções do calendário</h3>
+              <p>
+                O espaço está preparado para receber novas datas oficiais do
+                grupo assim que forem publicadas.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="acervo-eventos"
+        class="eventos-acervo"
+        aria-labelledby="acervo-eventos-title"
+      >
+        <div class="eventos-acervo-header">
+          <h2 id="acervo-eventos-title">Acervo de eventos</h2>
+          <p>
+            Um painel editorial para navegar entre registros passados, agenda
+            atual e o campo aberto dos próximos encontros.
+          </p>
+        </div>
+
+        <div class="eventos-acervo-grid">
+          <article class="evento-historico-card passado">
+            <div class="evento-historico-media">
+              <img
+                src="./assets/images/home/Eventos/inauguração ceiva.png"
+                alt="Registro da inauguração do CEIVA"
+              />
+              <span class="evento-status passado">Evento realizado</span>
+            </div>
+            <div class="evento-historico-body">
+              <span class="evento-tipo">Encontro CEIVA</span>
+              <h3>Inauguração do CEIVA</h3>
+              <p class="evento-titulo-secundario">
+                Centro de Investigação de Currículos Vivos da Amazônia.
+              </p>
+              <ul class="evento-meta-lista">
+                <li>09/03/2026</li>
+                <li>Escola Fabio de Lucena e CMAE</li>
+                <li>Articulação com currículos vivos amazônicos</li>
+              </ul>
+              <p class="evento-descricao-curta">
+                Um marco de expansão institucional que aproxima o VIDAR de
+                escolas, coletivos e territórios de criação.
+              </p>
+            </div>
+          </article>
+
+          <article class="evento-historico-card atual">
+            <div class="evento-historico-media">
+              <img
+                src="./assets/images/home/Eventos/Defesa de Dissertação Hannyn Barbara Alves Garcia.png"
+                alt="Card da defesa de dissertação de Hannyn Barbara Alves Garcia"
+              />
+              <span class="evento-status atual">Em destaque agora</span>
+            </div>
+            <div class="evento-historico-body">
+              <span class="evento-tipo">Defesa de Dissertação</span>
+              <h3>Hannyn Barbara Alves Garcia</h3>
+              <p class="evento-titulo-secundario">
+                Corpo em contaminações: entre imagens, sensações e uma
+                esquizo-ciência.
+              </p>
+              <ul class="evento-meta-lista">
+                <li>31/03/2026 às 10h30</li>
+                <li>Laboratório MathGreen, ENS - UEA</li>
+                <li>Evento presencial</li>
+              </ul>
+              <p class="evento-descricao-curta">
+                Defesa conectada às pesquisas do grupo sobre corpo, criação e
+                modos inventivos de conhecer.
+              </p>
+            </div>
+          </article>
+
+          <article class="evento-historico-card atual">
+            <div class="evento-historico-media">
+              <img
+                src="./assets/images/home/Eventos/Defesa de Dissertação Ana Maria Xavier da Silva Neta.png"
+                alt="Card da defesa de dissertação de Ana Maria Xavier da Silva Neta"
+              />
+              <span class="evento-status atual">Agenda de hoje</span>
+            </div>
+            <div class="evento-historico-body">
+              <span class="evento-tipo">Defesa de Dissertação</span>
+              <h3>Ana Maria Xavier da Silva Neta</h3>
+              <p class="evento-titulo-secundario">
+                Escritas em ensaio-ramificações: composições de uma docência
+                mulher em amazônias.
+              </p>
+              <ul class="evento-meta-lista">
+                <li>31/03/2026 às 16h</li>
+                <li>Museu da Cidade de Manaus - Centro</li>
+                <li>Evento presencial</li>
+              </ul>
+              <p class="evento-descricao-curta">
+                Uma agenda que reforça o vínculo do grupo com escritas
+                autobiográficas, docência e experimentação amazônica.
+              </p>
+            </div>
+          </article>
+
+          <article class="evento-historico-card futuro">
+            <div class="evento-historico-media evento-media-placeholder">
+              <div class="evento-placeholder-conteudo">
+                <span class="evento-placeholder-rotulo">Futuro aberto</span>
+                <strong>Novos encontros</strong>
+                <p>Rodas, bancas, lançamentos e programações a divulgar.</p>
+              </div>
+              <span class="evento-status futuro">Agenda em atualização</span>
+            </div>
+            <div class="evento-historico-body">
+              <span class="evento-tipo">Próximas inserções</span>
+              <h3>Calendário em construção</h3>
+              <p class="evento-titulo-secundario">
+                Espaço reservado para as próximas datas oficiais do grupo.
+              </p>
+              <ul class="evento-meta-lista">
+                <li>Datas a confirmar</li>
+                <li>Manaus e redes parceiras</li>
+                <li>Atualização contínua da agenda pública</li>
+              </ul>
+              <p class="evento-descricao-curta">
+                A estrutura da página já está pronta para receber novos eventos
+                assim que o grupo publicar as próximas programações.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="eventos-canais" aria-labelledby="eventos-canais-title">
+        <div class="eventos-canais-copy">
+          <h2 id="eventos-canais-title">Onde acompanhar as próximas datas</h2>
+          <p>
+            Enquanto a agenda futura é alimentada, o grupo mantém circulação
+            pelas redes, pelo guia institucional e pelas programações
+            compartilhadas com suas parcerias.
+          </p>
+        </div>
+
+        <div class="eventos-canais-links">
+          <a
+            href="https://www.instagram.com/vidaremin_tensoes/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="canal-evento-link"
+          >
+            <i class="fab fa-instagram"></i>
+            <span>@vidaremin_tensoes</span>
+          </a>
+          <a
+            href="https://www.youtube.com/@VidaremIn-Tens%C3%B5es"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="canal-evento-link"
+          >
+            <i class="fab fa-youtube"></i>
+            <span>Canal do grupo</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <section id="contato" class="newsletter">
+      <h2>Receba as próximas movimentações do grupo</h2>
+      <p>
+        Inscreva-se para acompanhar publicações, eventos, defesas e outras
+        programações do VIDAR.
+      </p>
+      <form class="form-newsletter" id="newsletterForm">
+        <input type="email" placeholder="Seu melhor e-mail" required />
+        <button type="submit">Inscrever</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="logo-rodape">
+          <img
+            src="./assets/images/LogoVidar1.ico"
+            alt="Vidar em In-Tensões"
+            class="logo-frase"
+          />
+        </div>
+        <p>
+          Grupo de Estudos e Pesquisa do Programa de Pós-Graduação em Educação
+          em Ciências na Amazônia da Universidade do Estado do Amazonas
+        </p>
+        <p>Endereço: Av. Djalma Batista, 2470 - Chapada, Manaus - AM</p>
+        <div class="social-links">
+          <a
+            href="https://www.instagram.com/vidaremin_tensoes/"
+            target="_blank"
+            class="social-icon"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@VidaremIn-Tens%C3%B5es"
+            target="_blank"
+            class="social-icon"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+        <p class="footer-copyright">
+          &copy; 2026 Vidar em In-Tensões. Todos os direitos reservados.
+        </p>
+        <p class="footer-credito-dev">Desenvolvido por Felipe Robert</p>
+      </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

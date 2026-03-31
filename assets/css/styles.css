@@ -5097,3 +5097,615 @@ body.projetos-page .modal-footer {
     font-size: 1.12rem;
   }
 }
+
+/* =========================================================
+   23) EVENTOS (TEMA VISUAL)
+========================================================= */
+body.eventos-page {
+  background:
+    radial-gradient(circle at top left, rgba(146, 75, 56, 0.15), transparent 26%),
+    radial-gradient(circle at 85% 12%, rgba(31, 86, 99, 0.18), transparent 22%),
+    linear-gradient(180deg, #f4ead8 0%, #efe2cb 52%, #f8f2e8 100%);
+}
+
+body.eventos-page .eventos-main {
+  width: min(1280px, calc(100% - 2rem));
+  margin: 1.4rem auto 3rem;
+  display: grid;
+  gap: 1.4rem;
+}
+
+body.eventos-page .eventos-hero,
+body.eventos-page .eventos-painel,
+body.eventos-page .eventos-linha,
+body.eventos-page .eventos-acervo,
+body.eventos-page .eventos-canais {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(111, 63, 41, 0.18);
+  background:
+    radial-gradient(circle at top left, rgba(243, 231, 205, 0.72), transparent 38%),
+    rgba(255, 252, 247, 0.94);
+  box-shadow: 0 18px 38px rgba(33, 25, 20, 0.14);
+}
+
+body.eventos-page .eventos-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+  gap: 1.6rem;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(243, 231, 205, 0.2), transparent 32%),
+    linear-gradient(135deg, rgba(31, 86, 99, 0.97) 0%, rgba(73, 105, 89, 0.95) 48%, rgba(126, 69, 48, 0.97) 100%);
+  border-color: rgba(243, 231, 205, 0.22);
+}
+
+body.eventos-page .eventos-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.95rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: rgba(243, 231, 205, 0.16);
+  border: 1px solid rgba(243, 231, 205, 0.28);
+  color: #f8f1e2;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+body.eventos-page .eventos-hero h1 {
+  margin: 0 0 0.9rem;
+  color: #f8f1e2;
+  font-size: clamp(2.6rem, 4vw, 4.4rem);
+  line-height: 0.98;
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
+
+body.eventos-page .eventos-hero-intro {
+  max-width: 46rem;
+  color: rgba(248, 241, 226, 0.92);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+body.eventos-page .eventos-hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+body.eventos-page .btn-primario {
+  background: #f3e7cd;
+  color: #1f5663;
+}
+
+body.eventos-page .btn-primario:hover {
+  background: #fff6e6;
+  color: #164450;
+}
+
+body.eventos-page .btn-secundario {
+  border-color: rgba(248, 241, 226, 0.85);
+  color: #f8f1e2;
+}
+
+body.eventos-page .btn-secundario:hover {
+  background: #f8f1e2;
+  color: #1f5663;
+}
+
+body.eventos-page .eventos-hero-resumo {
+  display: grid;
+  gap: 0.9rem;
+  align-content: center;
+}
+
+body.eventos-page .evento-resumo-card {
+  padding: 1.2rem 1.15rem;
+  border-radius: 20px;
+  background: rgba(255, 252, 247, 0.13);
+  border: 1px solid rgba(243, 231, 205, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+body.eventos-page .evento-resumo-card.destaque {
+  background: rgba(243, 231, 205, 0.92);
+  border-color: rgba(243, 231, 205, 0.58);
+}
+
+body.eventos-page .evento-resumo-card strong {
+  display: block;
+  margin: 0.35rem 0 0.1rem;
+  font-size: 2.35rem;
+  line-height: 1;
+  color: #f8f1e2;
+}
+
+body.eventos-page .evento-resumo-card.destaque strong,
+body.eventos-page .evento-resumo-card.destaque .evento-resumo-rotulo,
+body.eventos-page .evento-resumo-card.destaque p {
+  color: #1f5663;
+}
+
+body.eventos-page .evento-resumo-rotulo {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(248, 241, 226, 0.84);
+}
+
+body.eventos-page .evento-resumo-card p {
+  color: rgba(248, 241, 226, 0.9);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+body.eventos-page .eventos-painel,
+body.eventos-page .eventos-linha,
+body.eventos-page .eventos-acervo,
+body.eventos-page .eventos-canais {
+  padding: 1.8rem;
+}
+
+body.eventos-page .eventos-painel-header {
+  max-width: 44rem;
+  margin-bottom: 1.4rem;
+}
+
+body.eventos-page .eventos-painel-header h2,
+body.eventos-page .eventos-acervo-header h2,
+body.eventos-page .eventos-canais-copy h2 {
+  color: #1f5663;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.05;
+  margin: 0.35rem 0 0.6rem;
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
+
+body.eventos-page .eventos-painel-header p,
+body.eventos-page .eventos-acervo-header p,
+body.eventos-page .eventos-canais-copy p {
+  color: #4b4a43;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+body.eventos-page .eventos-fases-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body.eventos-page .fase-evento-card {
+  min-height: 220px;
+  padding: 1.2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(111, 63, 41, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(245, 236, 224, 0.98));
+  box-shadow: 0 14px 28px rgba(34, 29, 26, 0.08);
+}
+
+body.eventos-page .fase-evento-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+body.eventos-page .fase-evento-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.34rem 0.72rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+body.eventos-page .fase-evento-card i {
+  font-size: 1.2rem;
+}
+
+body.eventos-page .fase-evento-card h3 {
+  margin-bottom: 0.7rem;
+  color: #1f5663;
+  font-size: 1.34rem;
+  line-height: 1.15;
+}
+
+body.eventos-page .fase-evento-card p {
+  color: #4b4a43;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+body.eventos-page .fase-passado .fase-evento-chip,
+body.eventos-page .evento-status.passado {
+  background: rgba(103, 109, 82, 0.12);
+  color: #55604c;
+}
+
+body.eventos-page .fase-atual .fase-evento-chip,
+body.eventos-page .evento-status.atual {
+  background: rgba(31, 86, 99, 0.12);
+  color: #1f5663;
+}
+
+body.eventos-page .fase-futuro .fase-evento-chip,
+body.eventos-page .evento-status.futuro {
+  background: rgba(146, 75, 56, 0.12);
+  color: #924b38;
+}
+
+body.eventos-page .eventos-linha .titulo-secao {
+  margin-bottom: 1.5rem;
+}
+
+body.eventos-page .eventos-linha-trilha {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding-left: 1.8rem;
+}
+
+body.eventos-page .eventos-linha-trilha::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 0.45rem;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(31, 86, 99, 0.25), rgba(146, 75, 56, 0.32));
+}
+
+body.eventos-page .linha-agenda-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+body.eventos-page .linha-agenda-item::before {
+  content: "";
+  position: absolute;
+  left: -1.52rem;
+  top: 0.35rem;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #1f5663;
+  box-shadow: 0 0 0 5px rgba(31, 86, 99, 0.12);
+}
+
+body.eventos-page .linha-agenda-item.passado::before {
+  background: #55604c;
+  box-shadow: 0 0 0 5px rgba(85, 96, 76, 0.12);
+}
+
+body.eventos-page .linha-agenda-item.futuro::before {
+  background: #924b38;
+  box-shadow: 0 0 0 5px rgba(146, 75, 56, 0.12);
+}
+
+body.eventos-page .linha-agenda-data {
+  padding-top: 0.2rem;
+  color: #7e4530;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body.eventos-page .linha-agenda-conteudo {
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(111, 63, 41, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+body.eventos-page .linha-agenda-conteudo h3 {
+  margin-bottom: 0.4rem;
+  color: #1f5663;
+  font-size: 1.15rem;
+}
+
+body.eventos-page .linha-agenda-conteudo p {
+  color: #4b4a43;
+  line-height: 1.68;
+}
+
+body.eventos-page .eventos-acervo-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 1.4rem;
+  align-items: end;
+  margin-bottom: 1.4rem;
+}
+
+body.eventos-page .eventos-acervo-header p {
+  max-width: 35rem;
+}
+
+body.eventos-page .eventos-acervo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+body.eventos-page .evento-historico-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(111, 63, 41, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 239, 229, 0.98));
+  box-shadow: 0 16px 32px rgba(34, 29, 26, 0.1);
+}
+
+body.eventos-page .evento-historico-media {
+  position: relative;
+  min-height: 100%;
+  background: linear-gradient(155deg, rgba(31, 86, 99, 0.95), rgba(126, 69, 48, 0.92));
+}
+
+body.eventos-page .evento-historico-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+body.eventos-page .evento-media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem;
+}
+
+body.eventos-page .evento-placeholder-conteudo {
+  max-width: 17rem;
+  text-align: center;
+  color: #f8f1e2;
+}
+
+body.eventos-page .evento-placeholder-rotulo {
+  display: inline-flex;
+  padding: 0.32rem 0.72rem;
+  margin-bottom: 0.9rem;
+  border-radius: 999px;
+  background: rgba(243, 231, 205, 0.14);
+  border: 1px solid rgba(243, 231, 205, 0.22);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body.eventos-page .evento-placeholder-conteudo strong {
+  display: block;
+  font-size: 2rem;
+  line-height: 1.05;
+}
+
+body.eventos-page .evento-placeholder-conteudo p {
+  margin-top: 0.7rem;
+  line-height: 1.7;
+}
+
+body.eventos-page .evento-status {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.78rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+body.eventos-page .evento-historico-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.4rem;
+}
+
+body.eventos-page .evento-tipo {
+  color: #7e4530;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body.eventos-page .evento-historico-body h3 {
+  color: #1f5663;
+  font-size: 1.5rem;
+  line-height: 1.12;
+}
+
+body.eventos-page .evento-titulo-secundario {
+  color: #4b4a43;
+  font-style: italic;
+  line-height: 1.68;
+}
+
+body.eventos-page .evento-meta-lista {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+  color: #3d3a34;
+}
+
+body.eventos-page .evento-meta-lista li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+body.eventos-page .evento-meta-lista li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #924b38;
+}
+
+body.eventos-page .evento-descricao-curta {
+  color: #4b4a43;
+  line-height: 1.72;
+}
+
+body.eventos-page .eventos-canais {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
+  gap: 1.2rem;
+  align-items: center;
+}
+
+body.eventos-page .eventos-canais-links {
+  display: grid;
+  gap: 0.85rem;
+}
+
+body.eventos-page .canal-evento-link {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(111, 63, 41, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  color: #1f5663;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+body.eventos-page .canal-evento-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(31, 86, 99, 0.14);
+  border-color: rgba(31, 86, 99, 0.32);
+}
+
+body.eventos-page .canal-evento-link i {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(31, 86, 99, 0.1);
+}
+
+@media (max-width: 1080px) {
+  body.eventos-page .eventos-hero,
+  body.eventos-page .eventos-canais,
+  body.eventos-page .evento-historico-card {
+    grid-template-columns: 1fr;
+  }
+
+  body.eventos-page .eventos-fases-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.eventos-page .eventos-acervo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  body.eventos-page .eventos-main {
+    width: calc(100% - 1.1rem);
+    margin: 0.9rem auto 2rem;
+    gap: 1rem;
+  }
+
+  body.eventos-page .eventos-hero,
+  body.eventos-page .eventos-painel,
+  body.eventos-page .eventos-linha,
+  body.eventos-page .eventos-acervo,
+  body.eventos-page .eventos-canais {
+    padding: 1.15rem;
+    border-radius: 18px;
+  }
+
+  body.eventos-page .eventos-hero {
+    gap: 1rem;
+  }
+
+  body.eventos-page .eventos-hero h1 {
+    font-size: 2.45rem;
+  }
+
+  body.eventos-page .eventos-hero-intro,
+  body.eventos-page .eventos-painel-header p,
+  body.eventos-page .eventos-acervo-header p,
+  body.eventos-page .eventos-canais-copy p {
+    font-size: 0.98rem;
+  }
+
+  body.eventos-page .eventos-hero-acoes {
+    flex-direction: column;
+  }
+
+  body.eventos-page .eventos-fases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.eventos-page .linha-agenda-item {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  body.eventos-page .linha-agenda-data {
+    padding-top: 0;
+  }
+
+  body.eventos-page .eventos-linha-trilha {
+    padding-left: 1.45rem;
+  }
+
+  body.eventos-page .linha-agenda-item::before {
+    left: -1.2rem;
+  }
+
+  body.eventos-page .evento-historico-media {
+    min-height: 250px;
+  }
+
+  body.eventos-page .evento-historico-body {
+    padding: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body.eventos-page .eventos-hero h1,
+  body.eventos-page .eventos-painel-header h2,
+  body.eventos-page .eventos-acervo-header h2,
+  body.eventos-page .eventos-canais-copy h2 {
+    font-size: 2rem;
+  }
+
+  body.eventos-page .evento-resumo-card strong {
+    font-size: 2rem;
+  }
+
+  body.eventos-page .evento-historico-body h3 {
+    font-size: 1.28rem;
+  }
+
+  body.eventos-page .canal-evento-link {
+    padding: 0.9rem 0.95rem;
+  }
+}

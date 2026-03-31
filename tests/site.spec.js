@@ -2,6 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 const pages = [
   { path: "/index.html", title: /Vidar em In-Tens/i },
+  { path: "/eventos.html", title: /Eventos|Vidar em In-Tens/i },
   { path: "/publicacoes.html", title: /Publica/i },
   { path: "/projetos.html", title: /Vidar em In-Tens/i },
   { path: "/pesquisadores.html", title: /Vidar em In-Tens/i },
