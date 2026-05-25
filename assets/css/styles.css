@@ -4617,6 +4617,28 @@ body.sobre-page .parcerias-texto {
   color: rgba(248, 239, 223, 0.98);
 }
 
+body.sobre-page .guia-vidante-link {
+  gap: 0.65rem;
+  padding: 0.95rem 1.3rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f3e7cd 0%, #f8f1e2 100%);
+  color: #7b3f2e;
+  border: 2px solid rgba(243, 231, 205, 0.92);
+  box-shadow: 0 14px 26px rgba(25, 22, 22, 0.18);
+}
+
+body.sobre-page .guia-vidante-link:hover {
+  gap: 0.85rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f1e2 100%);
+  color: #1f5663;
+  border-color: #ffffff;
+  box-shadow: 0 18px 30px rgba(25, 22, 22, 0.24);
+}
+
+body.sobre-page .guia-vidante-link i {
+  color: #b63b2b;
+}
+
 body.index-page .vitrine-publicacoes-home {
   width: min(1280px, calc(100% - 2rem));
   margin: 2.8rem auto 0;
