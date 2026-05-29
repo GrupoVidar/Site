@@ -5,11 +5,11 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 ## Estado atual
 
 - Tipo de projeto: site estático em `HTML`, `CSS` e `JavaScript` puro.
-- Páginas principais: `index.html`, `publicacoes.html`, `projetos.html`, `pesquisadores.html` e `sobre.html`.
+- Páginas principais: `index.html`, `eventos.html`, `mural.html`, `publicacoes.html`, `projetos.html`, `pesquisadores.html` e `sobre.html`.
 - Estilos centralizados em `assets/css/styles.css`.
 - Scripts centralizados em `assets/js/script.js`.
 - Assets locais atuais:
-  - `51` arquivos em `assets/images/`
+  - `54` arquivos em `assets/images/`
   - `28` arquivos em `assets/Arquivos/`
 - Dependências externas carregadas por CDN:
   - `Font Awesome`
@@ -20,6 +20,8 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 ```text
 .
 |-- index.html
+|-- eventos.html
+|-- mural.html
 |-- publicacoes.html
 |-- projetos.html
 |-- pesquisadores.html
@@ -53,6 +55,22 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - Seção "Obras autorais do grupo".
 - Seção "Nossos escritos".
 - Bloco de frase destaque com imagem.
+- Rodapé institucional.
+
+### `eventos.html`
+
+- Linha de acontecimentos do grupo.
+- Acervo visual de eventos, defesas e encontros.
+- Cards com imagem, metadados e descrição editorial.
+- Newsletter.
+- Rodapé institucional.
+
+### `mural.html`
+
+- Mural editorial de artes e dissertações.
+- Cards com imagem em destaque, autoria ao lado e chamada para dissertação.
+- Links de dissertação preparados para atualização quando os arquivos oficiais estiverem disponíveis.
+- Newsletter.
 - Rodapé institucional.
 
 ### `publicacoes.html`
@@ -131,7 +149,7 @@ O projeto agora possui uma suíte automatizada versionada com `Playwright`.
 
 ### O que a suíte cobre hoje
 
-- carregamento das `5` páginas principais
+- carregamento das `7` páginas principais
 - verificação básica de header e footer
 - checagem de overflow horizontal em desktop e mobile
 - abertura e fechamento do menu mobile
