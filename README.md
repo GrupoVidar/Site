@@ -5,7 +5,7 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 ## Estado atual
 
 - Tipo de projeto: site estático em `HTML`, `CSS` e `JavaScript` puro.
-- Páginas principais: `index.html`, `eventos.html`, `mural.html`, `publicacoes.html`, `projetos.html`, `pesquisadores.html` e `sobre.html`.
+- Páginas principais: `index.html`, `eventos.html`, `mural.html`, `publicacoes.html`, `dissertacoes-teses.html`, `projetos.html`, `pesquisadores.html` e `sobre.html`.
 - Estilos centralizados em `assets/css/styles.css`.
 - Scripts centralizados em `assets/js/script.js`.
 - Assets locais atuais:
@@ -23,6 +23,7 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 |-- eventos.html
 |-- mural.html
 |-- publicacoes.html
+|-- dissertacoes-teses.html
 |-- projetos.html
 |-- pesquisadores.html
 |-- sobre.html
@@ -80,6 +81,15 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - Busca em tempo real por título.
 - Contador de resultados e botão de limpar busca.
 - Bloco de newsletter.
+- Rodapé institucional.
+
+### `dissertacoes-teses.html`
+
+- Biblioteca visual de dissertações e teses.
+- Grade responsiva com `10` cards `.tese-card`.
+- Capas verticais extraídas da primeira página dos PDFs.
+- Títulos e autorias centralizados com truncamento por reticências.
+- Newsletter.
 - Rodapé institucional.
 
 ### `projetos.html`
@@ -149,9 +159,10 @@ O projeto agora possui uma suíte automatizada versionada com `Playwright`.
 
 ### O que a suíte cobre hoje
 
-- carregamento das `7` páginas principais
+- carregamento das `8` páginas principais
 - verificação básica de header e footer
 - checagem de overflow horizontal em desktop e mobile
+- validação da grade de dissertações e teses
 - abertura e fechamento do menu mobile
 - busca de publicações
 - abertura e fechamento do modal de projetos

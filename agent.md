@@ -28,6 +28,7 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 - validação de overflow horizontal
 - teste do menu mobile
 - teste da busca em publicações
+- teste da grade de dissertações e teses
 - teste do modal de projetos
 
 ## Estrutura atual do projeto
@@ -35,7 +36,10 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 ```text
 .
 |-- index.html
+|-- eventos.html
+|-- mural.html
 |-- publicacoes.html
+|-- dissertacoes-teses.html
 |-- projetos.html
 |-- pesquisadores.html
 |-- sobre.html
@@ -63,7 +67,10 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 ### HTML
 
 - `index.html`: página inicial com hero animado, destaques, vitrines de publicações, obras e escritos.
+- `eventos.html`: linha de acontecimentos e acervo visual de eventos do grupo.
+- `mural.html`: mural editorial de artes vinculadas a pesquisas e dissertações.
 - `publicacoes.html`: catálogo de produções acadêmicas com busca em tempo real.
+- `dissertacoes-teses.html`: biblioteca visual de dissertações e teses em grade de cards.
 - `projetos.html`: vitrine de projetos com cards clicáveis e modal de detalhamento.
 - `pesquisadores.html`: grade de integrantes com bios e links acadêmicos.
 - `sobre.html`: apresentação institucional, trajetória, linhas de pesquisa, co-criadoras, parceiros, materiais e newsletter.
@@ -117,6 +124,14 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 - Contador `#contador`.
 - Lista com `24` itens `.publicacao-item`.
 - Estado de "sem resultados".
+- Newsletter `#newsletterForm`.
+
+### `dissertacoes-teses.html`
+
+- Grade `.biblioteca-grid`.
+- `10` cards `.tese-card`.
+- Capas verticais extraídas da primeira página dos PDFs.
+- Títulos e autorias com truncamento por reticências.
 - Newsletter `#newsletterForm`.
 
 ### `projetos.html`
@@ -207,7 +222,7 @@ Toda alteração deve criar ou atualizar testes compatíveis com a mudança.
 Antes de concluir qualquer mudança, validar no mínimo:
 
 1. Navegação principal em desktop e mobile.
-2. Abertura de `index.html`, `publicacoes.html`, `projetos.html`, `pesquisadores.html` e `sobre.html`.
+2. Abertura de `index.html`, `eventos.html`, `mural.html`, `publicacoes.html`, `dissertacoes-teses.html`, `projetos.html`, `pesquisadores.html` e `sobre.html`.
 3. Menu responsivo abrindo e fechando corretamente.
 4. Busca de publicações funcionando e limpando resultados.
 5. Modal de projetos abrindo e fechando sem travar a página.

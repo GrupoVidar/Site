@@ -5,6 +5,7 @@ const pages = [
   { path: "/eventos.html", title: /Eventos|Vidar em In-Tens/i },
   { path: "/mural.html", title: /Mural|Vidar em In-Tens/i },
   { path: "/publicacoes.html", title: /Publica/i },
+  { path: "/dissertacoes-teses.html", title: /Dissertações|teses/i },
   { path: "/projetos.html", title: /Vidar em In-Tens/i },
   { path: "/pesquisadores.html", title: /Vidar em In-Tens/i },
   { path: "/sobre.html", title: /Sobre|Vidar em In-Tens/i },
@@ -73,6 +74,49 @@ test.describe("publicacoes", () => {
     await expect(contador).toContainText(/24 publica/i);
     await expect(resultadosVisiveis).toHaveCount(24);
     await expect(campoBusca).toHaveValue("");
+  });
+});
+
+test.describe("dissertacoes e teses", () => {
+  test("exibe cards de biblioteca com capa e PDF", async ({ page }) => {
+    await page.goto("/dissertacoes-teses.html");
+
+    const cards = page.locator(".tese-card");
+    const primeiroCard = cards.first();
+
+    await expect(cards).toHaveCount(10);
+    await expect(primeiroCard.locator(".tese-badge")).toHaveCount(0);
+    await expect(primeiroCard.locator(".tese-preview-shell")).toHaveAttribute(
+      "href",
+      /assets\/Dissertações e teses\/16\.-SHIRLEY-VITOR-DA-SILVA\.pdf/
+    );
+    await expect(primeiroCard.locator("img")).toHaveAttribute(
+      "src",
+      /assets\/images\/dissertacoes-teses\/16-shirley-vitor-da-silva\.png/
+    );
+    await expect(primeiroCard.locator(".tese-titulo")).toHaveCSS(
+      "text-overflow",
+      "ellipsis"
+    );
+  });
+
+  test("usa quatro colunas no desktop", async ({ page, isMobile }) => {
+    test.skip(isMobile, "Teste aplicável apenas ao layout desktop.");
+
+    await page.goto("/dissertacoes-teses.html");
+
+    const boxes = [];
+    for (let index = 0; index < 5; index += 1) {
+      const box = await page.locator(".tese-card").nth(index).boundingBox();
+      expect(box).toBeTruthy();
+      boxes.push(box);
+    }
+
+    const primeiraLinha = boxes.slice(0, 4).map((box) => Math.round(box.y));
+    const mesmaLinha = Math.max(...primeiraLinha) - Math.min(...primeiraLinha);
+
+    expect(mesmaLinha).toBeLessThanOrEqual(2);
+    expect(Math.round(boxes[4].y)).toBeGreaterThan(Math.round(boxes[0].y));
   });
 });
 
