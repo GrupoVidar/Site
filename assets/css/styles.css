@@ -5964,9 +5964,30 @@ body.mural-page .mural-link-pendente:hover {
     min-height: 230px;
   }
 
-  body.mural-page .mural-link {
+body.mural-page .mural-link {
     width: 100%;
     justify-content: center;
     text-align: center;
   }
+}
+
+/* =========================================================
+   FUNDOS COMPARTILHADOS DAS PÁGINAS INTERNAS
+========================================================= */
+body.eventos-page,
+body.projetos-page {
+  background-image: url("../images/fundo1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+body.mural-page,
+body.sobre-page {
+  background-image: url("../images/fundo 2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
 }
