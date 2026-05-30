@@ -46,10 +46,24 @@
           <ul id="menu">
             <li><a href="./index.html">Início</a></li>
             <li><a href="./eventos.html">Eventos</a></li>
-            <li><a href="./mural.html">Mural</a></li>
-            <li><a href="./publicacoes.html">Publicações</a></li>
             <li>
-              <a href="./dissertacoes-teses.html">Dissertações e teses</a>
+              <div class="menu-com-submenu">
+                <a href="./publicacoes.html">Publicações</a>
+                <button
+                  class="submenu-toggle"
+                  type="button"
+                  aria-label="Abrir submenu de Publicações"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+              </div>
+              <ul class="submenu">
+                <li><a href="./mural.html">Mural</a></li>
+                <li>
+                  <a href="./dissertacoes-teses.html">Dissertações e teses</a>
+                </li>
+              </ul>
             </li>
             <li><a href="./projetos.html">Projetos</a></li>
             <li><a href="./pesquisadores.html">Pesquisadores</a></li>
@@ -264,132 +278,18 @@
             </div>
           </article>
 
-          <article class="card-fundadora">
-            <div class="fundadora-imagem">
-              <img
-                src="./assets/images/LattesMonicaAikawa.gif"
-                alt="Mônica Aikawa"
-              />
-            </div>
-            <div class="fundadora-conteudo">
-              <h3>Profa. Dra. Mônica Aikawa</h3>
-              <p>
-                Doutora em Educação na Amazônia - EDUCANORTE/PGEDA (UEA, 2025).
-                Atua com Filosofia da Diferença, infância(s) amazônica(s),
-                corpo-brincante e formação continuada de professores.
-              </p>
-              <a
-                href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4455006D3"
-                target="_blank"
-                class="leia-mais"
-                rel="noopener noreferrer"
-              >
-                <i class="fas fa-external-link-alt"></i> Currículo Lattes
-              </a>
-            </div>
-          </article>
         </div>
       </section>
 
       <section class="parcerias-section">
         <h2 class="titulo-secao">Parcerias, Fomento e Materiais</h2>
 
-        <div class="parcerias-blocos">
-          <div class="bloco-parcerias bloco-fomento">
-            <h3>Agências de fomento</h3>
-            <div class="logo-grid">
-              <a
-                href="./assets/Arquivos/Sobre/PADEX.pdf"
-                class="logo-tile"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="PADEX"
-              >
-                <img
-                  src="./assets/images/parcerias/page8_2_X14.png"
-                  alt="Logo PADEX"
-                />
-              </a>
-              <a
-                href="https://www.fapeam.am.gov.br/"
-                class="logo-tile"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="FAPEAM"
-              >
-                <img
-                  src="./assets/images/parcerias/page8_1_X9.png"
-                  alt="Logo FAPEAM"
-                />
-              </a>
-              <a
-                href="https://www.gov.br/cnpq/pt-br"
-                class="logo-tile"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="CNPq"
-              >
-                <img
-                  src="./assets/images/parcerias/page8_4_X21.png"
-                  alt="Logo CNPq"
-                />
-              </a>
-              <a
-                href="https://www.gov.br/capes/pt-br"
-                class="logo-tile"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="CAPES"
-              >
-                <img
-                  src="./assets/images/parcerias/page8_5_X26.png"
-                  alt="Logo CAPES"
-                />
-              </a>
-            </div>
-          </div>
-
-          <div class="bloco-parcerias bloco-colaboracao">
-            <h3>Parcerias</h3>
-            <div class="logo-grid logo-grid-parcerias">
-              <a href="#" class="logo-tile" aria-label="Amplia">
-                <img
-                  src="./assets/images/parcerias/page8_3_X18.png"
-                  alt="Logo Amplia"
-                />
-                <span class="logo-caption">Amplia</span>
-              </a>
-              <a href="#" class="logo-tile" aria-label="CMAE">
-                <img
-                  src="./assets/images/parcerias/page8_6_X28.png"
-                  alt="Logo CMAE"
-                />
-              </a>
-              <a href="#" class="logo-tile" aria-label="Coletivo 5A">
-                <img
-                  src="./assets/images/parcerias/page8_7_X38.png"
-                  alt="Logo Coletivo 5A"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <p class="parcerias-texto">
-          Este grupo é vinculado ao Programa de Pós-graduação em Educação em
-          Ciências na Amazônia (PPGEEC/UEA) e colabora com instituições
-          nacionais e internacionais.
-        </p>
-        <p class="parcerias-texto">
-          <a
-            class="leia-mais guia-vidante-link"
-            href="./assets/Arquivos/Sobre/GUIA VIDAR (1).pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i class="fas fa-file-pdf"></i> Acessar Guia do Vidante 2026 (PDF)
-          </a>
-        </p>
+        <figure class="parcerias-imagem">
+          <img
+            src="./assets/Arquivos/Sobre/Parcerias.png"
+            alt="Logos das parcerias do Grupo Vidar"
+          />
+        </figure>
       </section>
 
       <section class="missao-visao">

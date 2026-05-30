@@ -157,6 +157,14 @@ function initMenuResponsivo() {
 
   if (!menuToggle || !menu) return;
 
+  function fecharSubmenus() {
+    menu.querySelectorAll(".submenu-aberto").forEach((item) => {
+      item.classList.remove("submenu-aberto");
+      const toggle = item.querySelector(".submenu-toggle");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    });
+  }
+
   function resetHamburger() {
     const spans = menuToggle.querySelectorAll("span");
     if (spans.length < 3) return;
@@ -181,14 +189,31 @@ function initMenuResponsivo() {
     if (menu.classList.contains("show")) {
       setHamburgerAsX();
     } else {
+      fecharSubmenus();
       resetHamburger();
     }
+  });
+
+  menu.querySelectorAll(".submenu-toggle").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const item = button.closest("li");
+      if (!item) return;
+
+      const shouldOpen = !item.classList.contains("submenu-aberto");
+      fecharSubmenus();
+      item.classList.toggle("submenu-aberto", shouldOpen);
+      button.setAttribute("aria-expanded", String(shouldOpen));
+    });
   });
 
   // Fechar menu ao clicar em um item (mobile)
   document.querySelectorAll("#menu a").forEach((item) => {
     item.addEventListener("click", () => {
       menu.classList.remove("show");
+      fecharSubmenus();
       resetHamburger();
     });
   });
@@ -197,6 +222,7 @@ function initMenuResponsivo() {
   document.addEventListener("click", function (e) {
     if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
       menu.classList.remove("show");
+      fecharSubmenus();
       resetHamburger();
     }
   });

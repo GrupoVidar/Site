@@ -108,7 +108,7 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - Timeline com `4` itens.
 - Seção de linhas de pesquisa com `3` cards.
 - Seções de compromisso/participação com `6` cards `.pilar-card`.
-- Seção "Co-criadoras" com `3` cards.
+- Seção "Co-criadoras" com `2` cards.
 - Seção de parcerias, fomento e materiais.
 - Seção "Obras e Mídias".
 - Rodapé institucional.

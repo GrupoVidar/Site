@@ -152,7 +152,7 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 - Timeline com `4` `.timeline-item`.
 - Linhas de pesquisa com `3` `.linha-card`.
 - Seções de presença e compromissos com `6` `.pilar-card`.
-- Co-criadoras com `3` `.card-fundadora`.
+- Co-criadoras com `2` `.card-fundadora`.
 - Blocos de parceiros, fomento e materiais.
 
 ## Assets e dependências
