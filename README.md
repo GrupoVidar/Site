@@ -9,7 +9,7 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - Estilos centralizados em `assets/css/styles.css`.
 - Scripts centralizados em `assets/js/script.js`.
 - Assets locais atuais:
-  - `54` arquivos em `assets/images/`
+  - `55` arquivos em `assets/images/`
   - `28` arquivos em `assets/Arquivos/`
 - Dependências externas carregadas por CDN:
   - `Font Awesome`
