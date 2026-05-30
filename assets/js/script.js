@@ -203,36 +203,7 @@ function initMenuResponsivo() {
 }
 
 /* =========================================================
-   2) NEWSLETTER (GLOBAL)
-========================================================= */
-function initNewsletter() {
-  const formNewsletter = document.getElementById("newsletterForm");
-  if (!formNewsletter) return;
-
-  formNewsletter.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const emailInput = formNewsletter.querySelector("input");
-    if (!emailInput) return;
-
-    const email = emailInput.value;
-
-    if (validateEmail(email)) {
-      alert(`Obrigado por se inscrever com o e-mail: ${email}`);
-      formNewsletter.reset();
-    } else {
-      alert("Por favor, insira um e-mail válido.");
-      emailInput.focus();
-    }
-  });
-}
-
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-/* =========================================================
-   3) DESTAQUE NOS CARDS DE NOTCIAS (INDEX)
+   2) DESTAQUE NOS CARDS DE NOTCIAS (INDEX)
 ========================================================= */
 function initHoverCardsNoticias() {
   const cards = document.querySelectorAll(".card-noticia");
@@ -660,7 +631,6 @@ function initModalProjetos() {
 ========================================================= */
 document.addEventListener("DOMContentLoaded", function () {
   initMenuResponsivo();
-  initNewsletter();
   initHoverCardsNoticias();
   initAnoRodape();
 

@@ -63,7 +63,6 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - Linha de acontecimentos do grupo.
 - Acervo visual de eventos, defesas e encontros.
 - Cards com imagem, metadados e descrição editorial.
-- Newsletter.
 - Rodapé institucional.
 
 ### `mural.html`
@@ -71,7 +70,6 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - Mural editorial de artes e dissertações.
 - Cards com imagem em destaque, autoria ao lado e chamada para dissertação.
 - Links de dissertação preparados para atualização quando os arquivos oficiais estiverem disponíveis.
-- Newsletter.
 - Rodapé institucional.
 
 ### `publicacoes.html`
@@ -80,7 +78,6 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - `24` cards `.publicacao-item`.
 - Busca em tempo real por título.
 - Contador de resultados e botão de limpar busca.
-- Bloco de newsletter.
 - Rodapé institucional.
 
 ### `dissertacoes-teses.html`
@@ -89,7 +86,6 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - Grade responsiva com `10` cards `.tese-card`.
 - Capas verticais extraídas da primeira página dos PDFs.
 - Títulos e autorias centralizados com truncamento por reticências.
-- Newsletter.
 - Rodapé institucional.
 
 ### `projetos.html`
@@ -115,13 +111,11 @@ Documentação operacional do site institucional do Grupo de Estudos e Pesquisas
 - Seção "Co-criadoras" com `3` cards.
 - Seção de parcerias, fomento e materiais.
 - Seção "Obras e Mídias".
-- Newsletter.
 - Rodapé institucional.
 
 ## Funcionalidades implementadas em `assets/js/script.js`
 
 - Menu responsivo com hambúrguer.
-- Validação básica do formulário de newsletter.
 - Destaque visual em cards da home.
 - Atualização automática do ano no rodapé.
 - Slideshow da home.

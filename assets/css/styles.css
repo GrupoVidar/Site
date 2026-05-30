@@ -2062,90 +2062,7 @@ body.dissertacoes-page .tese-card:hover .tese-preview {
 }
 
 /* =========================================================
-   12) NEWSLETTER (GLOBAL)
-========================================================= */
-.newsletter {
-  background: var(--marrom-claro);
-  color: var(--preto-elegante);
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding: 4rem 2rem;
-  margin-top: 4rem;
-  text-align: center;
-}
-
-.newsletter h2 {
-  margin-bottom: 1.5rem;
-  font-size: 2.2rem;
-}
-
-.newsletter p {
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.form-newsletter {
-  display: flex;
-  max-width: 500px;
-  margin: 0 auto;
-  gap: 10px;
-}
-
-.form-newsletter input {
-  flex: 1;
-  padding: 1rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-}
-
-.form-newsletter button {
-  background: var(--terra-queimada);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.form-newsletter button:hover {
-  background: #7a3c2d;
-  transform: translateY(-2px);
-}
-
-/* -------- RESPONSIVIDADE — NEWSLETTER (GLOBAL) -------- */
-@media (max-width: 768px) {
-  .newsletter {
-    padding: 2rem 20px;
-  }
-
-  .newsletter h2 {
-    font-size: 1.8rem;
-  }
-
-  .newsletter p {
-    font-size: 1rem;
-  }
-
-  .form-newsletter {
-    flex-direction: column;
-  }
-
-  .form-newsletter input {
-    margin-bottom: 10px;
-  }
-}
-
-/* =========================================================
-   13) FOOTER (GLOBAL)
+   12) FOOTER (GLOBAL)
 ========================================================= */
 footer {
   background: var(--verde-cinza);
@@ -3646,7 +3563,6 @@ footer {
 
   .destaque-principal-section,
   .ultimas-noticias,
-  .newsletter,
   footer {
     display: block !important;
     visibility: visible !important;

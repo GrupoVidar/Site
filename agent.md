@@ -73,7 +73,7 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 - `dissertacoes-teses.html`: biblioteca visual de dissertações e teses em grade de cards.
 - `projetos.html`: vitrine de projetos com cards clicáveis e modal de detalhamento.
 - `pesquisadores.html`: grade de integrantes com bios e links acadêmicos.
-- `sobre.html`: apresentação institucional, trajetória, linhas de pesquisa, co-criadoras, parceiros, materiais e newsletter.
+- `sobre.html`: apresentação institucional, trajetória, linhas de pesquisa, co-criadoras, parceiros e materiais.
 
 ### CSS
 
@@ -93,7 +93,6 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 - `assets/js/script.js` concentra toda a lógica interativa.
 - Principais inicializações atuais:
   - `initMenuResponsivo`
-  - `initNewsletter`
   - `initHoverCardsNoticias`
   - `initAnoRodape`
   - `initSlideshowDestaque`
@@ -124,7 +123,6 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 - Contador `#contador`.
 - Lista com `24` itens `.publicacao-item`.
 - Estado de "sem resultados".
-- Newsletter `#newsletterForm`.
 
 ### `dissertacoes-teses.html`
 
@@ -132,7 +130,6 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 - `10` cards `.tese-card`.
 - Capas verticais extraídas da primeira página dos PDFs.
 - Títulos e autorias com truncamento por reticências.
-- Newsletter `#newsletterForm`.
 
 ### `projetos.html`
 
@@ -157,7 +154,6 @@ O projeto já possui uma suíte automatizada versionada com `Playwright`.
 - Seções de presença e compromissos com `6` `.pilar-card`.
 - Co-criadoras com `3` `.card-fundadora`.
 - Blocos de parceiros, fomento e materiais.
-- Newsletter `#newsletterForm`.
 
 ## Assets e dependências
 
@@ -226,9 +222,8 @@ Antes de concluir qualquer mudança, validar no mínimo:
 3. Menu responsivo abrindo e fechando corretamente.
 4. Busca de publicações funcionando e limpando resultados.
 5. Modal de projetos abrindo e fechando sem travar a página.
-6. Newsletter sem quebra visual.
-7. Ausência de rolagem horizontal indevida no mobile.
-8. Rodapé íntegro em todas as páginas.
+6. Ausência de rolagem horizontal indevida no mobile.
+7. Rodapé íntegro em todas as páginas.
 
 ## Procedimento esperado para futuras mudanças
 
