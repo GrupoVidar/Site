@@ -12,6 +12,13 @@ Nenhuma modificação deve ser concluída sem teste.
 - A validação deve priorizar prevenção de bugs visuais, funcionais e de responsividade.
 - Alterações sem teste associado devem ser tratadas como incompletas.
 
+## Regra de eventos
+
+- Sempre que a seção de eventos em destaque da home (`index.html`) for alterada, a página `eventos.html` também deve ser atualizada com o mesmo evento no acervo e na linha de acontecimentos.
+- A home deve exibir os 3 eventos mais recentes, ordenados do mais recente para o mais antigo.
+- A página `eventos.html` deve manter o histórico completo dos eventos, também em ordem do mais recente para o mais antigo.
+- As imagens e informações dos eventos devem ser conferidas na pasta fonte `C:\Users\hivid\OneDrive\Documents\ProjetoSite\Site-GrupoVidar\assets\images\home\Eventos`.
+
 ## Suite automatizada atual
 
 O projeto já possui uma suíte automatizada versionada com `Playwright`.
