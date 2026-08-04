@@ -55,6 +55,75 @@ test.describe("responsividade base", () => {
   });
 });
 
+test.describe("eventos", () => {
+  test("home exibe a qualificacao de Eriane como destaque mais recente", async ({
+    page,
+  }) => {
+    await page.goto("/index.html");
+
+    const cards = page.locator(".evento-card-home");
+    const primeiroCard = cards.first();
+    const segundoCard = cards.nth(1);
+    const terceiroCard = cards.nth(2);
+
+    await expect(cards).toHaveCount(3);
+    await expect(primeiroCard.locator("h3")).toHaveText(
+      "Qualificação de Eriane Lima"
+    );
+    await expect(primeiroCard.locator("img")).toHaveAttribute(
+      "src",
+      /assets\/images\/home\/Eventos\/Qualificação Eriane\.png/
+    );
+    await expect(primeiroCard).toContainText("21 de julho de 2026");
+    await expect(primeiroCard).toContainText("Defesa híbrida");
+    await expect(primeiroCard).toContainText("Videoconferência");
+    await expect(primeiroCard).toContainText("Escola Normal Superior");
+    await expect(primeiroCard).toContainText("Travessias-Rio");
+    await expect(primeiroCard).toContainText("Caroline Barroncas de Oliveira");
+    await expect(segundoCard.locator("h3")).toHaveText(
+      "Qualificação de Léia Lima"
+    );
+    await expect(terceiroCard.locator("h3")).toHaveText(
+      "Defesa de Silmara Santos"
+    );
+  });
+
+  test("historico completo inclui a qualificacao de Eriane no topo", async ({
+    page,
+  }) => {
+    await page.goto("/eventos.html");
+
+    const primeiroItemLinha = page.locator(".linha-agenda-item").first();
+    const primeiroCardAcervo = page.locator(".evento-historico-card").first();
+    const segundoCardAcervo = page.locator(".evento-historico-card").nth(1);
+
+    await expect(primeiroItemLinha).toContainText("21/07/2026");
+    await expect(primeiroItemLinha.locator("h3")).toHaveText(
+      "Qualificação de Eriane Lima"
+    );
+    await expect(primeiroCardAcervo.locator("h3")).toHaveText(
+      "Qualificação de Eriane Lima"
+    );
+    await expect(primeiroCardAcervo.locator("img")).toHaveAttribute(
+      "src",
+      /assets\/images\/home\/Eventos\/Qualificação Eriane\.png/
+    );
+    await expect(primeiroCardAcervo).toContainText("21 de julho de 2026");
+    await expect(primeiroCardAcervo).toContainText("Defesa híbrida");
+    await expect(primeiroCardAcervo).toContainText("Videoconferência");
+    await expect(primeiroCardAcervo).toContainText(
+      "Escola Normal Superior"
+    );
+    await expect(primeiroCardAcervo).toContainText("Travessias-Rio");
+    await expect(primeiroCardAcervo).toContainText(
+      "Caroline Barroncas de Oliveira"
+    );
+    await expect(segundoCardAcervo.locator("h3")).toHaveText(
+      "Qualificação de Léia Lima"
+    );
+  });
+});
+
 test.describe("publicacoes", () => {
   test("busca filtra e limpar restaura a lista", async ({ page }) => {
     await page.goto("/publicacoes.html");
