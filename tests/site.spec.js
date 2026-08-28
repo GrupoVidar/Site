@@ -165,13 +165,44 @@ test.describe("responsividade base", () => {
 
     const menuToggle = page.locator("#menuToggle");
     const menu = page.locator("#menu");
+    const submenuToggle = menu.locator(".submenu-toggle").first();
+    const submenu = menu.locator(".submenu").first();
 
     await expect(menuToggle).toBeVisible();
     await menuToggle.click();
     await expect(menu).toHaveClass(/show/);
+    await expect(menuToggle).toHaveAttribute("aria-expanded", "true");
+    await expect(page.locator("body")).toHaveClass(/menu-aberto/);
+
+    const viewport = page.viewportSize();
+    const menuBox = await menu.boundingBox();
+
+    expect(viewport).toBeTruthy();
+    expect(menuBox).toBeTruthy();
+    expect(menuBox.x).toBeGreaterThanOrEqual(0);
+    expect(menuBox.x + menuBox.width).toBeLessThanOrEqual(viewport.width + 1);
+    expect(menuBox.width).toBeLessThanOrEqual(viewport.width * 0.92 + 1);
+
+    await submenuToggle.click();
+    await expect(submenu).toBeVisible();
+
+    const submenuBox = await submenu.boundingBox();
+
+    expect(submenuBox).toBeTruthy();
+    expect(submenuBox.x).toBeGreaterThanOrEqual(menuBox.x);
+    expect(submenuBox.x + submenuBox.width).toBeLessThanOrEqual(
+      menuBox.x + menuBox.width + 1
+    );
+    await expect(submenu.locator("a")).toHaveText([
+      "Mural",
+      navLabels.artigos,
+      navLabels.teses,
+    ]);
 
     await menuToggle.click();
     await expect(menu).not.toHaveClass(/show/);
+    await expect(menuToggle).toHaveAttribute("aria-expanded", "false");
+    await expect(page.locator("body")).not.toHaveClass(/menu-aberto/);
   });
 });
 

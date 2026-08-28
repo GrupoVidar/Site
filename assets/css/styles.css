@@ -341,30 +341,37 @@ header {
     visibility: visible !important;
   }
 
-  @media (max-width: 768px) {
-    #menu {
-      display: none !important;
+  #menu {
+    display: none !important;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: min(88vw, 360px);
+    height: calc(100vh - 70px);
+    height: calc(100dvh - 70px);
+    max-height: calc(100vh - 70px);
+    max-height: calc(100dvh - 70px);
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    background: var(--branco);
+    border-left: 1px solid rgba(25, 22, 22, 0.08);
+    border-bottom-left-radius: 16px;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1001;
+  }
 
-      position: fixed;
-      top: 70px;
-      left: 0;
-      right: 0;
+  #menu.show {
+    display: flex !important;
+  }
 
-      background: var(--branco);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-
-      padding: 1rem;
-      flex-direction: column;
-      align-items: flex-start;
-
-      z-index: 1001;
-    }
-
-    #menu.show {
-      display: flex !important;
-      max-height: calc(100vh - 70px);
-      overflow-y: auto;
-    }
+  body.menu-aberto {
+    overflow: hidden;
   }
 
   #menu > li {
@@ -374,34 +381,60 @@ header {
 
   #menu > li > a,
   .menu-com-submenu > a {
-    display: block;
-    padding: 10px 15px !important; /* um pouco menor */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.72rem 0.85rem !important;
+    border-bottom: 0;
+    border-radius: 8px;
+    line-height: 1.2;
+    white-space: normal;
     width: 100%;
   }
 
+  #menu > li > a.ativo::after,
+  .menu-com-submenu > a.ativo::after {
+    display: none;
+  }
+
+  #menu > li > a:hover,
+  #menu > li > a.ativo,
+  .menu-com-submenu > a:hover {
+    background: rgba(146, 75, 56, 0.1);
+  }
+
   .menu-com-submenu {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 44px;
+    gap: 0.25rem;
+    align-items: stretch;
     width: 100%;
   }
 
   .menu-com-submenu > a {
-    flex: 1;
+    min-width: 0;
   }
 
   .submenu-toggle {
     width: 44px;
-    height: 44px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-width: 44px;
+    min-height: 44px;
+    height: auto;
+    border-bottom: 0;
+    border-radius: 8px;
+    background: rgba(146, 75, 56, 0.1);
   }
 
   .submenu {
     position: static;
     display: none;
     min-width: 0;
-    width: 100%;
-    padding: 0 0 0.35rem 1rem;
-    border: 0;
-    border-radius: 0;
+    width: calc(100% - 2.1rem);
+    margin: 0.3rem 0 0.35rem auto;
+    padding: 0.35rem;
+    border: 1px solid rgba(146, 75, 56, 0.14);
+    border-radius: 10px;
+    background: rgba(243, 231, 205, 0.42);
     box-shadow: none;
     opacity: 1;
     visibility: visible;
@@ -420,13 +453,20 @@ header {
   }
 
   #menu > li.submenu-aberto .submenu {
-    display: block;
+    display: grid;
+    gap: 0.25rem;
   }
 
   .submenu a {
-    padding: 9px 15px !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 0;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0.62rem 0.72rem !important;
+    border-bottom: 0;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.72);
+    font-size: 0.9rem;
+    line-height: 1.25;
     white-space: normal;
   }
 
@@ -436,6 +476,14 @@ header {
 }
 
 @media (max-width: 480px) {
+  #menu {
+    width: min(92vw, 340px);
+  }
+
+  .submenu {
+    width: calc(100% - 1rem);
+  }
+
   .logo-text-mobile {
     font-size: 1.8rem !important;
   }

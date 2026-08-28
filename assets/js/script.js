@@ -183,15 +183,37 @@ function initMenuResponsivo() {
     spans[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
   }
 
-  menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("show");
+  function definirMenuAberto(aberto) {
+    menu.classList.toggle("show", aberto);
+    document.body.classList.toggle("menu-aberto", aberto);
+    menuToggle.setAttribute("aria-expanded", String(aberto));
+    menuToggle.setAttribute(
+      "aria-label",
+      aberto ? "Fechar menu de navegação" : "Abrir menu de navegação"
+    );
 
-    if (menu.classList.contains("show")) {
+    if (aberto) {
       setHamburgerAsX();
     } else {
       fecharSubmenus();
       resetHamburger();
     }
+  }
+
+  menuToggle.setAttribute("role", "button");
+  menuToggle.setAttribute("tabindex", "0");
+  menuToggle.setAttribute("aria-controls", "menu");
+  definirMenuAberto(menu.classList.contains("show"));
+
+  menuToggle.addEventListener("click", () => {
+    definirMenuAberto(!menu.classList.contains("show"));
+  });
+
+  menuToggle.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+
+    e.preventDefault();
+    definirMenuAberto(!menu.classList.contains("show"));
   });
 
   menu.querySelectorAll(".submenu-toggle").forEach((button) => {
@@ -212,19 +234,19 @@ function initMenuResponsivo() {
   // Fechar menu ao clicar em um item (mobile)
   document.querySelectorAll("#menu a").forEach((item) => {
     item.addEventListener("click", () => {
-      menu.classList.remove("show");
-      fecharSubmenus();
-      resetHamburger();
+      definirMenuAberto(false);
     });
   });
 
   // Fechar menu ao clicar fora (mobile)
   document.addEventListener("click", function (e) {
     if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
-      menu.classList.remove("show");
-      fecharSubmenus();
-      resetHamburger();
+      definirMenuAberto(false);
     }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") definirMenuAberto(false);
   });
 }
 
@@ -245,6 +267,7 @@ function initHeaderHome() {
     if (!menu || !menu.classList.contains("show")) return;
 
     menu.classList.remove("show");
+    document.body.classList.remove("menu-aberto");
     menu.querySelectorAll(".submenu-aberto").forEach((item) => {
       item.classList.remove("submenu-aberto");
       const toggle = item.querySelector(".submenu-toggle");
@@ -252,6 +275,9 @@ function initHeaderHome() {
     });
 
     if (!menuToggle) return;
+
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu de navegação");
 
     const spans = menuToggle.querySelectorAll("span");
     if (spans.length < 3) return;
