@@ -56,7 +56,7 @@ test.describe("responsividade base", () => {
 });
 
 test.describe("eventos", () => {
-  test("home exibe a qualificacao de Eriane como destaque mais recente", async ({
+  test("home exibe comunicacoes do X ENEBIO como destaques mais recentes", async ({
     page,
   }) => {
     await page.goto("/index.html");
@@ -68,27 +68,30 @@ test.describe("eventos", () => {
 
     await expect(cards).toHaveCount(3);
     await expect(primeiroCard.locator("h3")).toHaveText(
-      "Qualificação de Eriane Lima"
+      /X ENEBIO: Experiências formativas em educação em ciências/
     );
     await expect(primeiroCard.locator("img")).toHaveAttribute(
       "src",
-      /assets\/images\/home\/Eventos\/Qualificação Eriane\.png/
+      /assets\/images\/home\/Eventos\/enebio vitor\.png/
     );
-    await expect(primeiroCard).toContainText("21 de julho de 2026");
-    await expect(primeiroCard).toContainText("Defesa híbrida");
-    await expect(primeiroCard).toContainText("Videoconferência");
-    await expect(primeiroCard).toContainText("Escola Normal Superior");
-    await expect(primeiroCard).toContainText("Travessias-Rio");
-    await expect(primeiroCard).toContainText("Caroline Barroncas de Oliveira");
+    await expect(primeiroCard).toContainText("24 a 27 de agosto de 2026");
+    await expect(primeiroCard).toContainText("X ENEBIO, Comunicação oral");
+    await expect(primeiroCard).toContainText(
+      "Universidade Federal da Paraíba"
+    );
+    await expect(primeiroCard).not.toContainText("Superior");
+    await expect(primeiroCard).toContainText("Vitor Gonçalves");
+    await expect(segundoCard).not.toContainText("Superior");
+    await expect(terceiroCard).not.toContainText("Superior");
     await expect(segundoCard.locator("h3")).toHaveText(
-      "Qualificação de Léia Lima"
+      /X ENEBIO: Currículo-Banzeiro de Ciências/
     );
     await expect(terceiroCard.locator("h3")).toHaveText(
-      "Defesa de Silmara Santos"
+      /X ENEBIO: Entre leiras e solo vivo/
     );
   });
 
-  test("historico completo inclui a qualificacao de Eriane no topo", async ({
+  test("historico completo inclui o lote do X ENEBIO no topo", async ({
     page,
   }) => {
     await page.goto("/eventos.html");
@@ -96,31 +99,58 @@ test.describe("eventos", () => {
     const primeiroItemLinha = page.locator(".linha-agenda-item").first();
     const primeiroCardAcervo = page.locator(".evento-historico-card").first();
     const segundoCardAcervo = page.locator(".evento-historico-card").nth(1);
+    const terceiroCardAcervo = page.locator(".evento-historico-card").nth(2);
+    const quartoCardAcervo = page.locator(".evento-historico-card").nth(3);
+    const quintoCardAcervo = page.locator(".evento-historico-card").nth(4);
+    const sextoCardAcervo = page.locator(".evento-historico-card").nth(5);
 
-    await expect(primeiroItemLinha).toContainText("21/07/2026");
+    await expect(primeiroItemLinha).toContainText("24 a 27/08/2026");
     await expect(primeiroItemLinha.locator("h3")).toHaveText(
-      "Qualificação de Eriane Lima"
+      /X ENEBIO: Experiências formativas em educação em ciências/
     );
     await expect(primeiroCardAcervo.locator("h3")).toHaveText(
-      "Qualificação de Eriane Lima"
+      /X ENEBIO: Experiências formativas em educação em ciências/
     );
     await expect(primeiroCardAcervo.locator("img")).toHaveAttribute(
       "src",
-      /assets\/images\/home\/Eventos\/Qualificação Eriane\.png/
+      /assets\/images\/home\/Eventos\/enebio vitor\.png/
     );
-    await expect(primeiroCardAcervo).toContainText("21 de julho de 2026");
-    await expect(primeiroCardAcervo).toContainText("Defesa híbrida");
-    await expect(primeiroCardAcervo).toContainText("Videoconferência");
     await expect(primeiroCardAcervo).toContainText(
-      "Escola Normal Superior"
+      "24 a 27 de agosto de 2026"
     );
-    await expect(primeiroCardAcervo).toContainText("Travessias-Rio");
     await expect(primeiroCardAcervo).toContainText(
-      "Caroline Barroncas de Oliveira"
+      "X ENEBIO, Comunicação oral"
     );
+    await expect(primeiroCardAcervo).toContainText(
+      "Universidade Federal da Paraíba"
+    );
+    await expect(primeiroCardAcervo).not.toContainText("Superior");
+    await expect(primeiroCardAcervo).toContainText("Vitor Gonçalves");
     await expect(segundoCardAcervo.locator("h3")).toHaveText(
-      "Qualificação de Léia Lima"
+      /X ENEBIO: Currículo-Banzeiro de Ciências/
     );
+    await expect(terceiroCardAcervo.locator("h3")).toHaveText(
+      /X ENEBIO: Entre leiras e solo vivo/
+    );
+    await expect(quartoCardAcervo.locator("h3")).toHaveText(
+      /X ENEBIO: Entre a mata, ouriços e crianças/
+    );
+    await expect(quintoCardAcervo.locator("h3")).toHaveText(
+      /X ENEBIO: Desdobramentos em composições/
+    );
+    await expect(sextoCardAcervo.locator("h3")).toHaveText(
+      /X ENEBIO: Currículos Vivos nas amazônias/
+    );
+    for (const card of [
+      primeiroCardAcervo,
+      segundoCardAcervo,
+      terceiroCardAcervo,
+      quartoCardAcervo,
+      quintoCardAcervo,
+      sextoCardAcervo,
+    ]) {
+      await expect(card).not.toContainText("Superior");
+    }
   });
 });
 
