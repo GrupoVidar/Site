@@ -4,11 +4,36 @@ const pages = [
   { path: "/index.html", title: /Vidar em In-Tens/i },
   { path: "/eventos.html", title: /Eventos|Vidar em In-Tens/i },
   { path: "/mural.html", title: /Mural|Vidar em In-Tens/i },
-  { path: "/publicacoes.html", title: /Publica/i },
+  { path: "/publicacoes.html", title: /Ensaios e artigos/i },
   { path: "/dissertacoes-teses.html", title: /Dissertações|teses/i },
   { path: "/projetos.html", title: /Vidar em In-Tens/i },
   { path: "/pesquisadores.html", title: /Vidar em In-Tens/i },
   { path: "/sobre.html", title: /Sobre|Vidar em In-Tens/i },
+];
+
+const navLabels = {
+  escritos: "Nossos escritos",
+  artigos: "Artigos e ensaios",
+  teses: "Disserta\u00e7\u00f5es e teses",
+  toggle: "Abrir submenu de Nossos escritos",
+};
+
+const artigosAnosCronologicos = [
+  2025, 2025, 2025, 2025, 2025, 2025, 2025, 2025, 2024, 2024, 2024, 2024,
+  2024, 2024, 2024, 2024, 2024, 2024, 2023, 2023, 2022, 2021, 2019, 2017,
+];
+
+const tesesCronologicas = [
+  { autoria: "Anny Roberta Gon\u00e7alves Furtado", ano: 2025 },
+  { autoria: "Fabiane Andrade Batista", ano: 2025 },
+  { autoria: "H\u00edvina Dorzane Machado", ano: 2025 },
+  { autoria: "Stivisson Menezes Correia", ano: 2025 },
+  { autoria: "Ana Patr\u00edcia de Souza Azev\u00eado", ano: 2024 },
+  { autoria: "Gabriel da Silva Bentes", ano: 2024 },
+  { autoria: "Thalita Maciel Melero Lima", ano: 2023 },
+  { autoria: "Gilberlene Sousa Carvalho", ano: 2022 },
+  { autoria: "Shirley Vitor da Silva", ano: 2022 },
+  { autoria: "Rafaella Bruno Antunes de Souza", ano: 2021 },
 ];
 
 async function expectNoHorizontalOverflow(page) {
@@ -28,6 +53,101 @@ test.describe("smoke do site", () => {
       await expect(page.locator("footer")).toBeVisible();
     });
   }
+});
+
+test.describe("navegacao principal", () => {
+  test("usa os rotulos atualizados de escritos em todas as paginas", async ({
+    page,
+  }) => {
+    for (const pageData of pages) {
+      await page.goto(pageData.path);
+
+      const menu = page.locator("#menu");
+
+      await expect(
+        menu.locator('a[href="./publicacoes.html"]').first()
+      ).toHaveText(navLabels.escritos);
+      await expect(menu.locator(".submenu-toggle").first()).toHaveAttribute(
+        "aria-label",
+        navLabels.toggle
+      );
+      await expect(menu.locator(".submenu a")).toHaveText([
+        "Mural",
+        navLabels.artigos,
+        navLabels.teses,
+      ]);
+      await expect(menu.locator(".submenu a").nth(1)).toHaveAttribute(
+        "href",
+        "./publicacoes.html"
+      );
+      await expect(menu.locator(".submenu a").nth(2)).toHaveAttribute(
+        "href",
+        "./dissertacoes-teses.html"
+      );
+    }
+  });
+
+  test("home mostra a barra superior no primeiro rolamento", async ({ page }) => {
+    await page.goto("/index.html");
+
+    const body = page.locator("body");
+    const header = page.locator("header");
+
+    await expect(body).toHaveClass(/tem-hero/);
+    await expect(header).toHaveClass(/header--hidden/);
+
+    await page.evaluate(() => window.scrollTo(0, 1));
+
+    await expect(header).not.toHaveClass(/header--hidden/);
+    await expect(body).toHaveClass(/header-visivel/);
+  });
+
+  test("submenu de nossos escritos permanece clicavel no desktop", async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(isMobile, "Teste aplicavel apenas ao hover desktop.");
+
+    await page.goto("/index.html");
+    await page.evaluate(() => window.scrollTo(0, 1));
+
+    const header = page.locator("header");
+    const escritos = page
+      .locator("#menu .menu-com-submenu > a")
+      .filter({ hasText: navLabels.escritos })
+      .first();
+    const artigos = page
+      .locator('#menu .submenu a[href="./publicacoes.html"]')
+      .filter({ hasText: navLabels.artigos })
+      .first();
+
+    await expect(header).not.toHaveClass(/header--hidden/);
+    await escritos.hover();
+    await expect(artigos).toBeVisible();
+
+    const escritosBox = await escritos.boundingBox();
+    const artigosBox = await artigos.boundingBox();
+
+    expect(escritosBox).toBeTruthy();
+    expect(artigosBox).toBeTruthy();
+
+    await page.mouse.move(
+      escritosBox.x + escritosBox.width / 2,
+      escritosBox.y + escritosBox.height / 2
+    );
+    await page.mouse.move(
+      artigosBox.x + artigosBox.width / 2,
+      escritosBox.y + escritosBox.height + 4
+    );
+    await expect(artigos).toBeVisible();
+
+    await page.mouse.click(
+      artigosBox.x + artigosBox.width / 2,
+      artigosBox.y + artigosBox.height / 2
+    );
+
+    await expect(page).toHaveURL(/publicacoes\.html$/);
+  });
 });
 
 test.describe("responsividade base", () => {
@@ -155,6 +275,19 @@ test.describe("eventos", () => {
 });
 
 test.describe("publicacoes", () => {
+  test("home renomeia a vitrine de publicacoes para ensaios e artigos", async ({
+    page,
+  }) => {
+    await page.goto("/index.html");
+
+    await expect(page.locator("#vitrine-pub-title")).toHaveText(
+      "Ensaios e artigos"
+    );
+    await expect(
+      page.locator('.vitrine-publicacoes-footer a[href="./publicacoes.html"]')
+    ).toHaveText("Explorar ensaios e artigos");
+  });
+
   test("busca filtra e limpar restaura a lista", async ({ page }) => {
     await page.goto("/publicacoes.html");
 
@@ -170,9 +303,67 @@ test.describe("publicacoes", () => {
 
     await botaoLimpar.click();
 
-    await expect(contador).toContainText(/24 publica/i);
+    await expect(contador).toContainText(/24 manuscrito/i);
     await expect(resultadosVisiveis).toHaveCount(24);
     await expect(campoBusca).toHaveValue("");
+  });
+
+  test("exibe ensaios e artigos em ordem cronologica pelo ano do card", async ({
+    page,
+  }) => {
+    await page.goto("/publicacoes.html");
+
+    await expect(page.locator(".titulo-secao")).toHaveText("Ensaios e artigos");
+
+    const cards = page.locator(".publicacao-item");
+    const anos = await cards.evaluateAll((items) =>
+      items.map((item) => Number(item.getAttribute("data-ano-publicacao")))
+    );
+    const anosReferencias = await cards
+      .locator(".publicacao-referencia")
+      .evaluateAll((items) =>
+        items.map((item) => {
+          const referencia = item.textContent.split(/\b(?:ISSN|DOI)\b/i)[0];
+          const anos = [
+            ...referencia.matchAll(
+              /(?<![\p{L}\p{N}])(?:19|20)\d{2}(?![\p{L}\p{N}])/gu
+            ),
+          ].map((match) => Number(match[0]));
+
+          return anos.at(-1);
+        })
+      );
+
+    await expect(cards).toHaveCount(artigosAnosCronologicos.length);
+    await expect(cards.first().locator(".publicacao-titulo")).toContainText(
+      /Ecofeminismo em Questionamentos do Antropoceno/
+    );
+    await expect(cards.last().locator(".publicacao-titulo")).toContainText(
+      /Fabrica\u00e7\u00e3o midi\u00e1tica e liter\u00e1ria/
+    );
+    expect(anos).toEqual(artigosAnosCronologicos);
+    expect(anosReferencias).toEqual(artigosAnosCronologicos);
+  });
+
+  test("usa autorias no formato ABNT sem particulas antes do sobrenome", async ({
+    page,
+  }) => {
+    await page.goto("/publicacoes.html");
+
+    const autorias = await page.locator(".publicacao-autores").evaluateAll(
+      (items) => items.map((item) => item.textContent.replace(/\s+/g, " ").trim())
+    );
+
+    expect(autorias[0]).toBe(
+      "CARVALHO, Daniela Franco; OLIVEIRA, Caroline Barroncas de; COSTA, M\u00f4nica de Oliveira."
+    );
+    expect(autorias.join(" ")).not.toContain("JACOBUCCI");
+
+    for (const autoria of autorias) {
+      for (const autor of autoria.split(";")) {
+        expect(autor.trim()).not.toMatch(/^(DE|DA|DO)\s+\p{Lu}/u);
+      }
+    }
   });
 });
 
@@ -183,20 +374,37 @@ test.describe("dissertacoes e teses", () => {
     const cards = page.locator(".tese-card");
     const primeiroCard = cards.first();
 
-    await expect(cards).toHaveCount(10);
+    await expect(cards).toHaveCount(tesesCronologicas.length);
     await expect(primeiroCard.locator(".tese-badge")).toHaveCount(0);
     await expect(primeiroCard.locator(".tese-preview-shell")).toHaveAttribute(
       "href",
-      /assets\/Dissertações e teses\/16\.-SHIRLEY-VITOR-DA-SILVA\.pdf/
+      /ANNY-ROBERTA-DISSERTACAO\.pdf/
     );
     await expect(primeiroCard.locator("img")).toHaveAttribute(
       "src",
-      /assets\/images\/dissertacoes-teses\/16-shirley-vitor-da-silva\.png/
+      /assets\/images\/dissertacoes-teses\/anny-roberta-dissertacao\.png/
     );
     await expect(primeiroCard.locator(".tese-titulo")).toHaveCSS(
       "text-overflow",
       "ellipsis"
     );
+  });
+
+  test("lista trabalhos em ordem cronologica pelo ano de publicacao", async ({
+    page,
+  }) => {
+    await page.goto("/dissertacoes-teses.html");
+
+    const cards = page.locator(".tese-card");
+    const anos = await cards.evaluateAll((items) =>
+      items.map((item) => Number(item.getAttribute("data-ano-publicacao")))
+    );
+    const autorias = await cards.locator(".tese-autoria").evaluateAll((items) =>
+      items.map((item) => item.textContent.trim())
+    );
+
+    expect(anos).toEqual(tesesCronologicas.map((tese) => tese.ano));
+    expect(autorias).toEqual(tesesCronologicas.map((tese) => tese.autoria));
   });
 
   test("usa quatro colunas no desktop", async ({ page, isMobile }) => {

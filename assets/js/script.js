@@ -229,6 +229,70 @@ function initMenuResponsivo() {
 }
 
 /* =========================================================
+   2) HEADER DA HOME APOS O PRIMEIRO ROLAMENTO
+========================================================= */
+function initHeaderHome() {
+  const hero = document.querySelector(".hero-vidar-anim");
+  const header = document.querySelector("header");
+  const menuToggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("menu");
+
+  if (!hero || !header) return;
+
+  document.body.classList.add("tem-hero");
+
+  function fecharMenuMobile() {
+    if (!menu || !menu.classList.contains("show")) return;
+
+    menu.classList.remove("show");
+    menu.querySelectorAll(".submenu-aberto").forEach((item) => {
+      item.classList.remove("submenu-aberto");
+      const toggle = item.querySelector(".submenu-toggle");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    });
+
+    if (!menuToggle) return;
+
+    const spans = menuToggle.querySelectorAll("span");
+    if (spans.length < 3) return;
+
+    spans[0].style.transform = "none";
+    spans[1].style.opacity = "1";
+    spans[1].style.transform = "none";
+    spans[2].style.transform = "none";
+  }
+
+  function definirHeaderVisivel(visivel) {
+    header.classList.toggle("header--hidden", !visivel);
+    document.body.classList.toggle("header-oculto", !visivel);
+    document.body.classList.toggle("header-visivel", visivel);
+
+    if (!visivel) fecharMenuMobile();
+  }
+
+  function atualizarHeader() {
+    const scrollAtual = window.scrollY || document.documentElement.scrollTop || 0;
+    definirHeaderVisivel(scrollAtual > 0);
+  }
+
+  let aguardandoFrame = false;
+  function agendarAtualizacao() {
+    if (aguardandoFrame) return;
+
+    aguardandoFrame = true;
+    requestAnimationFrame(() => {
+      aguardandoFrame = false;
+      atualizarHeader();
+    });
+  }
+
+  atualizarHeader();
+  window.addEventListener("scroll", agendarAtualizacao, { passive: true });
+  window.addEventListener("resize", agendarAtualizacao);
+  window.addEventListener("pageshow", atualizarHeader);
+}
+
+/* =========================================================
    2) DESTAQUE NOS CARDS DE NOTCIAS (INDEX)
 ========================================================= */
 function initHoverCardsNoticias() {
@@ -372,7 +436,7 @@ function initBuscaPublicacoes() {
   semResultados.className = "sem-resultados";
   semResultados.innerHTML = `
     <i class="fas fa-search"></i>
-    <h3>Nenhuma publicação encontrada</h3>
+    <h3>Nenhum manuscrito encontrado</h3>
     <p>Tente usar outros termos ou verificar a ortografia.</p>
   `;
 
@@ -421,13 +485,13 @@ function initBuscaPublicacoes() {
 
   function atualizarContador(resultados, termo) {
     if (!termo) {
-      contador.textContent = `Mostrando todas as ${publicacoes.length} publicações`;
+      contador.textContent = `Mostrando todos os ${publicacoes.length} manuscritos`;
     } else if (resultados === 0) {
       contador.textContent = `Nenhum resultado para "${termo}"`;
     } else if (resultados === 1) {
-      contador.textContent = `1 publicação encontrada para "${termo}"`;
+      contador.textContent = `1 manuscrito encontrado para "${termo}"`;
     } else {
-      contador.textContent = `${resultados} publicações encontradas para "${termo}"`;
+      contador.textContent = `${resultados} manuscritos encontrados para "${termo}"`;
     }
   }
 
@@ -657,6 +721,7 @@ function initModalProjetos() {
 ========================================================= */
 document.addEventListener("DOMContentLoaded", function () {
   initMenuResponsivo();
+  initHeaderHome();
   initHoverCardsNoticias();
   initAnoRodape();
 
@@ -671,89 +736,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Reforçar visibilidade ao redimensionar (mantido)
 window.addEventListener("resize", garantirVisibilidadeMobile);
-
-document.addEventListener("DOMContentLoaded", () => {
-  const hero = document.querySelector(".hero-vidar-anim");
-  const header = document.querySelector("header");
-
-  if (!hero || !header) return;
-
-  // Começa com header oculto
-  document.body.classList.add("header-oculto");
-  document.body.classList.remove("header-visivel");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0];
-
-      if (entry.isIntersecting) {
-        // Ainda está no hero  header some
-        document.body.classList.add("header-oculto");
-        document.body.classList.remove("header-visivel");
-      } else {
-        // Saiu do hero  header aparece
-        document.body.classList.remove("header-oculto");
-        document.body.classList.add("header-visivel");
-      }
-    },
-    {
-      threshold: 0,
-    }
-  );
-
-  observer.observe(hero);
-});
-
-// =========================================================
-// HEADER SOME ENQUANTO O HERO ESTIVER VISVEL (HOME)
-// =========================================================
-document.addEventListener("DOMContentLoaded", () => {
-  const hero = document.querySelector(".hero-vidar-anim");
-  const header = document.querySelector("header");
-  const menuToggle = document.getElementById("menuToggle");
-  const menu = document.getElementById("menu");
-
-  // Só aplica na página que tem o hero
-  if (!hero || !header) return;
-
-  // Marca o body para ativar os estilos específicos (header fix + compensação)
-  document.body.classList.add("tem-hero");
-
-  // Helper: fechar menu se estiver aberto
-  function fecharMenuMobile() {
-    if (menu && menu.classList.contains("show")) {
-      menu.classList.remove("show");
-
-      // reset do ícone hambúrguer (mantém sua lógica atual)
-      if (menuToggle) {
-        const spans = menuToggle.querySelectorAll("span");
-        if (spans.length >= 3) {
-          spans[0].style.transform = "none";
-          spans[1].style.opacity = "1";
-          spans[1].style.transform = "none";
-          spans[2].style.transform = "none";
-        }
-      }
-    }
-  }
-
-  // Observer: se o hero estiver na tela => header some
-  const obs = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0];
-
-      if (entry.isIntersecting) {
-        header.classList.add("header--hidden");
-        fecharMenuMobile(); // evita menu bugado enquanto header some
-      } else {
-        header.classList.remove("header--hidden");
-      }
-    },
-    {
-      // Quando ~60% do hero estiver visível, mantém header escondido
-      threshold: 0.6,
-    }
-  );
-
-  obs.observe(hero);
-});
