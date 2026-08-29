@@ -17,15 +17,23 @@ function initOndasHeroMouse() {
   const canvas = document.querySelector(".hero-vidar-ondas");
   if (!hero || !canvas) return;
 
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const pointerCoarse = window.matchMedia("(pointer: coarse)");
+  const smallViewport = window.matchMedia("(max-width: 768px)");
+
+  if (reduceMotion.matches || pointerCoarse.matches || smallViewport.matches) {
+    canvas.hidden = true;
+    return;
+  }
+
   const context = canvas.getContext("2d");
   if (!context) return;
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (reduceMotion.matches) return;
 
   let width = 0;
   let height = 0;
   let lastSpawn = 0;
+  let animationFrameId = null;
+  let animacaoAtiva = false;
 
   const ripples = [];
   const pointer = { x: 0, y: 0, active: false };
@@ -117,10 +125,34 @@ function initOndasHeroMouse() {
   }
 
   function render(time) {
+    if (!animacaoAtiva) {
+      animationFrameId = null;
+      return;
+    }
+
     context.clearRect(0, 0, width, height);
     drawWaveBands(time || 0);
     drawRipples();
-    requestAnimationFrame(render);
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  function iniciarRender() {
+    if (animationFrameId !== null) return;
+
+    animacaoAtiva = true;
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  function pausarRender() {
+    animacaoAtiva = false;
+
+    if (animationFrameId !== null) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+
+    ripples.length = 0;
+    context.clearRect(0, 0, width, height);
   }
 
   function handlePointerMove(event) {
@@ -141,10 +173,27 @@ function initOndasHeroMouse() {
   }
 
   resizeCanvas();
-  requestAnimationFrame(render);
+  canvas.hidden = false;
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          iniciarRender();
+        } else {
+          pausarRender();
+        }
+      },
+      { rootMargin: "120px 0px", threshold: 0 }
+    );
+
+    observer.observe(hero);
+  } else {
+    iniciarRender();
+  }
 
   window.addEventListener("resize", resizeCanvas);
-  hero.addEventListener("mousemove", handlePointerMove);
+  hero.addEventListener("mousemove", handlePointerMove, { passive: true });
   hero.addEventListener("mouseleave", handlePointerLeave);
 }
 

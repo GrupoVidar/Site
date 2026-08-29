@@ -3928,6 +3928,31 @@ body.index-page {
     linear-gradient(180deg, #fbf8f2 0%, #f3e7cd 100%);
 }
 
+body.index-page .destaque-principal-section,
+body.index-page .vitrine-publicacoes-home,
+body.index-page .pagina9-vitrine-home,
+body.index-page .dicas-leituras.cards,
+body.index-page .frase-destaque.imagem {
+  content-visibility: auto;
+}
+
+body.index-page .destaque-principal-section {
+  contain-intrinsic-size: auto 620px;
+}
+
+body.index-page .vitrine-publicacoes-home,
+body.index-page .pagina9-vitrine-home {
+  contain-intrinsic-size: auto 560px;
+}
+
+body.index-page .dicas-leituras.cards {
+  contain-intrinsic-size: auto 520px;
+}
+
+body.index-page .frase-destaque.imagem {
+  contain-intrinsic-size: auto 520px;
+}
+
 body.index-page header {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
