@@ -7,12 +7,14 @@ const pages = [
   { path: "/publicacoes.html", title: /Ensaios e artigos/i },
   { path: "/dissertacoes-teses.html", title: /Dissertações|teses/i },
   { path: "/projetos.html", title: /Vidar em In-Tens/i },
+  { path: "/ceiva.html", title: /CEIVA/i },
   { path: "/pesquisadores.html", title: /Vidar em In-Tens/i },
   { path: "/sobre.html", title: /Sobre|Vidar em In-Tens/i },
 ];
 
 const navLabels = {
   escritos: "Nossos escritos",
+  ceiva: "CEIVA",
   artigos: "Artigos e ensaios",
   teses: "Disserta\u00e7\u00f5es e teses",
   toggle: "Abrir submenu de Nossos escritos",
@@ -83,6 +85,9 @@ test.describe("navegacao principal", () => {
       await expect(menu.locator(".submenu a").nth(2)).toHaveAttribute(
         "href",
         "./dissertacoes-teses.html"
+      );
+      await expect(menu.locator('a[href="./ceiva.html"]').first()).toHaveText(
+        navLabels.ceiva
       );
     }
   });
@@ -455,6 +460,43 @@ test.describe("dissertacoes e teses", () => {
 
     expect(mesmaLinha).toBeLessThanOrEqual(2);
     expect(Math.round(boxes[4].y)).toBeGreaterThan(Math.round(boxes[0].y));
+  });
+});
+
+test.describe("ceiva", () => {
+  test("exibe capa, apresentacao, origem do nome e creditos", async ({
+    page,
+  }) => {
+    await page.goto("/ceiva.html");
+
+    await expect(page.locator("body")).toHaveClass(/ceiva-page/);
+    await expect(page.locator("#ceiva-title")).toHaveText("CEIVA");
+    await expect(page.locator(".ceiva-hero-cover img")).toHaveAttribute(
+      "src",
+      /assets\/images\/home\/CEIVA\/CAPA ceiva\.jpeg/
+    );
+    await expect(page.locator(".ceiva-hero-cover figcaption")).toHaveText(
+      "Currículos vivos da Amazônia"
+    );
+    await expect(page.locator(".ceiva-pintura img")).toHaveAttribute(
+      "src",
+      /assets\/images\/home\/CEIVA\/Pintura\.jpeg/
+    );
+    await expect(page.locator(".ceiva-texto")).toContainText(
+      "berçário de projetos sobre currículos vivos da Amazônia"
+    );
+    await expect(page.locator("#ceiva-origem-title")).toHaveText(
+      "Origem do nome"
+    );
+    await expect(page.locator(".ceiva-origem")).toContainText(
+      "será a seiva do CEIVA"
+    );
+    await expect(page.locator(".ceiva-creditos")).toContainText(
+      "Mônica de Oliveira Costa, Caroline Barroncas de Oliveira"
+    );
+    await expect(
+      page.locator('a[href="./ceiva.html"].ativo').first()
+    ).toHaveText("CEIVA");
   });
 });
 

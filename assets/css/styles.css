@@ -6264,6 +6264,201 @@ body.mural-page .mural-link {
 }
 
 /* =========================================================
+   26) CEIVA.HTML - PAGINA INSTITUCIONAL
+========================================================= */
+body.ceiva-page {
+  --ceiva-oliva: #66724d;
+  --ceiva-oliva-profundo: #3f4a32;
+  --ceiva-rosa: #f3d7dc;
+  --ceiva-rosa-claro: #fbf0f2;
+  --ceiva-texto: #303527;
+  background: #fffdfb;
+  color: var(--ceiva-texto);
+}
+
+body.ceiva-page header {
+  background: rgba(255, 253, 251, 0.94);
+  border-bottom: 1px solid rgba(102, 114, 77, 0.14);
+  box-shadow: 0 6px 22px rgba(63, 74, 50, 0.08);
+}
+
+.ceiva-main {
+  overflow: hidden;
+}
+
+.ceiva-hero {
+  padding: clamp(2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem)
+    clamp(2rem, 5vw, 4rem);
+  background:
+    linear-gradient(180deg, #fffdfb 0%, #fffdfb 58%, var(--ceiva-rosa-claro) 100%);
+}
+
+.ceiva-hero-inner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ceiva-logo {
+  display: block;
+  width: clamp(82px, 12vw, 142px);
+  height: auto;
+  margin: 0 auto 1rem;
+  mix-blend-mode: multiply;
+}
+
+.ceiva-hero h1 {
+  margin: 0 0 clamp(1.3rem, 3vw, 2.4rem);
+  color: var(--ceiva-oliva-profundo);
+  font-family: "Playfair Display", "Palatino Linotype", serif;
+  font-size: clamp(3.8rem, 13vw, 9rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.ceiva-hero-cover {
+  margin: 0;
+}
+
+.ceiva-hero-cover img {
+  display: block;
+  width: 100%;
+  max-height: 68vh;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center 58%;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(63, 74, 50, 0.18);
+}
+
+.ceiva-hero-cover figcaption {
+  margin-top: clamp(1.2rem, 3vw, 2rem);
+  color: var(--ceiva-oliva-profundo);
+  font-family: "Dancing Script", "Playfair Display", serif;
+  font-size: clamp(2.1rem, 6vw, 4.8rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ceiva-apresentacao {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(1.8rem, 5vw, 5rem);
+  align-items: center;
+  width: min(1120px, calc(100% - 2rem));
+  margin: clamp(3rem, 8vw, 6rem) auto;
+}
+
+.ceiva-pintura {
+  margin: 0;
+}
+
+.ceiva-pintura img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+}
+
+.ceiva-texto {
+  max-width: 68ch;
+}
+
+.ceiva-kicker {
+  margin: 0 0 0.8rem;
+  color: var(--ceiva-oliva);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ceiva-texto h2,
+.ceiva-origem h2 {
+  margin: 0 0 1rem;
+  color: var(--ceiva-oliva-profundo);
+  font-family: "Playfair Display", "Palatino Linotype", serif;
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.ceiva-texto p,
+.ceiva-origem p,
+.ceiva-creditos p {
+  margin: 0;
+  color: var(--ceiva-texto);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  line-height: 1.85;
+}
+
+.ceiva-origem {
+  padding: clamp(3rem, 7vw, 5.8rem) clamp(1rem, 4vw, 3rem);
+  background: linear-gradient(90deg, var(--ceiva-rosa-claro), #ffffff);
+  border-top: 1px solid rgba(102, 114, 77, 0.12);
+  border-bottom: 1px solid rgba(102, 114, 77, 0.12);
+}
+
+.ceiva-origem-inner {
+  width: min(880px, 100%);
+  margin: 0 auto;
+}
+
+.ceiva-creditos {
+  width: min(920px, calc(100% - 2rem));
+  margin: clamp(2.5rem, 7vw, 5rem) auto;
+  padding-left: clamp(1rem, 3vw, 2rem);
+  border-left: 4px solid var(--ceiva-rosa);
+}
+
+.ceiva-creditos p {
+  color: var(--ceiva-oliva-profundo);
+  font-family: "Playfair Display", "Palatino Linotype", serif;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .ceiva-apresentacao {
+    grid-template-columns: 1fr;
+  }
+
+  .ceiva-pintura {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .ceiva-hero {
+    padding-top: 1.6rem;
+  }
+
+  .ceiva-hero-cover img {
+    aspect-ratio: 4 / 5;
+    max-height: none;
+  }
+
+  .ceiva-hero-cover figcaption {
+    font-size: clamp(1.9rem, 11vw, 3.2rem);
+  }
+
+  .ceiva-apresentacao,
+  .ceiva-creditos {
+    width: min(100% - 1.25rem, 1120px);
+  }
+
+  .ceiva-texto p,
+  .ceiva-origem p,
+  .ceiva-creditos p {
+    line-height: 1.7;
+  }
+}
+
+/* =========================================================
    FUNDOS COMPARTILHADOS DAS PÁGINAS INTERNAS
 ========================================================= */
 body.eventos-page,
