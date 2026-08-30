@@ -6287,7 +6287,7 @@ body.ceiva-page header {
 }
 
 .ceiva-hero {
-  padding: clamp(2rem, 5vw, 4.8rem) clamp(1rem, 4vw, 3rem)
+  padding: clamp(1.2rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem)
     clamp(2rem, 5vw, 4rem);
   background:
     linear-gradient(180deg, #fffdfb 0%, #fffdfb 58%, var(--ceiva-rosa-claro) 100%);
@@ -6297,24 +6297,6 @@ body.ceiva-page header {
   width: min(1120px, 100%);
   margin: 0 auto;
   text-align: center;
-}
-
-.ceiva-logo {
-  display: block;
-  width: clamp(82px, 12vw, 142px);
-  height: auto;
-  margin: 0 auto 1rem;
-  mix-blend-mode: multiply;
-}
-
-.ceiva-hero h1 {
-  margin: 0 0 clamp(1.3rem, 3vw, 2.4rem);
-  color: var(--ceiva-oliva-profundo);
-  font-family: "Playfair Display", "Palatino Linotype", serif;
-  font-size: clamp(3.8rem, 13vw, 9rem);
-  font-weight: 600;
-  line-height: 0.9;
-  letter-spacing: 0;
 }
 
 .ceiva-hero-cover {
@@ -6343,28 +6325,34 @@ body.ceiva-page header {
 
 .ceiva-apresentacao {
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  gap: clamp(1.8rem, 5vw, 5rem);
-  align-items: center;
-  width: min(1120px, calc(100% - 2rem));
+  grid-template-columns: minmax(300px, 0.95fr) minmax(360px, 1.05fr);
+  gap: clamp(1.4rem, 4vw, 4rem);
+  align-items: stretch;
+  width: min(1180px, calc(100% - 2rem));
   margin: clamp(3rem, 8vw, 6rem) auto;
 }
 
 .ceiva-pintura {
+  align-self: stretch;
   margin: 0;
 }
 
 .ceiva-pintura img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 100%;
+  min-height: clamp(560px, 56vw, 760px);
   object-fit: cover;
   object-position: center;
   border-radius: 8px;
 }
 
 .ceiva-texto {
-  max-width: 68ch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: none;
+  padding: clamp(0.4rem, 2vw, 1.6rem) 0;
 }
 
 .ceiva-kicker {
@@ -6374,6 +6362,7 @@ body.ceiva-page header {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .ceiva-texto h2,
@@ -6381,9 +6370,14 @@ body.ceiva-page header {
   margin: 0 0 1rem;
   color: var(--ceiva-oliva-profundo);
   font-family: "Playfair Display", "Palatino Linotype", serif;
-  font-size: clamp(2rem, 4.6vw, 4rem);
+  font-size: clamp(2rem, 3.9vw, 3.7rem);
   font-weight: 500;
   line-height: 1.05;
+  text-align: center;
+}
+
+.ceiva-texto h2 {
+  margin-bottom: clamp(1.2rem, 2.6vw, 2rem);
 }
 
 .ceiva-texto p,
@@ -6393,6 +6387,12 @@ body.ceiva-page header {
   color: var(--ceiva-texto);
   font-size: clamp(1rem, 1.6vw, 1.12rem);
   line-height: 1.85;
+}
+
+.ceiva-texto > p:not(.ceiva-kicker),
+.ceiva-origem-inner > p:not(.ceiva-kicker) {
+  text-align: justify;
+  hyphens: auto;
 }
 
 .ceiva-origem {
@@ -6421,7 +6421,7 @@ body.ceiva-page header {
   line-height: 1.65;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 760px) {
   .ceiva-apresentacao {
     grid-template-columns: 1fr;
   }
@@ -6429,6 +6429,12 @@ body.ceiva-page header {
   .ceiva-pintura {
     max-width: 620px;
     margin: 0 auto;
+  }
+
+  .ceiva-pintura img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
   }
 }
 

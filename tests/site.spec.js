@@ -466,11 +466,13 @@ test.describe("dissertacoes e teses", () => {
 test.describe("ceiva", () => {
   test("exibe capa, apresentacao, origem do nome e creditos", async ({
     page,
+    isMobile,
   }) => {
     await page.goto("/ceiva.html");
 
     await expect(page.locator("body")).toHaveClass(/ceiva-page/);
-    await expect(page.locator("#ceiva-title")).toHaveText("CEIVA");
+    await expect(page.locator(".ceiva-logo")).toHaveCount(0);
+    await expect(page.locator("#ceiva-title")).toHaveCount(0);
     await expect(page.locator(".ceiva-hero-cover img")).toHaveAttribute(
       "src",
       /assets\/images\/home\/CEIVA\/CAPA ceiva\.jpeg/
@@ -485,8 +487,21 @@ test.describe("ceiva", () => {
     await expect(page.locator(".ceiva-texto")).toContainText(
       "berçário de projetos sobre currículos vivos da Amazônia"
     );
+    await expect(page.locator(".ceiva-texto .ceiva-kicker")).toHaveCount(0);
+    await expect(page.locator("#ceiva-apresentacao")).toHaveCSS(
+      "text-align",
+      "center"
+    );
+    await expect(page.locator(".ceiva-texto > p").last()).toHaveCSS(
+      "text-align",
+      "justify"
+    );
     await expect(page.locator("#ceiva-origem-title")).toHaveText(
       "Origem do nome"
+    );
+    await expect(page.locator("#ceiva-origem-title")).toHaveCSS(
+      "text-align",
+      "center"
     );
     await expect(page.locator(".ceiva-origem")).toContainText(
       "será a seiva do CEIVA"
@@ -497,6 +512,16 @@ test.describe("ceiva", () => {
     await expect(
       page.locator('a[href="./ceiva.html"].ativo').first()
     ).toHaveText("CEIVA");
+
+    if (!isMobile) {
+      const pinturaBox = await page.locator(".ceiva-pintura").boundingBox();
+      const textoBox = await page.locator(".ceiva-texto").boundingBox();
+
+      expect(pinturaBox).toBeTruthy();
+      expect(textoBox).toBeTruthy();
+      expect(textoBox.x).toBeGreaterThan(pinturaBox.x + pinturaBox.width);
+      expect(Math.abs(pinturaBox.y - textoBox.y)).toBeLessThanOrEqual(40);
+    }
   });
 });
 
