@@ -496,6 +496,13 @@ test.describe("ceiva", () => {
       "text-align",
       "justify"
     );
+    await expect(
+      page.locator(".ceiva-origem-inner > p:not(.ceiva-kicker)")
+    ).toHaveCSS("text-align", "justify");
+    await expect(page.locator(".ceiva-creditos p")).toHaveCSS(
+      "text-align",
+      "justify"
+    );
     await expect(page.locator("#ceiva-origem-title")).toHaveText(
       "Origem do nome"
     );

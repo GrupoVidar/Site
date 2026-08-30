@@ -6390,8 +6390,10 @@ body.ceiva-page header {
 }
 
 .ceiva-texto > p:not(.ceiva-kicker),
-.ceiva-origem-inner > p:not(.ceiva-kicker) {
+.ceiva-origem-inner > p:not(.ceiva-kicker),
+.ceiva-creditos p {
   text-align: justify;
+  text-align-last: left;
   hyphens: auto;
 }
 
@@ -6461,6 +6463,14 @@ body.ceiva-page header {
   .ceiva-origem p,
   .ceiva-creditos p {
     line-height: 1.7;
+  }
+
+  .ceiva-texto > p:not(.ceiva-kicker),
+  .ceiva-origem-inner > p:not(.ceiva-kicker),
+  .ceiva-creditos p {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
   }
 }
 
