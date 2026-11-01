@@ -212,7 +212,7 @@ test.describe("responsividade base", () => {
 });
 
 test.describe("eventos", () => {
-  test("home exibe comunicacoes do X ENEBIO como destaques mais recentes", async ({
+  test("home exibe os tres eventos mais recentes", async ({
     page,
   }) => {
     await page.goto("/index.html");
@@ -223,90 +223,51 @@ test.describe("eventos", () => {
     const terceiroCard = cards.nth(2);
 
     await expect(cards).toHaveCount(3);
-    await expect(primeiroCard.locator("h3")).toHaveText(
-      /X ENEBIO: Experiências formativas em educação em ciências/
-    );
+    await expect(primeiroCard.locator("h3")).toHaveText("Dia dos Professores");
     await expect(primeiroCard.locator("img")).toHaveAttribute(
       "src",
-      /assets\/images\/home\/Eventos\/enebio vitor\.png/
+      /assets\/images\/home\/Eventos\/dia dos professores 15\.10\.2026\.png/
     );
-    await expect(primeiroCard).toContainText("24 a 27 de agosto de 2026");
-    await expect(primeiroCard).toContainText("X ENEBIO, Comunicação oral");
-    await expect(primeiroCard).toContainText(
-      "Universidade Federal da Paraíba"
-    );
-    await expect(primeiroCard).not.toContainText("Superior");
-    await expect(primeiroCard).toContainText("Vitor Gonçalves");
-    await expect(segundoCard).not.toContainText("Superior");
-    await expect(terceiroCard).not.toContainText("Superior");
-    await expect(segundoCard.locator("h3")).toHaveText(
-      /X ENEBIO: Currículo-Banzeiro de Ciências/
-    );
-    await expect(terceiroCard.locator("h3")).toHaveText(
-      /X ENEBIO: Entre leiras e solo vivo/
-    );
+    await expect(primeiroCard).toContainText("15 de outubro de 2026");
+    await expect(primeiroCard).toContainText("Dia dos Professores, Celebração");
+    await expect(segundoCard.locator("h3")).toHaveText("Travessia 3");
+    await expect(segundoCard).toContainText("10 de setembro de 2026");
+    await expect(terceiroCard.locator("h3")).toHaveText("Pós-doutorado");
+    await expect(terceiroCard).toContainText("05 de setembro de 2026");
   });
 
-  test("historico completo inclui o lote do X ENEBIO no topo", async ({
+  test("historico completo inclui os novos eventos em ordem cronologica", async ({
     page,
   }) => {
     await page.goto("/eventos.html");
 
-    const primeiroItemLinha = page.locator(".linha-agenda-item").first();
-    const primeiroCardAcervo = page.locator(".evento-historico-card").first();
-    const segundoCardAcervo = page.locator(".evento-historico-card").nth(1);
-    const terceiroCardAcervo = page.locator(".evento-historico-card").nth(2);
-    const quartoCardAcervo = page.locator(".evento-historico-card").nth(3);
-    const quintoCardAcervo = page.locator(".evento-historico-card").nth(4);
-    const sextoCardAcervo = page.locator(".evento-historico-card").nth(5);
+    const itensLinha = page.locator(".linha-agenda-item");
+    const cardsAcervo = page.locator(".evento-historico-card");
+    const eventosEsperados = [
+      "Dia dos Professores",
+      "Travessia 3",
+      "Pós-doutorado",
+      "Cronograma Setembro",
+      "Murcia",
+    ];
 
-    await expect(primeiroItemLinha).toContainText("24 a 27/08/2026");
-    await expect(primeiroItemLinha.locator("h3")).toHaveText(
-      /X ENEBIO: Experiências formativas em educação em ciências/
-    );
-    await expect(primeiroCardAcervo.locator("h3")).toHaveText(
-      /X ENEBIO: Experiências formativas em educação em ciências/
-    );
-    await expect(primeiroCardAcervo.locator("img")).toHaveAttribute(
-      "src",
-      /assets\/images\/home\/Eventos\/enebio vitor\.png/
-    );
-    await expect(primeiroCardAcervo).toContainText(
-      "24 a 27 de agosto de 2026"
-    );
-    await expect(primeiroCardAcervo).toContainText(
-      "X ENEBIO, Comunicação oral"
-    );
-    await expect(primeiroCardAcervo).toContainText(
-      "Universidade Federal da Paraíba"
-    );
-    await expect(primeiroCardAcervo).not.toContainText("Superior");
-    await expect(primeiroCardAcervo).toContainText("Vitor Gonçalves");
-    await expect(segundoCardAcervo.locator("h3")).toHaveText(
-      /X ENEBIO: Currículo-Banzeiro de Ciências/
-    );
-    await expect(terceiroCardAcervo.locator("h3")).toHaveText(
-      /X ENEBIO: Entre leiras e solo vivo/
-    );
-    await expect(quartoCardAcervo.locator("h3")).toHaveText(
-      /X ENEBIO: Entre a mata, ouriços e crianças/
-    );
-    await expect(quintoCardAcervo.locator("h3")).toHaveText(
-      /X ENEBIO: Desdobramentos em composições/
-    );
-    await expect(sextoCardAcervo.locator("h3")).toHaveText(
-      /X ENEBIO: Currículos Vivos nas amazônias/
-    );
-    for (const card of [
-      primeiroCardAcervo,
-      segundoCardAcervo,
-      terceiroCardAcervo,
-      quartoCardAcervo,
-      quintoCardAcervo,
-      sextoCardAcervo,
-    ]) {
-      await expect(card).not.toContainText("Superior");
+    for (const [indice, titulo] of eventosEsperados.entries()) {
+      await expect(itensLinha.nth(indice).locator("h3")).toHaveText(titulo);
+      await expect(cardsAcervo.nth(indice).locator("h3")).toHaveText(titulo);
     }
+
+    await expect(page.locator(".eventos-linha-trilha")).toContainText(
+      "Travessia 1 - Quanto custa existir?"
+    );
+    await expect(page.locator(".eventos-linha-trilha")).toContainText(
+      "Cronograma Agosto"
+    );
+    await expect(page.locator(".eventos-linha-trilha")).toContainText(
+      "Qualificação Jack"
+    );
+    await expect(page.locator(".eventos-linha-trilha")).toContainText(
+      "Travessia 2"
+    );
   });
 });
 
